@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChunChen-CRM", "ChunChen-CRM\ChunChen-CRM.csproj", "{AB20DAC8-999A-409A-8659-5BD3650CF354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{7EA82E05-AB29-454F-AB9C-0206CB0A18A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{3657FDB0-2FF3-42F6-85B3-F807FE8F7DB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB20DAC8-999A-409A-8659-5BD3650CF354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB20DAC8-999A-409A-8659-5BD3650CF354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB20DAC8-999A-409A-8659-5BD3650CF354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB20DAC8-999A-409A-8659-5BD3650CF354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA82E05-AB29-454F-AB9C-0206CB0A18A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA82E05-AB29-454F-AB9C-0206CB0A18A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA82E05-AB29-454F-AB9C-0206CB0A18A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA82E05-AB29-454F-AB9C-0206CB0A18A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7EA82E05-AB29-454F-AB9C-0206CB0A18A4} = {3657FDB0-2FF3-42F6-85B3-F807FE8F7DB8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FC5B2AF-51F0-4D02-A7FA-7CA5348EAE88}
+	EndGlobalSection
+EndGlobal
