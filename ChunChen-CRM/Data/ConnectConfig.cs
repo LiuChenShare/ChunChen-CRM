@@ -15,6 +15,7 @@ namespace Data
         public virtual DbSet<CustomerInfo> CustomerInfo { get; set; }
         public virtual DbSet<EmployeeInfo> EmployeeInfo { get; set; }
         public virtual DbSet<OrderInfo> OrderInfo { get; set; }
+        public virtual DbSet<AccountInfo> AccountInfo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

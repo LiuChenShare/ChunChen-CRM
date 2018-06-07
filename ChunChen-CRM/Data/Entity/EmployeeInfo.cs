@@ -17,9 +17,19 @@ namespace Data
         [StringLength(50)]
         public string Name { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string Mobile { get; set; }
+
         public int Gender { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? Birthday { get; set; }
+
+        public int Jurisdiction { get; set; }
+
+        public bool Quit { get; set; }
+
+        public bool Deleted { get; set; }
     }
 }

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\AccountInfo.cs" />
     <Compile Include="Entity\CustomerInfo.cs" />
     <Compile Include="Entity\EmployeeInfo.cs" />
     <Compile Include="ConnectConfig.cs" />
