@@ -40,7 +40,7 @@ namespace ChunChen_CRM.Services
                 _session["AccountId"] = accountInfo.Id.ToString();  //把用户id保存到session中
                 return true;
             }
-            return true;
+            return false;
         }
 
         /// <summary>

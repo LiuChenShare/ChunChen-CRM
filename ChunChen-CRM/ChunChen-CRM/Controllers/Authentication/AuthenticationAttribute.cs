@@ -8,11 +8,16 @@ namespace ChunChen_CRM.Controllers
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (filterContext.HttpContext.Session["AccountId"] == null)
+            //没有定义AllowAnonymousAttribute过滤，进行登录验证
+            if (!filterContext.ActionDescriptor.IsDefined(typeof(AllowAnonymousAttribute), true) && !filterContext.ActionDescriptor.ControllerDescriptor.IsDefined(typeof(AllowAnonymousAttribute), true))
             {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { action = "Login", controller = "Account" }));
+                //登录验证
+                if (filterContext.HttpContext.Session["AccountId"] == null)
+                {
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { action = "Login", controller = "Account" }));
+                }
             }
-
+            
             base.OnActionExecuting(filterContext);
         }
     }

@@ -8,13 +8,13 @@ namespace ChunChen_CRM.Controllers
 {
     public class HomeController : Controller
     {
-        [NoAuthentication]
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
-        [NoAuthentication]
+        [AllowAnonymous]
         public ActionResult About()
         {
             ViewBag.Message = "您的应用程序描述页.";
@@ -22,7 +22,7 @@ namespace ChunChen_CRM.Controllers
             return View();
         }
 
-        [NoAuthentication]
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             ViewBag.Message = "联系页面.";
@@ -30,5 +30,11 @@ namespace ChunChen_CRM.Controllers
             return View();
         }
 
+        public ActionResult Default()
+        {
+            ViewBag.Message = "联系页面.";
+
+            return View();
+        }
     }
 }

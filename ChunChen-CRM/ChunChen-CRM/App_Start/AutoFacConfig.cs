@@ -54,7 +54,7 @@ namespace ChunChen_CRM.App_Start
             //    .AsImplementedInterfaces(); //指明创建的rtypes这个集合中所有类的对象实例，以其接口的形式保存  
 
             //3.4 加载业务逻辑层FB.CMS.Services这个程序集。  
-            Assembly servicesAss = Assembly.Load("Chenyuan.Lottery.Services");
+            Assembly servicesAss = Assembly.Load("ChunChen-CRM.Services");
             //3.5 反射扫描这个FB.CMS.Services.dll程序集中所有的类，得到这个程序集中所有类的集合。  
             Type[] stypes = servicesAss.GetTypes();
             //3.6 告诉AutoFac容器，创建stypes这个集合中所有类的对象实例  
@@ -65,6 +65,7 @@ namespace ChunChen_CRM.App_Start
             //请求上下文注册
             //仓储
             builder.RegisterType<EmployeeInfoRepository>();
+            builder.RegisterType<AccountInfoRepository>();
             //服务注册
             builder.RegisterType<AccountService>().As<IAccountService>();
 

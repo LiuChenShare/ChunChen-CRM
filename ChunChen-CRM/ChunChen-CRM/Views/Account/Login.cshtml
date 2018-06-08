@@ -1,0 +1,60 @@
+﻿@model ChunChen_CRM.Model.UserLoginModel
+@{
+    ViewBag.Title = "登录";
+}
+
+<div class="jumbotron">
+
+    @Html.ValidationSummary()
+    @using (Html.BeginForm("CheckLogin", "Account", FormMethod.Post))
+    {
+        <div> @Html.LabelFor(model => model.Account) </div>
+        <div> @Html.EditorFor(model => model.Account) </div>
+        <div> @Html.ValidationMessageFor(model => model.Account) </div>
+
+        <div> @Html.LabelFor(model => model.Password) </div>
+        <div> @Html.EditorFor(model => model.Password) </div>
+        <div> @Html.ValidationMessageFor(model => model.Password) </div>
+
+        <input type="submit" value="登录" />
+    }
+
+    @Html.ValidationMessage("Error")
+</div>
+
+
+<div class="jumbotron">
+    账号： <input type="text" name="Account" id="account" />
+    密码：<input type="text" name="Password" id="password" />
+    <input type="button" onclick="login()" value="登录" />
+</div>
+
+
+<script>
+    function login() {
+        var account = $("#account").val();
+        var password = $("#password").val();
+        if (account == "" || account == null) {
+            alert("请输入账号");
+            return false;
+        }
+        if (password == null || password == "") {
+            alert("请输入密码");
+            return false;
+        }
+        $.ajax({
+            url: "/Account/CheckLogin",//需要提交到的地址
+            type: "POST", //提交的类型 POST/GET
+            data: { userNamea: account, userPas: password},  //提交的参数
+            success: function (data) {
+                //提交成功之后的回调参数
+                if (data.Success) {
+                    window.location.replace("/Home/Index");
+                }
+                else {
+                    alert("账号或密码错误！");
+                }
+            }
+        })
+    }
+</script>  
