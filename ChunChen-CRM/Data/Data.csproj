@@ -55,6 +55,7 @@
     <Compile Include="ConnectConfig.cs" />
     <Compile Include="Entity\OrderInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AccountInfoRepository.cs" />
     <Compile Include="Repository\EmployeeInfoRepository.cs" />
   </ItemGroup>
   <ItemGroup>

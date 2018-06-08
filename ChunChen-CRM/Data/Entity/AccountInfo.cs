@@ -13,13 +13,12 @@ namespace Data
 
         [Column("Account")]
         [Required]
-        public string Account1 { get; set; }
-
-        [Required]
-        public string Mobile { get; set; }
+        public string Account { get; set; }
 
         [Required]
         public string Password { get; set; }
+
+        public Guid EmployeeId { get; set; }
 
         public bool Deleted { get; set; }
     }

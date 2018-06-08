@@ -21,12 +21,22 @@ namespace Data
         [StringLength(50)]
         public string Mobile { get; set; }
 
+        /// <summary>
+        /// 性别 0女 1男
+        /// </summary>
         public int Gender { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? Birthday { get; set; }
 
+        /// <summary>
+        /// 权限等级
+        /// </summary>
         public int Jurisdiction { get; set; }
+
+        /// <summary>
+        /// 是否离职
+        /// </summary>
 
         public bool Quit { get; set; }
 
