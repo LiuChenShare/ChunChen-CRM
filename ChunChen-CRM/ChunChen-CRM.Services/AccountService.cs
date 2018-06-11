@@ -38,6 +38,8 @@ namespace ChunChen_CRM.Services
                 //存储Session
                 var _session = HttpContext.Current.Session;
                 _session["AccountId"] = accountInfo.Id.ToString();  //把用户id保存到session中
+                var employeeInfo = _employeeInfoRepository.GetById(accountInfo.EmployeeId);
+                _session["Authority"] = employeeInfo.Authority;     //把用户权限等级保存到session中
                 return true;
             }
             return false;

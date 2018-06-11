@@ -23,6 +23,6 @@ namespace Data
 
         public Guid EmployeeId { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }
