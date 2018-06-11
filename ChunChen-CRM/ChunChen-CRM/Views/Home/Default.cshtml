@@ -2,6 +2,131 @@
 @{
     ViewBag.Title = "Default";
 }
+<div>
+    <div>
+        <table>
+            <tr>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td style="width: 150px; border: #000000 1px solid; vertical-align: top; text-align: left; padding-right: 0px; padding-left: 0px; margin: 0px;">
+                    <div style="width: 149px;" id="left" name="left" onload="Javascript:SetCwinlHeight()" scrolling="no" marginheight="1" marginwidth="3">
+                        <div id="menu_1" style=" background-color: #000000; height: 30px; font-size: 20px; text-align:center; line-height:30px; color:#ffffff" onclick="MenuDisplay('menu_1','divObj_1')">
+                            个人信息
+                        </div>
+                        <div style="display: none" id='divObj_1'>
+                            <table width="151" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp; <a href="news_list.aspx" target="main">个人资料</a></td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp;  <a href="news_add.aspx" target="main">修改密码</a></td>
+                                </tr>
+                            </table>
+                        </div>
 
-<h2>Default</h2>
+                        <div id="menu_1" style=" background-color: #000000; height: 30px; font-size: 20px; text-align:center; line-height:30px; color:#ffffff" onclick="MenuDisplay('menu_2','divObj_2')">
+                            客户管理
+                        </div>
+                        <div style="display: none" id='divObj_1'>
+                            <table width="151" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp; <a href="news_list.aspx" target="main">客户池</a></td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp;  <a href="news_add.aspx" target="main">我的客户</a></td>
+                                </tr>
+                            </table>
+                        </div>
 
+                        <div id="menu_1" style=" background-color: #000000; height: 30px; font-size: 20px; text-align:center; line-height:30px; color:#ffffff" onclick="MenuDisplay('menu_2','divObj_2')">
+                            订单管理
+                        </div>
+                        <div style="display: none" id='divObj_1'>
+                            <table width="151" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp; <a href="news_list.aspx" target="main">全部订单</a></td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp;  <a href="news_add.aspx" target="main">已完成订单</a></td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp;  <a href="news_add.aspx" target="main">未完成订单</a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="menu_1" style=" background-color: #000000; height: 30px; font-size: 20px; text-align:center; line-height:30px; color:#ffffff" onclick="MenuDisplay('menu_2','divObj_2')">
+                            员工管理
+                        </div>
+                        <div style="display: none" id='divObj_1'>
+                            <table width="151" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp; <a href="news_list.aspx" target="main">员工列表</a></td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp;  <a href="news_add.aspx" target="main">离职员工列表</a></td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 25px; padding-left: 20px;">&#8226;&nbsp;  <a href="news_add.aspx" target="main">添加新员工</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 840px; border: #000000 1px solid; vertical-align: top; text-align: left;">
+                    <iframe style="width: 840px;" frameborder="0" id="main" name="main" onload="Javascript:SetCwinmHeight()" scrolling="no" src="main.aspx" marginheight="1" marginwidth="3"></iframe>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@*iframe*@
+<script>
+    function SetCwinlHeight() {      //根据内容自动调整iframe框架高度
+        var cwinl = document.getElementById("left");
+        //           if(document.getElementById)
+        //           {
+        if (cwinl && !window.opera) {
+            if (cwinl.contentDocument && cwinl.contentDocument.body.offsetHeight)
+                cwinl.height = cwinl.contentDocument.body.offsetHeight + 400;
+            else if (cwinl.Document && cwinl.Document.body.scrollHeight)
+                cwinl.height = cwinl.Document.body.scrollHeight + 220;
+        }
+        //           }
+    }
+    function SetCwinmHeight() {      //根据内容自动调整iframe框架高度
+        var cwin = document.getElementById("main");
+        if (cwin && !window.opera) {
+            if (cwin.contentDocument && cwin.contentDocument.body.offsetHeight)
+                cwin.height = cwin.contentDocument.body.offsetHeight + 40;
+            else if (cwin.Document && cwin.Document.body.scrollHeight)
+                cwin.height = cwin.Document.body.scrollHeight + 40;
+        }
+    }
+</script>
+
+@*左边栏展开关闭*@
+<script>
+    function MenuDisplay(menu, divObj) {
+        //for (var i = 1; i <= 6; i++) {
+        //    document.getElementById('divObj_' + i).style.display = 'none';
+        //    document.getElementById('menu_' + i).style.backgroundImage = 'url(img/display.gif)';
+        //}
+        //if (document.getElementById(divObj).style.display == 'none') {
+        //    document.getElementById(divObj).style.display = 'block';
+        //    document.getElementById(menu).style.backgroundImage = "url(img/nodisplay.gif)";
+        //}
+        //else {
+        //    document.getElementById(divObj).style.display = 'none';
+        //    document.getElementById(menu).style.backgroundImage = 'url(img/display.gif)';
+        //}
+        debugger;
+        if (document.getElementById(divObj).style.display == 'none') {
+            document.getElementById(divObj).style.display = 'block';
+        } else {
+            document.getElementById(divObj).style.display = 'none';
+        }
+    }
+</script>
