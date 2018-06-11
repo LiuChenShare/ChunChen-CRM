@@ -32,7 +32,7 @@ namespace Data
         /// <summary>
         /// 权限等级
         /// </summary>
-        public int Jurisdiction { get; set; }
+        public int Authority { get; set; }
 
         /// <summary>
         /// 是否离职
