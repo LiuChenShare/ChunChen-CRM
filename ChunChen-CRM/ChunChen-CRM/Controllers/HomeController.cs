@@ -29,11 +29,10 @@ namespace ChunChen_CRM.Controllers
 
             return View();
         }
-
-        [AllowAnonymous]
+        
         public ActionResult Default()
         {
-            ViewBag.Message = "联系页面.";
+            ViewBag.Message = "首页.";
 
             return View();
         }
