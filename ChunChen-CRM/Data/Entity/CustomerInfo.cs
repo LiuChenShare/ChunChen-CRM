@@ -23,5 +23,11 @@ namespace Data
         public DateTime? Birthday { get; set; }
 
         public Guid? WaiterId { get; set; }
+
+        public DateTime CreateDate { get; set; }
+
+        public DateTime LastUpdatedOn { get; set; }
+
+        public bool Deleted { get; set; }
     }
 }

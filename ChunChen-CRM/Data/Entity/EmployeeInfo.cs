@@ -35,10 +35,25 @@ namespace Data
         public int Authority { get; set; }
 
         /// <summary>
+        /// 入职日期
+        /// </summary>
+        public DateTime JoinDate { get; set; }
+
+        /// <summary>
         /// 是否离职
         /// </summary>
 
         public bool Quit { get; set; }
+
+        /// <summary>
+        /// 离职日期
+        /// </summary>
+
+        public DateTime? QuitDate { get; set; }
+
+        public DateTime CreateDate { get; set; }
+
+        public DateTime LastUpdatedOn { get; set; }
 
         public bool Deleted { get; set; }
     }
