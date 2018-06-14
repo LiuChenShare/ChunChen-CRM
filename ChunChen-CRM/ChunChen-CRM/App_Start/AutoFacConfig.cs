@@ -64,10 +64,13 @@ namespace ChunChen_CRM.App_Start
 
             //请求上下文注册
             //仓储
-            builder.RegisterType<EmployeeInfoRepository>();
             builder.RegisterType<AccountInfoRepository>();
+            builder.RegisterType<EmployeeInfoRepository>();
+            builder.RegisterType<CustomerInfoRepository>();
             //服务注册
             builder.RegisterType<AccountService>().As<IAccountService>();
+            builder.RegisterType<EmployeeService>().As<IEmployeeService>();
+            builder.RegisterType<CustomerService>().As<ICustomerService>();
 
 
 

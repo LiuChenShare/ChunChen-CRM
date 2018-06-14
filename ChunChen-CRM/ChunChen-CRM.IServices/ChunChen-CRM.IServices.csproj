@@ -67,12 +67,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICustomerService.cs" />
+    <Compile Include="IEmployeeService.cs" />
     <Compile Include="IAccountService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChunChen-CRM.Model\ChunChen-CRM.Model.csproj">
+      <Project>{048D81AA-295E-46A7-A2D8-2815D2E14587}</Project>
+      <Name>ChunChen-CRM.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

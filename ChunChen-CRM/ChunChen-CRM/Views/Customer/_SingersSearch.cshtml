@@ -1,0 +1,15 @@
+﻿@using ChunChen_CRM.Model
+@model IPagedList<CustomerDetailModel>
+@{
+    Layout = "~/Views/Shared/_NoLayout.cshtml";
+}
+
+
+<div id="searchresults">
+    <ul>
+        @foreach (var item in Model.Data)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+</div>

@@ -68,13 +68,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerService.cs" />
+    <Compile Include="EmployeeService.cs" />
     <Compile Include="AccountService.cs" />
+    <Compile Include="Extensions\CustomerExtensions.cs" />
+    <Compile Include="Extensions\EmployeeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChunChen-CRM.IServices\ChunChen-CRM.IServices.csproj">
       <Project>{a7b83852-e74b-4d39-80ba-5715364de718}</Project>
       <Name>ChunChen-CRM.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChunChen-CRM.Model\ChunChen-CRM.Model.csproj">
+      <Project>{048D81AA-295E-46A7-A2D8-2815D2E14587}</Project>
+      <Name>ChunChen-CRM.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{7EA82E05-AB29-454F-AB9C-0206CB0A18A4}</Project>
