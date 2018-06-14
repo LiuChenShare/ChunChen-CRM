@@ -24,6 +24,17 @@ namespace Data.Repository
         }
 
         /// <summary>
+        /// 检测手机号重复
+        /// </summary>
+        /// <param name="mobile">手机号</param>
+        /// <param name="id">检测重复的用户</param>
+        /// <returns></returns>
+        public bool CheckMobile(string mobile, Guid id)
+        {
+            return storeDB.EmployeeInfo.Where(x => x.Mobile == mobile && x.Id != id && !x.Deleted).Count() == 0;
+        }
+
+        /// <summary>
         /// 插入
         /// </summary>
         /// <param name="info"></param>

@@ -32,7 +32,12 @@ namespace ChunChen_CRM.Model
         /// 性别 0女 1男
         /// </summary>
         public int Gender { get; set; }
-        
+
+        /// <summary>
+        /// 性别
+        /// </summary>
+        public string GenderString { get; set; }
+
         /// <summary>
         /// 生日
         /// </summary>
@@ -53,6 +58,12 @@ namespace ChunChen_CRM.Model
         /// </summary>
 
         public bool Quit { get; set; }
+
+        /// <summary>
+        /// 是否离职
+        /// </summary>
+
+        public string JoinStatus { get; set; }
 
         /// <summary>
         /// 离职日期

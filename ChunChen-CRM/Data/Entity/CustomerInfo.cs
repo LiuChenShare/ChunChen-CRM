@@ -19,15 +19,31 @@ namespace Data
 
         public int Gender { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string Mobile { get; set; }
+
+        public string Address { get; set; }
+
         [Column(TypeName = "date")]
         public DateTime? Birthday { get; set; }
 
+        /// <summary>
+        /// 服务人id
+        /// </summary>
         public Guid? WaiterId { get; set; }
+
+        /// <summary>
+        /// 服务人名称
+        /// </summary>
+        public string WaiterName { get; set; }
 
         public DateTime CreateDate { get; set; }
 
         public DateTime LastUpdatedOn { get; set; }
 
         public bool Deleted { get; set; }
+
+
     }
 }

@@ -11,5 +11,12 @@ namespace ChunChen_CRM.IServices
         /// <param name="password"></param>
         /// <returns></returns>
         EmployeeDetailModel GetEmployeeBySession();
+
+        /// <summary>
+        /// 更新员工信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        bool UpdateEmployeeDetail(EmployeeDetailModel model);
     }
 }

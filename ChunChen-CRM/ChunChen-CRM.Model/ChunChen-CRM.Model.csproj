@@ -62,8 +62,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeeDetailModel.cs" />
-    <Compile Include="UserLoginModel.cs" />
+    <Compile Include="Search\BaseSearch.cs" />
+    <Compile Include="IPagedList.cs" />
+    <Compile Include="Model\CustomerDetailModel.cs" />
+    <Compile Include="Model\EmployeeDetailModel.cs" />
+    <Compile Include="PagedList.cs" />
+    <Compile Include="Search\CustomerSearch.cs" />
+    <Compile Include="Model\UserLoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

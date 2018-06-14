@@ -82,12 +82,19 @@
     <Compile Include="ConnectConfig.cs" />
     <Compile Include="Entity\OrderInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CustomerInfoRepository.cs" />
     <Compile Include="Repository\AccountInfoRepository.cs" />
     <Compile Include="Repository\EmployeeInfoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChunChen-CRM.Model\ChunChen-CRM.Model.csproj">
+      <Project>{048D81AA-295E-46A7-A2D8-2815D2E14587}</Project>
+      <Name>ChunChen-CRM.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

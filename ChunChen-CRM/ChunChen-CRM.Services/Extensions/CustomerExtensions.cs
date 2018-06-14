@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace ChunChen_CRM.Services.Extensions
 {
-    public static class EmployeeExtensions
+    public static class CustomerExtensions
     {
-        public static EmployeeDetailModel ToModel(this EmployeeInfo info)
+        public static CustomerDetailModel ToModel(this CustomerInfo info)
         {
             if (info == null) { return null; }
-            var model = new EmployeeDetailModel
+            var model = new CustomerDetailModel
             {
                 Id = info.Id,
-                EmployeeNo = info.EmployeeNo,
+                CustomerNo = info.CustomerNo,
                 Name = info.Name,
                 Mobile = info.Mobile,
+                Address = info.Address,
                 Gender = info.Gender,
                 Birthday = info.Birthday,
-                Authority = info.Authority,
-                JoinDate = info.JoinDate,
-                Quit = info.Quit,
-                QuitDate = info.QuitDate,
+                WaiterId = info.WaiterId,
+                WaiterName = info.WaiterName,
+                CreateDate = info.CreateDate,
                 LastUpdatedOn = info.LastUpdatedOn
             };
             if (info.Gender == 0)
@@ -34,14 +34,6 @@ namespace ChunChen_CRM.Services.Extensions
             else
             {
                 model.GenderString = "男";
-            }
-            if (info.Quit)
-            {
-                model.JoinStatus = "离职";
-            }
-            else
-            {
-                model.JoinStatus = "在职";
             }
 
             return model;

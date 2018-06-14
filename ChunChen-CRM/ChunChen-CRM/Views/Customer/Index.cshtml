@@ -1,0 +1,29 @@
+﻿@model ChunChen_CRM.Model.EmployeeDetailModel
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_NoLayout.cshtml";
+}
+
+
+<div>
+    <div>搜索</div>
+    <div>
+        @using (Ajax.BeginForm("Query", "Customer",
+                    new AjaxOptions
+                    {
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "POST",
+                        OnFailure = "searchFailed",
+                        LoadingElementId = "ajax-loader",
+                        UpdateTargetId = "searchresults",
+                    }))
+        {
+            <input type="text" name="name" />
+            <input type="submit" value="search" />
+            <img id="ajax-loader"
+                 src="@Url.Content("~/Images/ajax-loader.gif")"
+                 style="display:none" />
+        }
+        <div id="searchresults"></div>
+    </div>
+</div>

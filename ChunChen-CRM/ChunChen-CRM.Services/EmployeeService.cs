@@ -33,10 +33,67 @@ namespace ChunChen_CRM.Services
         public EmployeeDetailModel GetEmployeeBySession()
         {
             var _session = HttpContext.Current.Session;
-            var employeeId = _session["EmployeeId"].ToString();
+            var employeeId = _session["EmployeeId"]?.ToString();
             var employeeInfo = _employeeInfoRepository.GetById(Guid.Parse(employeeId));
             return employeeInfo.ToModel();
         }
 
+        /// <summary>
+        /// 更新员工信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool UpdateEmployeeDetail(EmployeeDetailModel model)
+        {
+            if(model.Id == Guid.Empty || model.Mobile == null || model.Mobile == "")
+            {
+                return false;
+            }
+            var employeeInfo = _employeeInfoRepository.GetById(model.Id);
+            if (employeeInfo != null)
+            {
+                if (employeeInfo.Mobile != model.Mobile)
+                {
+                    if (_employeeInfoRepository.CheckMobile(model.Mobile, employeeInfo.Id))
+                    {
+                        employeeInfo.Mobile = model.Mobile;
+                        var accountInfo = _accountInfoRepository.GetByEmployeeId(employeeInfo.Id);
+                        accountInfo.Account = model.Mobile;
+                        _accountInfoRepository.Update(accountInfo);
+                        _employeeInfoRepository.Update(employeeInfo);
+                    }
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 入职离职
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool UpdateEmployeeJoinStatus(EmployeeDetailModel model)
+        {
+            var _session = HttpContext.Current.Session;
+            if (model.Id == Guid.Empty && int.Parse(_session["Authority"].ToString()) > 0)
+            {
+                return false;
+            }
+            var employeeInfo = _employeeInfoRepository.GetById(model.Id);
+            if (employeeInfo != null && employeeInfo.Quit != model.Quit)
+            {
+                employeeInfo.Quit = model.Quit;
+                if (model.Quit)
+                {
+                    employeeInfo.QuitDate = DateTime.Now;
+                }
+                else
+                {
+                    employeeInfo.JoinDate = DateTime.Now;
+                }
+            }
+            _employeeInfoRepository.Update(employeeInfo);
+            return true;
+        }
     }
 }

@@ -14,7 +14,7 @@
                         <div id="menu_1" style=" background-color: #000000; border: #D1D1D1 1px solid; height: 50px; font-size: 20px; text-align:center; line-height:50px; color:#ffffff"; onclick="MenuDisplay('menu_1','divObj_1')">
                             个人信息
                         </div>
-                        <div style="display: none" id='divObj_1'>
+                        <div style="display: block" id='divObj_1'>
                             <table width="151" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td style="height: 35px; padding-left: 20px;">&#8226;&nbsp; <a href="/Personal/Index" target="main">个人资料</a></td>
@@ -28,13 +28,13 @@
                         <div id="menu_2" style=" background-color: #000000; border: #D1D1D1 1px solid; height: 50px; font-size: 20px; text-align:center; line-height:50px; color:#ffffff" onclick="MenuDisplay('menu_2','divObj_2')">
                             客户管理
                         </div>
-                        <div style="display: none" id='divObj_2'>
+                        <div style="display: block" id='divObj_2'>
                             <table width="151" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td style="height: 35px; padding-left: 20px;">&#8226;&nbsp; <a href="news_list.aspx" target="main">客户池</a></td>
                                 </tr>
                                 <tr>
-                                    <td style="height: 35px; padding-left: 20px;">&#8226;&nbsp;  <a href="news_add.aspx" target="main">我的客户</a></td>
+                                    <td style="height: 35px; padding-left: 20px;">&#8226;&nbsp;  <a href="/Customer/Index" target="main">我的客户</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -42,7 +42,7 @@
                         <div id="menu_3" style=" background-color: #000000; border: #D1D1D1 1px solid; height: 50px; font-size: 20px; text-align:center; line-height:50px; color:#ffffff" onclick="MenuDisplay('menu_3','divObj_3')">
                             订单管理
                         </div>
-                        <div style="display: none" id='divObj_3'>
+                        <div style="display: block" id='divObj_3'>
                             <table width="151" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td style="height: 35px; padding-left: 20px;">&#8226;&nbsp; <a href="news_list.aspx" target="main">全部订单</a></td>
@@ -59,7 +59,7 @@
                         <div id="menu_4" style=" background-color: #000000; border: #D1D1D1 1px solid; height: 50px; font-size: 20px; text-align:center; line-height:50px; color:#ffffff" onclick="MenuDisplay('menu_4','divObj_4')">
                             员工管理  
                         </div>
-                        <div style="display: none" id='divObj_4'>
+                        <div style="display: block" id='divObj_4'>
                             <table width="151" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td style="height: 35px; padding-left: 20px;">&#8226;&nbsp; <a href="news_list.aspx" target="main">员工列表</a></td>
@@ -75,7 +75,7 @@
                     </div>
                 </td>
                 <td style="width: 840px; border: #000000 1px solid; vertical-align: top; text-align: left;">
-                    <iframe style="width: 840px;" frameborder="0" id="main" name="main" onload="Javascript:SetCwinmHeight()" scrolling="no" src="main.aspx" marginheight="1" marginwidth="3"></iframe>
+                    <iframe style="width: 840px; padding-bottom: 0px;" frameborder="0" id="main" name="main" onload="Javascript:SetCwinmHeight()" scrolling="no" marginheight="1" marginwidth="3"></iframe>
                 </td>
             </tr>
         </table>
@@ -100,9 +100,9 @@
         var cwin = document.getElementById("main");
         if (cwin && !window.opera) {
             if (cwin.contentDocument && cwin.contentDocument.body.offsetHeight)
-                cwin.height = cwin.contentDocument.body.offsetHeight + 40;
+                cwin.height = cwin.contentDocument.body.offsetHeight + 0;
             else if (cwin.Document && cwin.Document.body.scrollHeight)
-                cwin.height = cwin.Document.body.scrollHeight + 40;
+                cwin.height = cwin.Document.body.scrollHeight + 0;
         }
     }
 </script>
@@ -122,7 +122,6 @@
         //    document.getElementById(divObj).style.display = 'none';
         //    document.getElementById(menu).style.backgroundImage = 'url(img/display.gif)';
         //}
-        debugger;
         if (document.getElementById(divObj).style.display == 'none') {
             document.getElementById(divObj).style.display = 'block';
         } else {

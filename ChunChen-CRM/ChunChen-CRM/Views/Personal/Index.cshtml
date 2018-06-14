@@ -1,10 +1,93 @@
-﻿@{
+﻿@model ChunChen_CRM.Model.EmployeeDetailModel
+@{
     ViewBag.Title = "Home Page";
-    Layout = null;
+    Layout = "~/Views/Shared/_NoLayout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>春晨客户信息管理系统</h1>
-    <p class="lead">该系统主要职责于管理宿州春晨健康俱乐部的客户信息.</p>
-    <p><a href="Home/Default" class="btn btn-primary btn-lg">登入系统 &raquo;</a></p>
+<div class="jumbotron" style="margin-bottom: 0px;">
+    <table style="width: 100%">
+        <tr>
+            <td style="font-weight: bold; color: #000000; text-align: center;" class="auto-style1">个人资料</td>
+        </tr>
+        <tr>
+            <td style="width: 100%">
+                <table style="width: 700px; height: 138px;">
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">编 &nbsp;号：</td>
+                        <td style="width: 300px; height: 26px;">@Model.EmployeeNo</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">姓 &nbsp;明：</td>
+                        <td style="width: 300px; height: 26px">@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">电 &nbsp;话：</td>
+                        <td style="width: 300px; height: 26px;">
+                            <input type="text" name="Mobile" id="mobile" value="@Model.Mobile" placeholder="手机号" />
+                        </td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">性 &nbsp;别：</td>
+                        <td style="width: 300px; height: 26px;">@Model.GenderString</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">状 &nbsp;态：</td>
+                        <td style="width: 300px; height: 26px;">@Model.JoinStatus</td>
+
+                        @{
+                            if (Model.Quit)
+                            {
+                                <td style="width: 200px; height: 26px; text-align: center;">离职日期：</td>
+                                <td style="width: 300px; height: 26px;">@Model.QuitDate.Value.ToString("D")</td>
+                            }
+                            else
+                            {
+                                <td style="width: 200px; height: 26px; text-align: center;">入职日期：</td>
+                                <td style="width: 300px; height: 26px;">@Model.JoinDate.ToString("D")</td>
+                            }
+                        }
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div style="text-align:center">
+        <input type="button" id="save" onclick="save()" value="保存" style="width:300px;" />
+    </div>
 </div>
+
+<script>
+    function save() {
+        var mobile = $("#mobile").val();
+        var id = "@Model.Id.ToString()";
+        //var id = "12";
+        if (mobile == "" || mobile == null) {
+            alert("请输入手机号");
+            return false;
+        }
+        $.ajax({
+            url: "/Personal/UpdateEmployeeDetail",//需要提交到的地址
+            type: "POST", //提交的类型 POST/GET
+            data: { Id: id, Mobile: mobile},  //提交的参数
+            success: function (data) {
+                //提交成功之后的回调参数
+                if (data.Success) {
+                    alert(data.Messages);
+                    main.window.location.reload()
+                }
+                else {
+                    alert(data.Messages);
+                    main.window.location.reload()
+                }
+            }
+        })
+    }
+</script>
