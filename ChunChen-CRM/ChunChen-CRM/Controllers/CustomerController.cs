@@ -28,6 +28,7 @@ namespace ChunChen_CRM.Controllers
         
         public ActionResult Query(CustomerSearch search)
         {
+            //System.Threading.Thread.Sleep(3000);
             var result = _customerService.Query(search);
             return PartialView("_SingersSearch", result);
         }

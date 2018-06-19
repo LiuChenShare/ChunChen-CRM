@@ -21,9 +21,14 @@
             <input type="text" name="name" />
             <input type="submit" value="search" />
             <img id="ajax-loader"
-                 src="@Url.Content("~/Images/ajax-loader.gif")"
-                 style="display:none" />
+                 src="@Url.Content("~/Images/ajax-loader2.gif")"
+                 style="display:none; max-height:inherit" />
         }
         <div id="searchresults"></div>
     </div>
 </div>
+
+
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
