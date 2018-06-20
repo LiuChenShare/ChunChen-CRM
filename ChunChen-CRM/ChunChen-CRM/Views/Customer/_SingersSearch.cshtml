@@ -1,15 +1,77 @@
 ﻿@using ChunChen_CRM.Model
 @model IPagedList<CustomerDetailModel>
 @{
-    Layout = null;
+
 }
 
 
-<div id="searchresults">
+<div>
+    <div class="xt-table" style="height:1000px">
+        <table cellpadding="0" cellspacing="0" border="0" bgcolor="#dcdcdc" style="width:100%">
+            <tr>
+                <th style="text-align:center">编号</th>
+                <th style="text-align:center">姓名</th>
+                <th style="text-align:center">性别</th>
+                <th style="text-align:center">手机号</th>
+                <th style="text-align:center">操作</th>
+            </tr>
+            <tr class="xt-bg">
+                <td>1</td>
+                <td>zhuzh@fadada.com</td>
+                <td>郑雄杰</td>
+                <td>15814467255</td>
+                <td><a href="#" class="yellow-xt">状态</a><a href="#" class="blue-xt">状态</a><a href="#" class="red-xt">状态</a></td>
+            </tr>
+            @foreach (var item in Model.Data)
+            {
+            <tr class="xt-bg">
+                <td>@item.CustomerNo</td>
+                <td>@item.Name</td>
+                <td>@item.GenderString</td>
+                <td>@item.Mobile</td>
+                <td><a href="#" class="yellow-xt">状态</a><a href="#" class="blue-xt">状态</a><a href="#" class="red-xt">状态</a></td>
+            </tr>
+            }
+        </table>
+    </div>
+    <div class="xt-fenye">
+        <div class="xt-fenye-left">当前第 1 / 270 页,每页10条，共 2696条记录</div>
+        <div class="xt-fenye-right">
+            <a href="#">首页</a>
+            <a href="#">上一步</a>
+            <a href="#">下一步</a>
+            <a href="#">尾页</a>
+            <input type="text" name="text" />
+            <a href="#" class="xt-link">跳转</a>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div>
     <ul>
-        @foreach (var item in Model.Data)
-        {
-            <li>@item.Name</li>
-        }
+        <li>客户编号</li>
+        <li>姓名</li>
+        <li>性别</li>
+        <li>联系方式</li>
     </ul>
+    @foreach (var item in Model.Data)
+    {
+        <ul>
+            <li>@item.CustomerNo</li>
+            <li>@item.Name</li>
+            <li>@item.GenderString</li>
+            <li>@item.Mobile</li>
+        </ul>
+    }
 </div>
