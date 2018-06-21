@@ -214,6 +214,7 @@
     <Content Include="Views\Shared\_NoLayout.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\_SingersSearch.cshtml" />
+    <Content Include="Views\Customer\Index - 复制.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

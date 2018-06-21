@@ -31,27 +31,31 @@ namespace Data.Repository
             var query = storeDB.CustomerInfo.Where(x => !x.Deleted);
             if (search.CustomerNo != 0)
             {
-                query.Where(x => x.CustomerNo == search.CustomerNo);
+                query = query.Where(x => x.CustomerNo == search.CustomerNo);
             }
             if (!string.IsNullOrEmpty(search.CustomerName))
             {
-                query.Where(x => x.Name.Contains(search.CustomerName));
+                query = query.Where(x => x.Name.Contains(search.CustomerName));
             }
             if (!string.IsNullOrEmpty(search.CustomerMobile))
             {
-                query.Where(x => x.Mobile == search.CustomerMobile);
+                query = query.Where(x => x.Mobile == search.CustomerMobile);
             }
-            if(search.CustomerId.HasValue && search.CustomerId != Guid.Empty)
+            if (search.Gender.HasValue)
             {
-                query.Where(x => x.Id == search.CustomerId);
+                query = query.Where(x => x.Gender == search.Gender.Value);
+            }
+            if (search.CustomerId.HasValue && search.CustomerId != Guid.Empty)
+            {
+                query = query.Where(x => x.Id == search.CustomerId);
             }
             if (search.EmployeeId.HasValue && search.EmployeeId != Guid.Empty)
             {
-                query.Where(x => x.WaiterId == search.EmployeeId);
+                query = query.Where(x => x.WaiterId == search.EmployeeId);
             }
             if (!string.IsNullOrEmpty(search.EmployeeName))
             {
-                query.Where(x => x.WaiterName.Contains(search.EmployeeName));
+                query = query.Where(x => x.WaiterName.Contains(search.EmployeeName));
             }
             query = query.OrderBy(x => x.LastUpdatedOn);
             var pageResult = new PagedList<CustomerInfo>(query, search.PageIndex, search.PageSize);

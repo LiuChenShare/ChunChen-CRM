@@ -1,77 +1,62 @@
 ﻿@using ChunChen_CRM.Model
 @model IPagedList<CustomerDetailModel>
 @{
-
+    int Authority = (int)Session["Authority"];
+    Guid EmployeeId = Guid.Parse(Session["EmployeeId"].ToString());
 }
 
 
-<div>
-    <div class="xt-table" style="height:1000px">
-        <table cellpadding="0" cellspacing="0" border="0" bgcolor="#dcdcdc" style="width:100%">
-            <tr>
-                <th style="text-align:center">编号</th>
-                <th style="text-align:center">姓名</th>
-                <th style="text-align:center">性别</th>
-                <th style="text-align:center">手机号</th>
-                <th style="text-align:center">操作</th>
-            </tr>
-            <tr class="xt-bg">
-                <td>1</td>
-                <td>zhuzh@fadada.com</td>
-                <td>郑雄杰</td>
-                <td>15814467255</td>
-                <td><a href="#" class="yellow-xt">状态</a><a href="#" class="blue-xt">状态</a><a href="#" class="red-xt">状态</a></td>
-            </tr>
-            @foreach (var item in Model.Data)
-            {
-            <tr class="xt-bg">
-                <td>@item.CustomerNo</td>
-                <td>@item.Name</td>
-                <td>@item.GenderString</td>
-                <td>@item.Mobile</td>
-                <td><a href="#" class="yellow-xt">状态</a><a href="#" class="blue-xt">状态</a><a href="#" class="red-xt">状态</a></td>
-            </tr>
-            }
-        </table>
+<div class="xt-table">
+    <table cellpadding="0" cellspacing="0" border="0" bgcolor="#dcdcdc" style="width:100%">
+        <tr>
+            <th style="text-align:center; width:80px">编号</th>
+            <th style="text-align:center; width:100px">姓名</th>
+            <th style="text-align:center; width:80px">性别</th>
+            <th style="text-align:center; width:100px">手机号</th>
+            <th style="text-align:center; width:100px">服务人员</th>
+            <th style="text-align:center; width:160px">最后更新时间</th>
+            <th style="text-align:center;">操作</th>
+        </tr>
+        @foreach (var item in Model.Data)
+        {
+        <tr class="xt-bg">
+            <td><a href="#">@item.CustomerNo</a></td>
+            <td>@item.Name</td>
+            <td>@item.GenderString</td>
+            <td>@item.Mobile</td>
+            <td>@item.WaiterName</td>
+            <td>@item.LastUpdatedOn.ToString("f")</td>
+            <td>
+                @*<a href="#" class="yellow-xt">状态</a>*@
+                @if (EmployeeId == item.WaiterId || Authority == 0)
+                {
+                    <a href="#" class="blue-xt">查看</a>
+                }
+                @if (Authority == 0)
+                {
+                    <a href="#" class="red-xt" onclick="delete_confirm('@item.Name')">删除</a>
+                }
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+<div class="xt-fenye">
+    <div class="xt-fenye-left">当前第 @Model.PageIndex / @Model.TotalPages 页,每页 @Model.PageSize 条，共 @Model.TotalCount 条记录</div>
+    <div class="xt-fenye-right">
+        <a href="#">首页</a>
+        <a href="#">上一步</a>
+        <a href="#">下一步</a>
+        <a href="#">尾页</a>
+        <input type="text" name="text" />
+        <a href="#" class="xt-link">跳转</a>
     </div>
-    <div class="xt-fenye">
-        <div class="xt-fenye-left">当前第 1 / 270 页,每页10条，共 2696条记录</div>
-        <div class="xt-fenye-right">
-            <a href="#">首页</a>
-            <a href="#">上一步</a>
-            <a href="#">下一步</a>
-            <a href="#">尾页</a>
-            <input type="text" name="text" />
-            <a href="#" class="xt-link">跳转</a>
-        </div>
-    </div>
-
 </div>
 
 
-
-
-
-
-
-
-
-
-
-<div>
-    <ul>
-        <li>客户编号</li>
-        <li>姓名</li>
-        <li>性别</li>
-        <li>联系方式</li>
-    </ul>
-    @foreach (var item in Model.Data)
-    {
-        <ul>
-            <li>@item.CustomerNo</li>
-            <li>@item.Name</li>
-            <li>@item.GenderString</li>
-            <li>@item.Mobile</li>
-        </ul>
+<script>
+    function delete_confirm(name) {
+        event.returnValue = confirm("此操作将会删除" + name + "的信息记录，你确认要删除吗？");
+        alert("已删除");
     }
-</div>
+</script>

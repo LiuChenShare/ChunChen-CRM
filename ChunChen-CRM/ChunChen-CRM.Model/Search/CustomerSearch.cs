@@ -27,6 +27,11 @@ namespace ChunChen_CRM.Model
         public string CustomerMobile { get; set; }
 
         /// <summary>
+        /// 性别 0女 1男
+        /// </summary>
+        public int? Gender { get; set; }
+
+        /// <summary>
         /// 客户Id
         /// </summary>
         public Guid? CustomerId { get; set; }

@@ -6,69 +6,100 @@
 
 
 <div>
-    <div class="xt-input">
-        @using (Ajax.BeginForm("Query", "Customer",
-                new AjaxOptions
-                {
-                    InsertionMode = InsertionMode.Replace,
-                    HttpMethod = "POST",
-                    OnFailure = "searchFailed",
-                    LoadingElementId = "ajax-loader",
-                    UpdateTargetId = "searchresults",
-                }))
-        {
-            <span>性别</span>
-            <select class="int-text">
-                <option>男</option>
-                <option>女</option>
-            </select>
-            <span>编号</span><input type="text" class="int-text" />
-            <span>姓名</span><input type="text" class="int-text" />
-            <span>手机号</span><input type="text" class="int-text" />
-            <input type="submit" value="search" />
-            <img id="ajax-loader"
-                 src="@Url.Content("~/Images/ajax-loader3.gif")"
-                 style="display:none;" />
+    <div class="xt-input" style="margin: 0px; text-align:center">
+        <span>性别</span>
+        <select class="int-text" id="gender">
+            <option>不限</option>
+            <option value="1">男</option>
+            <option value="0">女</option>
+        </select>
+        <span>编号</span><input id="customerNo" type="text" class="int-text" />
+        <span>姓名</span><input id="name" type="text" class="int-text" />
+        <span>手机号</span><input id="mobile" type="text" class="int-text" /><br /><br />
+        <input type="button" value="搜 索" class="green-int" onclick="search()" />
+        @*<img id="ajax-loader"
+        src="@Url.Content("~/Images/ajax-loader2.gif")"
+        style="display:none;" />*@
 
-            <div id="searchresults">
-                <div class="xt-table" style="height:1000px">
-                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="#dcdcdc" style="width:100%">
-                        <tr>
-                            <th style="text-align:center">编号</th>
-                            <th style="text-align:center">姓名</th>
-                            <th style="text-align:center">性别</th>
-                            <th style="text-align:center">手机号</th>
-                            <th style="text-align:center">操作</th>
-                        </tr>
-                        <tr class="xt-bg">
-                            <td>1</td>
-                            <td>zhuzh@fadada.com</td>
-                            <td>郑雄杰</td>
-                            <td>15814467255</td>
-                            <td><a href="#" class="yellow-xt">状态</a><a href="#" class="blue-xt">状态</a><a href="#" class="red-xt">状态</a></td>
-                        </tr>
-
-                    </table>
-                </div>
-                <div class="xt-fenye">
-                    <div class="xt-fenye-left">当前第 1 / 1 页,每页10条，共 0条记录</div>
-                    <div class="xt-fenye-right">
-                        <a href="#">首页</a>
-                        <a href="#">上一步</a>
-                        <a href="#">下一步</a>
-                        <a href="#">尾页</a>
-                        <input type="text" name="text" />
-                        <a href="#" class="xt-link">跳转</a>
-                    </div>
+        <div id="searchresults" style="height:673px">
+            <div class="xt-table">
+                <table cellpadding="0" cellspacing="0" border="0" bgcolor="#dcdcdc" style="width:100%">
+                    <tr>
+                        <th style="text-align:center; width:80px">编号</th>
+                        <th style="text-align:center; width:100px">姓名</th>
+                        <th style="text-align:center; width:80px">性别</th>
+                        <th style="text-align:center; width:100px">手机号</th>
+                        <th style="text-align:center; width:100px">服务人员</th>
+                        <th style="text-align:center; width:160px">最后更新时间</th>
+                        <th style="text-align:center;">操作</th>
+                    </tr>
+                    @*<tr class="xt-bg">
+                        <td><a href="#">10001</a></td>
+                        <td>宇文成都</td>
+                        <td>男</td>
+                        <td>15665699774</td>
+                        <td>天蓬元帅</td>
+                        <td>2018年6月14日 18:02</td>
+                        <td><a href="#" class="yellow-xt">状态</a><a href="#" class="blue-xt">状态</a><a href="#" class="red-xt">状态</a></td>
+                    </tr>*@
+                </table>
+            </div>
+            <div class="xt-fenye">
+                <div class="xt-fenye-left">当前第 1 / 1 页,每页10条，共 0条记录</div>
+                <div class="xt-fenye-right">
+                    <a href="#">首页</a>
+                    <a href="#">上一步</a>
+                    <a href="#">下一步</a>
+                    <a href="#">尾页</a>
+                    <input type="text" name="text" />
+                    <a href="#" class="xt-link">跳转</a>
                 </div>
             </div>
-        }
-            
+        </div>
     </div>
 </div>
+
 
 
 @section Scripts{
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 }
 @Styles.Render("~/Css/_SingersSearch.css")
+
+
+
+<script>
+    function search() {
+        var gender = $("#gender").val();
+        var customerNo = $("#customerNo").val();
+        var name = $("#name").val();
+        var mobile = $("#mobile").val();
+        //var password = $("#password").val();
+        //if (account == "" || account == null) {
+        //    alert("请输入账号");
+        //    return false;
+        //}
+        //if (password == null || password == "") {
+        //    alert("请输入密码");
+        //    return false;
+        //}
+        $.ajax({
+            url: "/Customer/Query",//需要提交到的地址
+            type: "POST", //提交的类型 POST/GET
+            data: { Gender: gender, CustomerNo: customerNo, CustomerName: name, CustomerMobile: mobile },  //提交的参数
+            success: function (data) {
+                //重置div
+                $("#searchresults").html(data)
+            }
+        })
+    }
+
+    function BindEnter(obj) {
+        //使用document.getElementById获取到按钮对象
+        var button = document.getElementById('login');
+        if (obj.keyCode == 13) {
+            button.click();
+            obj.returnValue = false;
+        }
+    }
+</script>  
