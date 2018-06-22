@@ -1,15 +1,74 @@
 ﻿@using ChunChen_CRM.Model
 @model IPagedList<CustomerDetailModel>
 @{
-    Layout = "~/Views/Shared/_NoLayout.cshtml";
+    int Authority = (int)Session["Authority"];
+    Guid EmployeeId = Guid.Parse(Session["EmployeeId"].ToString());
 }
 
 
-<div id="searchresults">
-    <ul>
+<div class="xt-table">
+    <table cellpadding="0" cellspacing="0" border="0" bgcolor="#dcdcdc" style="width:100%">
+        <tr>
+            <th style="text-align:center; width:80px">编号</th>
+            <th style="text-align:center; width:100px">姓名</th>
+            <th style="text-align:center; width:80px">性别</th>
+            <th style="text-align:center; width:100px">手机号</th>
+            <th style="text-align:center; width:100px">服务人员</th>
+            <th style="text-align:center; width:160px">最后更新时间</th>
+            <th style="text-align:center;">操作</th>
+        </tr>
         @foreach (var item in Model.Data)
         {
-            <li>@item.Name</li>
+        <tr class="xt-bg">
+            <td><a href="#">@item.CustomerNo</a></td>
+            <td>@item.Name</td>
+            <td>@item.GenderString</td>
+            <td>@item.Mobile</td>
+            <td>@item.WaiterName</td>
+            <td>@item.LastUpdatedOn.ToString("f")</td>
+            <td>
+                @*<a href="#" class="yellow-xt">状态</a>*@
+                @if (EmployeeId == item.WaiterId || Authority == 0)
+                {
+                    <a href="#" class="blue-xt">查看</a>
+                }
+                @if (Authority == 0)
+                {
+                    <a href="#" class="red-xt" onclick="delete_confirm('@item.Name','@item.Id')">删除</a>
+                }
+            </td>
+        </tr>
         }
-    </ul>
+    </table>
 </div>
+<div class="xt-fenye">
+    <div class="xt-fenye-left">当前第 @Model.PageIndex / @Model.TotalPages 页,每页 @Model.PageSize 条，共 @Model.TotalCount 条记录</div>
+    <div class="xt-fenye-right">
+        <a href="#">首页</a>
+        <a href="#" onclick="searchCustomer(@(Model.PageIndex-1),@Model.TotalPages)">上一页</a>
+        <a href="#" onclick="searchCustomer(@(Model.PageIndex+1),@Model.TotalPages)">下一页</a>
+        <a href="#" onclick="searchCustomer(@Model.TotalPages,@Model.TotalPages)">尾页</a>
+        <input type="text" name="pagesNumber" />
+        <a href="#" class="xt-link" onclick="searchCustomer(@Model.PageIndex,@Model.TotalPages)">跳转</a>
+    </div>
+</div>
+
+
+<script>
+    function delete_confirm(name,id) {
+        event.returnValue = confirm("此操作将会删除" + name + "的信息记录，你确认要删除吗？");
+        $.ajax({
+            url: "/Customer/Delete?id=" + id,//需要提交到的地址
+            type: "GET", //提交的类型 POST/GET
+            data: { Gender: gender, CustomerNo: customerNo, CustomerName: name, CustomerMobile: mobile },  //提交的参数
+            success: function (data) {
+                if (data.success) {
+                    alert("删除成功！");
+                }
+                else {
+                    alert("删除失败！");
+                }
+            }
+        })
+    }
+</script>

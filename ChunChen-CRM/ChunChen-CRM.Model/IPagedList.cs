@@ -9,22 +9,22 @@ namespace ChunChen_CRM.Model
     public interface IPagedList<T>
     {
         /// <summary>
-        /// The 0-based current page index
+        /// 第几页（基于0）
         /// </summary>
         int PageIndex { get; set; }
 
         /// <summary>
-        /// The number of items in each page.
+        /// 每页的个数
         /// </summary>
         int PageSize { get; set; }
 
         /// <summary>
-        /// The total number of items.
+        /// 总个数
         /// </summary>
         int TotalCount { get; set; }
 
         /// <summary>
-        /// The total number of pages.
+        /// 总页数
         /// </summary>
         int TotalPages { get; }
 

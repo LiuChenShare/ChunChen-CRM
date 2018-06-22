@@ -10,7 +10,7 @@ namespace ChunChen_CRM.Model
     {
         public int PageIndex { get; set; } = 1;
 
-        public int PageSize { get; set; } = 20;
+        public int PageSize { get; set; } = 10;
         /// <summary>
         /// 关键词搜索
         /// </summary>

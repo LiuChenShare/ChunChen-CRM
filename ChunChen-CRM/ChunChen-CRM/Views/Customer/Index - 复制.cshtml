@@ -1,0 +1,78 @@
+﻿@model ChunChen_CRM.Model.EmployeeDetailModel
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_NoLayout.cshtml";
+}
+
+
+<div>
+    <div class="xt-input">
+        @using (Ajax.BeginForm("Query", "Customer",
+            new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "POST",
+                OnFailure = "searchFailed",
+                LoadingElementId = "ajax-loader",
+                UpdateTargetId = "searchresults",
+            }))
+    {
+        <span>性别</span>
+        <select class="int-text">
+            <option>男</option>
+            <option>女</option>
+        </select>
+        <span>编号</span><input type="text" class="int-text" />
+        <span>姓名</span><input type="text" class="int-text" />
+        <span>手机号</span><input type="text" class="int-text" />
+
+        <input type="button" value="确 定" class="green-int" />
+        <input type="button" value="确 定" class="yellow-int" />
+
+        <input type="submit" value="search" />
+        <img id="ajax-loader"
+             src="@Url.Content("~/Images/ajax-loader3.gif")"
+             style="display:none;" />
+
+        <div id="searchresults">
+            <div class="xt-table" style="height:1000px">
+                <table cellpadding="0" cellspacing="0" border="0" bgcolor="#dcdcdc" style="width:100%">
+                    <tr>
+                        <th style="text-align:center">编号</th>
+                        <th style="text-align:center">姓名</th>
+                        <th style="text-align:center">性别</th>
+                        <th style="text-align:center">手机号</th>
+                        <th style="text-align:center">操作</th>
+                    </tr>
+                    <tr class="xt-bg">
+                        <td>1</td>
+                        <td>zhuzh@fadada.com</td>
+                        <td>郑雄杰</td>
+                        <td>15814467255</td>
+                        <td><a href="#" class="yellow-xt">状态</a><a href="#" class="blue-xt">状态</a><a href="#" class="red-xt">状态</a></td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="xt-fenye">
+                <div class="xt-fenye-left">当前第 1 / 1 页,每页10条，共 0条记录</div>
+                <div class="xt-fenye-right">
+                    <a href="#">首页</a>
+                    <a href="#">上一步</a>
+                    <a href="#">下一步</a>
+                    <a href="#">尾页</a>
+                    <input type="text" name="text" />
+                    <a href="#" class="xt-link">跳转</a>
+                </div>
+            </div>
+        </div>
+}
+
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+@Styles.Render("~/Css/_SingersSearch.css")
