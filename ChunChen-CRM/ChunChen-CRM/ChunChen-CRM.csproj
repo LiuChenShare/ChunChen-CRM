@@ -166,7 +166,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SQLQuery1.sql" />
+    <Content Include="App_Data\添加初始数据.sql" />
+    <Content Include="App_Data\建库.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Css\_SingersSearch.css" />

@@ -1,5 +1,6 @@
 ﻿using ChunChen_CRM.IServices;
 using ChunChen_CRM.Model;
+using ChunChen_CRM.Services.Extensions;
 using Data.Repository;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,18 @@ namespace ChunChen_CRM.Services
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// 获取客户详情信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public CustomerDetailModel GetCustomerById(Guid id)
+        {
+            var customerInfo = _customerInfoRepository.GetById(id);
+            var model = customerInfo.ToModel();
+            throw new NotImplementedException();
         }
     }
 }

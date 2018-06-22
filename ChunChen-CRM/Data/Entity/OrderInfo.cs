@@ -11,17 +11,53 @@ namespace Data
     {
         public Guid Id { get; set; }
 
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int OrderNo { get; set; }
+
+        /// <summary>
+        /// 标题
+        /// </summary>
         [Required]
         [StringLength(50)]
         public string Title { get; set; }
 
+        /// <summary>
+        /// 详情
+        /// </summary>
         public string Details { get; set; }
 
+        /// <summary>
+        /// 价格
+        /// </summary>
         public double Price { get; set; }
 
+        /// <summary>
+        /// 客户id
+        /// </summary>
         public Guid CustomerId { get; set; }
 
+        /// <summary>
+        /// 客户姓名
+        /// </summary>
+        [Required]
+        public Guid CustomerName { get; set; }
+
+        /// <summary>
+        /// 员工id
+        /// </summary>
         public Guid EmployeeId { get; set; }
+
+        /// <summary>
+        /// 员工姓名
+        /// </summary>
+        [Required]
+        public Guid EmployeeName { get; set; }
+
+        /// <summary>
+        /// 状态（0.新建  1.完成   2.毁单）
+        /// </summary>
+        public int Status { get; set; }
 
         public DateTime CreateDate { get; set; }
 

@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\SpendReportModel.cs" />
     <Compile Include="Search\BaseSearch.cs" />
     <Compile Include="IPagedList.cs" />
     <Compile Include="Model\CustomerDetailModel.cs" />
