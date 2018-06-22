@@ -38,7 +38,7 @@ namespace Data
         /// <summary>
         /// 销售总金额
         /// </summary>
-        public int Spend { get; set; }
+        public double Spend { get; set; }
 
         /// <summary>
         /// 入职日期

@@ -74,11 +74,10 @@ namespace ChunChen_CRM.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public CustomerDetailModel GetCustomer(Guid id)
+        public CustomerDetailModel GetCustomerById(Guid id)
         {
             var customerInfo = _customerInfoRepository.GetById(id);
             var model = customerInfo.ToModel();
-            var o
             throw new NotImplementedException();
         }
     }

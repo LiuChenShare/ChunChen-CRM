@@ -71,7 +71,7 @@ namespace ChunChen_CRM.Model
         /// <summary>
         /// 消费总金额
         /// </summary>
-        public int Spend { get; set; }
+        public double Spend { get; set; }
 
         /// <summary>
         /// 消费报表信息

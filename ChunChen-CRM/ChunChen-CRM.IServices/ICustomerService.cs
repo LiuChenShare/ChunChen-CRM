@@ -25,6 +25,6 @@ namespace ChunChen_CRM.IServices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        CustomerDetailModel GetCustomer(Guid id);
+        CustomerDetailModel GetCustomerById(Guid id);
     }
 }

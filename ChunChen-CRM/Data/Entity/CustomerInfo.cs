@@ -42,7 +42,7 @@ namespace Data
         /// <summary>
         /// 消费总金额
         /// </summary>
-        public int Spend { get; set; }
+        public double Spend { get; set; }
 
         public DateTime CreateDate { get; set; }
 

@@ -60,7 +60,7 @@ namespace ChunChen_CRM.Controllers
             CustomerDetailModel model = new CustomerDetailModel();
             if (id != null && id != Guid.Empty)
             {
-                model = _customerService.Delete(id);
+                model = _customerService.GetCustomerById(id);
             }
             return View(model);
         }
