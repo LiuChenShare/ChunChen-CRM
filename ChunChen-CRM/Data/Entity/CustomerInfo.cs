@@ -11,6 +11,7 @@ namespace Data
     {
         public Guid Id { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CustomerNo { get; set; }
 
         [Required]
@@ -37,6 +38,11 @@ namespace Data
         /// 服务人名称
         /// </summary>
         public string WaiterName { get; set; }
+
+        /// <summary>
+        /// 消费总金额
+        /// </summary>
+        public int Spend { get; set; }
 
         public DateTime CreateDate { get; set; }
 

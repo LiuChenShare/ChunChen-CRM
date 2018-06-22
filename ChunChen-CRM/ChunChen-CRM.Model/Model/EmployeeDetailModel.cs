@@ -80,5 +80,34 @@ namespace ChunChen_CRM.Model
         /// 最后一次更新时间
         /// </summary>
         public DateTime LastUpdatedOn { get; set; }
+
+
+        #region 报表相关
+
+        /// <summary>
+        /// 销售总金额
+        /// </summary>
+        public int Spend { get; set; }
+
+        /// <summary>
+        /// 该月销售额
+        /// </summary>
+        public int MonthSpend { get; set; }
+
+        /// <summary>
+        /// 上月销售额
+        /// </summary>
+        public int MonthSpendOld { get; set; }
+
+        /// <summary>
+        /// 该年销售额
+        /// </summary>
+        public int YearSpend { get; set; }
+
+        /// <summary>
+        /// 上年销售额
+        /// </summary>
+        public int YearSpendOld { get; set; }
+        #endregion
     }
 }

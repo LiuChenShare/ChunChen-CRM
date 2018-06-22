@@ -19,5 +19,12 @@ namespace ChunChen_CRM.IServices
         /// <param name="id"></param>
         /// <returns></returns>
         bool Delete(Guid id);
+
+        /// <summary>
+        /// 获取客户详情信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        CustomerDetailModel GetCustomer(Guid id);
     }
 }

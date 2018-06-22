@@ -80,6 +80,7 @@
     <Compile Include="Entity\CustomerInfo.cs" />
     <Compile Include="Entity\EmployeeInfo.cs" />
     <Compile Include="ConnectConfig.cs" />
+    <Compile Include="Entity\RecordInfo.cs" />
     <Compile Include="Entity\OrderInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CustomerInfoRepository.cs" />

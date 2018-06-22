@@ -121,6 +121,7 @@ namespace Data.Repository
                 Birthday = info.Birthday,
                 WaiterId = info.WaiterId,
                 WaiterName = info.WaiterName,
+                Spend = info.Spend,
                 CreateDate = info.CreateDate,
                 LastUpdatedOn = info.LastUpdatedOn
             };

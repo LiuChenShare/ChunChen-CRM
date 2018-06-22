@@ -18,7 +18,7 @@ namespace ChunChen_CRM.Controllers
 
 
         /// <summary>
-        /// 我的客户页面
+        /// 我的客户列表页面
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
@@ -49,6 +49,20 @@ namespace ChunChen_CRM.Controllers
         {
             var result = _customerService.Delete(id);
             return Json(new { Success = result, });
+        }
+
+        /// <summary>
+        /// 客户详情页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Detail(Guid? id)
+        {
+            CustomerDetailModel model = new CustomerDetailModel();
+            if (id != null && id != Guid.Empty)
+            {
+                model = _customerService.Delete(id);
+            }
+            return View(model);
         }
 
     }

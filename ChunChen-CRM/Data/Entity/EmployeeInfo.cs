@@ -11,6 +11,7 @@ namespace Data
     {
         public Guid Id { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EmployeeNo { get; set; }
 
         [Required]
@@ -33,6 +34,11 @@ namespace Data
         /// 权限等级
         /// </summary>
         public int Authority { get; set; }
+        
+        /// <summary>
+        /// 销售总金额
+        /// </summary>
+        public int Spend { get; set; }
 
         /// <summary>
         /// 入职日期
