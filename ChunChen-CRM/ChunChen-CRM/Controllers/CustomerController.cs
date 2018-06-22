@@ -25,12 +25,30 @@ namespace ChunChen_CRM.Controllers
         {
             return View();
         }
-        
+
+        /// <summary>
+        /// 查询客户列表
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        [HttpPost]
         public ActionResult Query(CustomerSearch search)
         {
             //System.Threading.Thread.Sleep(3000);
             var result = _customerService.Query(search);
             return PartialView("_SingersSearch", result);
+        }
+
+        /// <summary>
+        /// 删除客户信息（经理可操作）
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult Delete(Guid id)
+        {
+            var result = _customerService.Delete(id);
+            return Json(new { Success = result, });
         }
 
     }

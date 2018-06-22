@@ -9,14 +9,14 @@
     <div class="xt-input" style="margin: 0px; text-align:center">
         <span>性别</span>
         <select class="int-text" id="gender">
-            <option>不限</option>
+            <option value="">不限</option>
             <option value="1">男</option>
             <option value="0">女</option>
         </select>
         <span>编号</span><input id="customerNo" type="text" class="int-text" />
         <span>姓名</span><input id="name" type="text" class="int-text" />
         <span>手机号</span><input id="mobile" type="text" class="int-text" /><br /><br />
-        <input type="button" value="搜 索" class="green-int" onclick="search()" />
+        <input type="button" value="搜 索" class="green-int" onclick="searchCustomer(1,1)" />
         @*<img id="ajax-loader"
         src="@Url.Content("~/Images/ajax-loader2.gif")"
         style="display:none;" />*@
@@ -48,10 +48,10 @@
                 <div class="xt-fenye-left">当前第 1 / 1 页,每页10条，共 0条记录</div>
                 <div class="xt-fenye-right">
                     <a href="#">首页</a>
-                    <a href="#">上一步</a>
-                    <a href="#">下一步</a>
+                    <a href="#">上一页</a>
+                    <a href="#">下一页</a>
                     <a href="#">尾页</a>
-                    <input type="text" name="text" />
+                    <input type="text" name="pagesNumber" />
                     <a href="#" class="xt-link">跳转</a>
                 </div>
             </div>
@@ -69,11 +69,21 @@
 
 
 <script>
-    function search() {
+    function searchCustomer(pageIndex, totalPages) {
+        debugger;
         var gender = $("#gender").val();
         var customerNo = $("#customerNo").val();
         var name = $("#name").val();
         var mobile = $("#mobile").val();
+        if (pageIndex == null) {
+            pageIndex = $("#pagesNumber").val();
+        }
+        if (pageIndex > totalPages) {
+            pageIndex = totalPages;
+        }
+        if (pageIndex < 1) {
+            pageIndex = 1;
+        }
         //var password = $("#password").val();
         //if (account == "" || account == null) {
         //    alert("请输入账号");
@@ -86,7 +96,13 @@
         $.ajax({
             url: "/Customer/Query",//需要提交到的地址
             type: "POST", //提交的类型 POST/GET
-            data: { Gender: gender, CustomerNo: customerNo, CustomerName: name, CustomerMobile: mobile },  //提交的参数
+            data: {
+                Gender: gender,
+                CustomerNo: customerNo,
+                CustomerName: name,
+                CustomerMobile: mobile,
+                PageIndex: pageIndex,
+            },  //提交的参数
             success: function (data) {
                 //重置div
                 $("#searchresults").html(data)

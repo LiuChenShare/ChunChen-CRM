@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.SessionState;
 
 namespace ChunChen_CRM.Services
 {
@@ -26,8 +27,10 @@ namespace ChunChen_CRM.Services
             _customerInfoRepository = customerInfoRepository;
         }
 
+        HttpSessionState session = HttpContext.Current.Session;
+
         #endregion
-        
+
         /// <summary>
         /// 查询客户列表
         /// </summary>
@@ -42,6 +45,27 @@ namespace ChunChen_CRM.Services
                 search.EmployeeId = Guid.Parse(employeeId);
             }
             return _customerInfoRepository.Query(search); ;
+        }
+
+        /// <summary>
+        /// 删除客户信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool Delete(Guid id)
+        {
+            if (int.Parse(session["Authority"].ToString()) == 0)
+            {
+                var employeeId = session["EmployeeId"]?.ToString();
+                var info = _customerInfoRepository.GetById(id);
+                if (info != null)
+                {
+                    info.Deleted = true;
+                    _customerInfoRepository.Update(info);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
