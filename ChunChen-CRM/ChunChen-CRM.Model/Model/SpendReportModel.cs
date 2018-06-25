@@ -14,30 +14,30 @@ namespace ChunChen_CRM.Model
         /// <summary>
         /// 消费总金额
         /// </summary>
-        public int Spend { get; set; }
+        public double Spend { get; set; }
 
         /// <summary>
         /// 该月消费额
         /// </summary>
-        public int MonthSpend { get; set; }
+        public double MonthSpend { get; set; }
 
         /// <summary>
         /// 上月消费额
         /// </summary>
-        public int MonthSpendOld { get; set; }
+        public double MonthSpendOld { get; set; }
 
         /// <summary>
         /// 该年消费额
         /// </summary>
-        public int YearSpend { get; set; }
+        public double YearSpend { get; set; }
 
         /// <summary>
         /// 上年消费额
         /// </summary>
-        public int YearSpendOld { get; set; }
+        public double YearSpendOld { get; set; }
 
         /// <summary>
-        /// 总单数
+        /// 总成交的单数
         /// </summary>
         public int TotalOrder { get; set; }
 

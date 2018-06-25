@@ -28,18 +28,53 @@ namespace Data.Repository
         /// <returns></returns>
         public SpendReportModel GetSpendReportByCustomerId(Guid customerId)
         {
-            var spend = storeDB.OrderInfo.Where(x => x.CustomerId == customerId && !x.Deleted).Sum(x => x.Price);
-            return null;
+            var now = DateTime.Now;
+            var monthOld = new DateTime(now.Year, now.Month - 1, 1);
+            var monthStart = new DateTime(now.Year, now.Month, 1);
+            var monthEnd = new DateTime(now.Year, now.Month + 1, 1);
+            var yearOld = new DateTime(now.Year - 1, 1, 1);
+            var yearStart = new DateTime(now.Year, 1, 1);
+            var yearEnd = new DateTime(now.Year + 1, 1, 1);
+            var query = storeDB.OrderInfo.Where(x => x.CustomerId == customerId && !x.Deleted);
+            var model = new SpendReportModel
+            {
+                Spend = Math.Round(query.Where(x => x.Status == 1).Sum(x => x.Price), 2),
+                MonthSpend = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < monthEnd && x.DealDate.Value >= monthStart).Sum(x => x.Price), 2),
+                MonthSpendOld = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < monthStart && x.DealDate.Value >= monthOld).Sum(x => x.Price), 2),
+                YearSpend = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < yearEnd && x.DealDate.Value >= yearStart).Sum(x => x.Price), 2),
+                YearSpendOld = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < yearStart && x.DealDate.Value >= yearOld).Sum(x => x.Price), 2),
+                TotalOrder = query.Where(x => x.Status == 1).Count(),
+                RegretOrder = query.Where(x => x.Status == 2).Count()
+            };
+            return model;
         }
 
         /// <summary>
-        /// 获取员工消费报表数据
+        /// 获取员工销售额报表数据
         /// </summary>
         /// <param name="employeeId"></param>
         /// <returns></returns>
         public SpendReportModel GetSpendReportByEmployeeId(Guid employeeId)
         {
-            return null;
+            var now = DateTime.Now;
+            var monthOld = new DateTime(now.Year, now.Month - 1, 1);
+            var monthStart = new DateTime(now.Year, now.Month, 1);
+            var monthEnd = new DateTime(now.Year, now.Month + 1, 1);
+            var yearOld = new DateTime(now.Year - 1, 1, 1);
+            var yearStart = new DateTime(now.Year, 1, 1);
+            var yearEnd = new DateTime(now.Year + 1, 1, 1);
+            var query = storeDB.OrderInfo.Where(x => x.EmployeeId == employeeId && !x.Deleted);
+            var model = new SpendReportModel
+            {
+                Spend = Math.Round(query.Where(x => x.Status == 1).Sum(x => x.Price), 2),
+                MonthSpend = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < monthEnd && x.DealDate.Value >= monthStart).Sum(x => x.Price), 2),
+                MonthSpendOld = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < monthStart && x.DealDate.Value >= monthOld).Sum(x => x.Price), 2),
+                YearSpend = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < yearEnd && x.DealDate.Value >= yearStart).Sum(x => x.Price), 2),
+                YearSpendOld = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < yearStart && x.DealDate.Value >= yearOld).Sum(x => x.Price), 2),
+                TotalOrder = query.Where(x => x.Status == 1).Count(),
+                RegretOrder = query.Where(x => x.Status == 2).Count()
+            };
+            return model;
         }
 
         /// <summary>
