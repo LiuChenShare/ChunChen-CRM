@@ -9,6 +9,15 @@ namespace Data
     {
         public Guid Id { get; set; }
 
+        /// <summary>
+        /// 客户id
+        /// </summary>
+        public Guid CustomerId { get; set; }
+
+        /// <summary>
+        /// 员工id
+        /// </summary>
+
         public Guid EmployeeId { get; set; }
 
         /// <summary>
