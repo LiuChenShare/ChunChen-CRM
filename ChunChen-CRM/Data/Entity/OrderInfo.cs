@@ -59,6 +59,11 @@ namespace Data
         /// </summary>
         public int Status { get; set; }
 
+        /// <summary>
+        /// 成交/毁单时间
+        /// </summary>
+        public DateTime? DealDate { get; set; }
+
         public DateTime CreateDate { get; set; }
 
         public DateTime LastUpdatedOn { get; set; }
