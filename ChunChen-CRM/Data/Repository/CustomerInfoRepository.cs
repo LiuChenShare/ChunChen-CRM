@@ -5,7 +5,7 @@ using System.Linq;
 namespace Data.Repository
 {
     /// <summary>
-    /// 账户信息的仓储服务
+    /// 客户信息的仓储服务
     /// </summary>
     public class CustomerInfoRepository
     {

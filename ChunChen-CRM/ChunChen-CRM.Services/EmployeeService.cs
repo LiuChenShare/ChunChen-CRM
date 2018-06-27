@@ -16,12 +16,15 @@ namespace ChunChen_CRM.Services
         #region 依赖注入
         protected readonly EmployeeInfoRepository _employeeInfoRepository;
         protected readonly AccountInfoRepository _accountInfoRepository;
+        protected readonly OrderInfoRepository _orderInfoRepository;
 
         public EmployeeService(EmployeeInfoRepository employeeInfoRepository
-            , AccountInfoRepository accountInfoRepository)
+            , AccountInfoRepository accountInfoRepository
+            , OrderInfoRepository orderInfoRepository)
         {
             _employeeInfoRepository = employeeInfoRepository;
             _accountInfoRepository = accountInfoRepository;
+            _orderInfoRepository = orderInfoRepository;
         }
 
         #endregion
@@ -33,9 +36,11 @@ namespace ChunChen_CRM.Services
         public EmployeeDetailModel GetEmployeeBySession()
         {
             var _session = HttpContext.Current.Session;
-            var employeeId = _session["EmployeeId"]?.ToString();
-            var employeeInfo = _employeeInfoRepository.GetById(Guid.Parse(employeeId));
-            return employeeInfo.ToModel();
+            var employeeId = Guid.Parse(_session["EmployeeId"]?.ToString());
+            var employeeInfo = _employeeInfoRepository.GetById(employeeId);
+            var model = employeeInfo.ToModel();
+            model.SpendReport = _orderInfoRepository.GetSpendReportByEmployeeId(employeeId);
+            return model;
         }
 
         /// <summary>

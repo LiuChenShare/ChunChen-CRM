@@ -24,7 +24,7 @@ namespace Data
         /// 员工姓名
         /// </summary>
         [Required]
-        public Guid EmployeeName { get; set; }
+        public string EmployeeName { get; set; }
 
         /// <summary>
         /// 记录

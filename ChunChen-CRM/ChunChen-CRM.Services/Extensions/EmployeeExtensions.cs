@@ -22,6 +22,7 @@ namespace ChunChen_CRM.Services.Extensions
                 Gender = info.Gender,
                 Birthday = info.Birthday,
                 Authority = info.Authority,
+                Spend = info.Spend,
                 JoinDate = info.JoinDate,
                 Quit = info.Quit,
                 QuitDate = info.QuitDate,

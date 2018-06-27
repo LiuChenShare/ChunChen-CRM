@@ -60,10 +60,62 @@ namespace ChunChen_CRM.Controllers
             CustomerDetailModel model = new CustomerDetailModel();
             if (id != null && id != Guid.Empty)
             {
-                model = _customerService.GetCustomerById(id);
+                model = _customerService.GetCustomerById(id.Value);
             }
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult UpdateMobile(Guid customerId, string mobile)
+        {
+            try
+            {
+                return Json(new { Success = _customerService.UpdateMobile(customerId, mobile), });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Success = false, Messages = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UpdateAddress(Guid customerId, string address)
+        {
+            try
+            {
+                return Json(new { Success = _customerService.UpdateAddress(customerId, address), });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Success = false, Messages = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UpdateWaiter(Guid customerId, Guid waiterId)
+        {
+            try
+            {
+                return Json(new { Success = _customerService.UpdateWaiter(customerId, waiterId), });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Success = false, Messages = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SaveRecord(Guid customerId, string message)
+        {
+            //var a = Session["Authority"].ToString();
+            try
+            {
+                return Json(new { Success = _customerService.SaveRecord(customerId, message), });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Success = false, Messages = ex.Message });
+            }
+        }
     }
 }
