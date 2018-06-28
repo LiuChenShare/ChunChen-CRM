@@ -26,5 +26,37 @@ namespace ChunChen_CRM.IServices
         /// <param name="id"></param>
         /// <returns></returns>
         CustomerDetailModel GetCustomerById(Guid id);
+
+        /// <summary>
+        /// 更新客户电话号码并记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="mobile"></param>
+        /// <returns></returns>
+        bool UpdateMobile(Guid customerId, string mobile);
+
+        /// <summary>
+        /// 更新客户地址信息并记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        bool UpdateAddress(Guid customerId, string address);
+
+        /// <summary>
+        /// 更新客户的服务人员并记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="waiterId"></param>
+        /// <returns></returns>
+        bool UpdateWaiter(Guid customerId, Guid waiterId);
+
+        /// <summary>
+        /// 添加客户的信息记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        bool SaveRecord(Guid customerId, string message);
     }
 }

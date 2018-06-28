@@ -83,6 +83,7 @@
     <Compile Include="Entity\RecordInfo.cs" />
     <Compile Include="Entity\OrderInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\RecordInfoRepository.cs" />
     <Compile Include="Repository\OrderInfoRepository.cs" />
     <Compile Include="Repository\CustomerInfoRepository.cs" />
     <Compile Include="Repository\AccountInfoRepository.cs" />

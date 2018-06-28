@@ -67,6 +67,8 @@ namespace ChunChen_CRM.App_Start
             builder.RegisterType<AccountInfoRepository>();
             builder.RegisterType<EmployeeInfoRepository>();
             builder.RegisterType<CustomerInfoRepository>();
+            builder.RegisterType<OrderInfoRepository>();
+            builder.RegisterType<RecordInfoRepository>();
             //服务注册
             builder.RegisterType<AccountService>().As<IAccountService>();
             builder.RegisterType<EmployeeService>().As<IEmployeeService>();

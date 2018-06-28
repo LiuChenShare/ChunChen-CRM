@@ -1,6 +1,7 @@
 ﻿using ChunChen_CRM.IServices;
 using ChunChen_CRM.Model;
 using ChunChen_CRM.Services.Extensions;
+using Data;
 using Data.Repository;
 using System;
 using System.Collections.Generic;
@@ -18,17 +19,22 @@ namespace ChunChen_CRM.Services
         protected readonly EmployeeInfoRepository _employeeInfoRepository;
         protected readonly AccountInfoRepository _accountInfoRepository;
         protected readonly CustomerInfoRepository _customerInfoRepository;
+        protected readonly OrderInfoRepository _orderInfoRepository;
+        protected readonly RecordInfoRepository _recordInfoRepository;
 
         public CustomerService(EmployeeInfoRepository employeeInfoRepository
             , AccountInfoRepository accountInfoRepository
-            , CustomerInfoRepository customerInfoRepository)
+            , CustomerInfoRepository customerInfoRepository
+            , OrderInfoRepository orderInfoRepository
+            , RecordInfoRepository recordInfoRepository)
         {
             _employeeInfoRepository = employeeInfoRepository;
             _accountInfoRepository = accountInfoRepository;
             _customerInfoRepository = customerInfoRepository;
+            _orderInfoRepository = orderInfoRepository;
+            _recordInfoRepository = recordInfoRepository;
         }
-
-        HttpSessionState session = HttpContext.Current.Session;
+        
 
         #endregion
 
@@ -55,9 +61,9 @@ namespace ChunChen_CRM.Services
         /// <returns></returns>
         public bool Delete(Guid id)
         {
-            if (int.Parse(session["Authority"].ToString()) == 0)
+            var _session = HttpContext.Current.Session;
+            if (int.Parse(_session["Authority"].ToString()) == 0)
             {
-                var employeeId = session["EmployeeId"]?.ToString();
                 var info = _customerInfoRepository.GetById(id);
                 if (info != null)
                 {
@@ -76,9 +82,177 @@ namespace ChunChen_CRM.Services
         /// <returns></returns>
         public CustomerDetailModel GetCustomerById(Guid id)
         {
+            var _session = HttpContext.Current.Session;
             var customerInfo = _customerInfoRepository.GetById(id);
             var model = customerInfo.ToModel();
-            throw new NotImplementedException();
+            if (int.Parse(_session["Authority"].ToString()) == 0 || Guid.Parse(_session["EmployeeId"]?.ToString()) == model.WaiterId)
+            {
+                model.SpendReport = _orderInfoRepository.GetSpendReportByCustomerId(id);
+            }
+            return model;
+        }
+
+
+
+        /// <summary>
+        /// 更新客户电话号码并记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="mobile"></param>
+        /// <returns></returns>
+        public bool UpdateMobile(Guid customerId, string mobile)
+        {
+            if (customerId == Guid.Empty && !string.IsNullOrEmpty(mobile))
+            {
+                throw new Exception("参数错误！");
+            }
+            var _session = HttpContext.Current.Session;
+            var employeeId = Guid.Parse(_session["EmployeeId"]?.ToString());
+            var customerInfo = _customerInfoRepository.GetById(customerId);
+            if (customerInfo.Mobile == mobile)
+            {
+                throw new Exception("数据未修改！");
+            }
+            if (int.Parse(_session["Authority"].ToString()) > 0 && employeeId != customerInfo.WaiterId)
+            {
+                throw new Exception("无操作权限！");
+            }
+            var employeeInfo = _employeeInfoRepository.GetById(employeeId);
+            if (employeeInfo == null)
+            {
+                throw new Exception("登录信息有误，请重新登录！");
+            }
+            var recordInfo = new RecordInfo
+            {
+                CustomerId = customerInfo.Id,
+                EmployeeId = employeeId,
+                EmployeeName = employeeInfo.Name,
+                Message = "修改客户联系电话： " + customerInfo.Mobile + " --> " + mobile
+            };
+            _recordInfoRepository.Insert(recordInfo);
+            customerInfo.Mobile = mobile;
+            _customerInfoRepository.Update(customerInfo);
+            return true;
+        }
+
+        /// <summary>
+        /// 更新客户地址信息并记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public bool UpdateAddress(Guid customerId, string address)
+        {
+            if (customerId == Guid.Empty && !string.IsNullOrEmpty(address))
+            {
+                throw new Exception("参数错误！");
+            }
+            var _session = HttpContext.Current.Session;
+            var employeeId = Guid.Parse(_session["EmployeeId"]?.ToString());
+            var customerInfo = _customerInfoRepository.GetById(customerId);
+            if (customerInfo.Address == address)
+            {
+                throw new Exception("数据未修改！");
+            }
+            if (int.Parse(_session["Authority"].ToString()) > 0 && employeeId != customerInfo.WaiterId)
+            {
+                throw new Exception("无操作权限！");
+            }
+            var employeeInfo = _employeeInfoRepository.GetById(employeeId);
+            if(employeeInfo == null)
+            {
+                throw new Exception("登录信息有误，请重新登录！");
+            }
+            var recordInfo = new RecordInfo
+            {
+                CustomerId = customerInfo.Id,
+                EmployeeId = employeeId,
+                EmployeeName = employeeInfo.Name,
+                Message = "修改客户联系地址： " + customerInfo.Address + " --> " + address
+            };
+            _recordInfoRepository.Insert(recordInfo);
+            customerInfo.Address = address;
+            _customerInfoRepository.Update(customerInfo);
+            return true;
+        }
+
+        /// <summary>
+        /// 更新客户的服务人员并记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="waiterId"></param>
+        /// <returns></returns>
+        public bool UpdateWaiter(Guid customerId, Guid waiterId)
+        {
+            if (customerId == Guid.Empty || waiterId == Guid.Empty)
+            {
+                throw new Exception("参数错误！");
+            }
+            var _session = HttpContext.Current.Session;
+            var employeeId = Guid.Parse(_session["EmployeeId"]?.ToString());
+            var customerInfo = _customerInfoRepository.GetById(customerId);
+            if (customerInfo.WaiterId == waiterId)
+            {
+                throw new Exception("数据未修改！");
+            }
+            if (int.Parse(_session["Authority"].ToString()) > 0 && employeeId != customerInfo.WaiterId)
+            {
+                throw new Exception("无操作权限！");
+            }
+            var employeeInfo = _employeeInfoRepository.GetById(employeeId);
+            var waiterInfo = _employeeInfoRepository.GetById(waiterId);
+            if (waiterInfo == null || employeeId == null)
+            {
+                throw new Exception("登录信息有误，请重新登录！");
+            }
+            var recordInfo = new RecordInfo
+            {
+                CustomerId = customerInfo.Id,
+                EmployeeId = employeeId,
+                EmployeeName = employeeInfo.Name,
+                Message = "修改客户服务人员： " + customerInfo.WaiterName + " --> " + waiterInfo.Name
+            };
+            _recordInfoRepository.Insert(recordInfo);
+            customerInfo.WaiterId = waiterInfo.Id;
+            _customerInfoRepository.Update(customerInfo);
+            return true;
+        }
+
+        /// <summary>
+        /// 添加客户的信息记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public bool SaveRecord(Guid customerId, string message)
+        {
+            if (customerId == Guid.Empty && !string.IsNullOrEmpty(message))
+            {
+                throw new Exception("参数错误！");
+            }
+            var _session = HttpContext.Current.Session;
+            var employeeId = Guid.Parse(_session["EmployeeId"]?.ToString());
+            var customerInfo = _customerInfoRepository.GetById(customerId);
+            if (int.Parse(_session["Authority"].ToString()) > 0 && employeeId != customerInfo.WaiterId)
+            {
+                throw new Exception("无操作权限！");
+            }
+            var employeeInfo = _employeeInfoRepository.GetById(employeeId);
+            if (employeeInfo == null)
+            {
+                throw new Exception("登录信息有误，请重新登录！");
+            }
+            var recordInfo = new RecordInfo
+            {
+                CustomerId = customerInfo.Id,
+                EmployeeId = employeeId,
+                EmployeeName = employeeInfo.Name,
+                Message = message
+            };
+            _recordInfoRepository.Insert(recordInfo);
+            customerInfo.LastUpdatedOn = DateTime.Now;
+            _customerInfoRepository.Update(customerInfo);
+            return true;
         }
     }
 }
