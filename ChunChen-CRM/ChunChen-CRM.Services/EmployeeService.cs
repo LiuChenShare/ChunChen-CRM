@@ -100,5 +100,14 @@ namespace ChunChen_CRM.Services
             _employeeInfoRepository.Update(employeeInfo);
             return true;
         }
+
+        /// <summary>
+        /// 获取员工单选框列表
+        /// </summary>
+        /// <returns></returns>
+        public List<EmployeeSelectItem> GetSelectlist()
+        {
+            return _employeeInfoRepository.GetAll().Select(x => x.ToSelectItem()).ToList();
+        }
     }
 }

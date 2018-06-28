@@ -20,7 +20,7 @@
         @foreach (var item in Model.Data)
         {
         <tr class="xt-bg">
-            <td><a href="#">@item.CustomerNo</a></td>
+            <td><a href="/Customer/Detail?id=@item.Id" target="main">@item.CustomerNo</a></td>
             <td>@item.Name</td>
             <td>@item.GenderString</td>
             <td>@item.Mobile</td>

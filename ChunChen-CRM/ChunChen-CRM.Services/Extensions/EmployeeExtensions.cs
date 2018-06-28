@@ -48,6 +48,19 @@ namespace ChunChen_CRM.Services.Extensions
             return model;
         }
 
+        public static EmployeeSelectItem ToSelectItem(this EmployeeInfo info)
+        {
+            if (info == null) { return null; }
+            var model = new EmployeeSelectItem
+            {
+                Id = info.Id,
+                EmployeeNo = info.EmployeeNo,
+                Name = info.Name,
+            };
+
+            return model;
+        }
+
         //public static MonthKaoqinInfo SetEntity(this MonthKaoqinInfo info, MonthKaoqinModel model)
         //{
         //    if (info == null) { info = new MonthKaoqinInfo(); }

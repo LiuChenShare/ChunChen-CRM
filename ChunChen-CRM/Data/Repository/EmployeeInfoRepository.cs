@@ -35,6 +35,16 @@ namespace Data.Repository
         }
 
         /// <summary>
+        /// 获取所有员工信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<EmployeeInfo> GetAll()
+        {
+            return storeDB.EmployeeInfo.Where(x => !x.Deleted && !x.Quit).ToList();
+        }
+
+        /// <summary>
         /// 插入
         /// </summary>
         /// <param name="info"></param>
@@ -42,6 +52,7 @@ namespace Data.Repository
         {
             info.CreateDate = DateTime.Now;
             info.LastUpdatedOn = DateTime.Now;
+            info.Deleted = false;
             storeDB.EmployeeInfo.Add(info);
             storeDB.SaveChanges();
         }

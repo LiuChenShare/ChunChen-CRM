@@ -67,7 +67,7 @@ namespace Data.Repository
         /// 检测手机号重复
         /// </summary>
         /// <param name="mobile">手机号</param>
-        /// <param name="id">检测重复的用户</param>
+        /// <param name="id">检测重复的客户</param>
         /// <returns></returns>
         public bool CheckMobile(string mobile, Guid id)
         {
@@ -82,6 +82,7 @@ namespace Data.Repository
         {
             info.CreateDate = DateTime.Now;
             info.LastUpdatedOn = DateTime.Now;
+            info.Deleted = false;
             storeDB.CustomerInfo.Add(info);
             storeDB.SaveChanges();
         }
