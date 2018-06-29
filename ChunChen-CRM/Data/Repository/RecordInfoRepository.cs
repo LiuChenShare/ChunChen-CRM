@@ -48,6 +48,7 @@ namespace Data.Repository
         public void Insert(RecordInfo info)
         {
             info.CreateDate = DateTime.Now;
+            if (info.Id == Guid.Empty) info.Id = Guid.NewGuid();
             storeDB.RecordInfo.Add(info);
             storeDB.SaveChanges();
         }
