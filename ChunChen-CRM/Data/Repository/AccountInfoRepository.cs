@@ -42,6 +42,7 @@ namespace Data.Repository
         public void Insert(AccountInfo info)
         {
             info.Deleted = false;
+            if (info.Id == Guid.Empty) info.Id = Guid.NewGuid();
             storeDB.AccountInfo.Add(info);
             storeDB.SaveChanges();
         }

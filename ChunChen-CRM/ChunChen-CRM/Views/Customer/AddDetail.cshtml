@@ -19,7 +19,7 @@
 
                         <td style="width: 200px; height: 26px; text-align: center;">姓 名：</td>
                         <td style="width: 300px; height: 26px;">
-                            <input type="text" name="name" id="mobile" value="" style="height: 35px;" />
+                            <input type="text" name="name" id="name" value="" style="height: 35px;" />
                         </td>
                     </tr>
                     <tr>
@@ -39,7 +39,7 @@
                     <tr>
                         <td style="width: 200px; height: 26px; text-align: center;">联系地址:</td>
                         <td style="width: 300px; height: 26px;" colspan="3">
-                            <input type="text" name="address" id="mobile" value="" placeholder="地址信息" style="height: 35px;" />
+                            <input type="text" name="address" id="address" value="" placeholder="地址信息" style="height: 35px;" />
                         </td>
                     </tr>
                     <tr>
@@ -89,15 +89,16 @@
         $.ajax({
             url: "/Customer/AddCustomer",//需要提交到的地址
             type: "POST", //提交的类型 POST/GET
-            data: { Name: id, Mobile: mobile, Address: address, Gender: gender, WaiterId: waiter },  //提交的参数
+            data: { Name: name, Mobile: mobile, Address: address, Gender: gender, WaiterId: waiter },  //提交的参数
             success: function (data) {
                 //提交成功之后的回调参数
                 if (data.Success) {
-                    alert(data.Messages);
+                    //alert(data.Messages);
+                    alert("添加成功！");
                     main.window.location.reload()
                 }
                 else {
-                    alert(data.Messages);
+                    alert("添加失败：" + data.Messages);
                     main.window.location.reload()
                 }
             }

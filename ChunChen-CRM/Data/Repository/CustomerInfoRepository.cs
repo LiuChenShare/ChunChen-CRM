@@ -83,6 +83,7 @@ namespace Data.Repository
             info.CreateDate = DateTime.Now;
             info.LastUpdatedOn = DateTime.Now;
             info.Deleted = false;
+            if (info.Id == Guid.Empty) info.Id = Guid.NewGuid();
             storeDB.CustomerInfo.Add(info);
             storeDB.SaveChanges();
         }
