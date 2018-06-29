@@ -45,6 +45,32 @@
                             }
                         }
                     </tr>
+                    <!--报表信息-->
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">成交总金额：</td>
+                        <td style="width: 300px; height: 26px; color:red">@Model.SpendReport.Spend</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">成交单数：</td>
+                        <td style="width: 300px; height: 26px; color:red">@Model.SpendReport.TotalOrder</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">毁单单数：</td>
+                        <td style="width: 300px; height: 26px; color:blue">@Model.SpendReport.RegretOrder</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">本年成交额：</td>
+                        <td style="width: 300px; height: 26px; color:red">@Model.SpendReport.YearSpend</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">上年成交额：</td>
+                        <td style="width: 300px; height: 26px;">@Model.SpendReport.YearSpendOld</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">本月成交额：</td>
+                        <td style="width: 300px; height: 26px; color:red">@Model.SpendReport.MonthSpend</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">上月成交额：</td>
+                        <td style="width: 300px; height: 26px;">@Model.SpendReport.MonthSpendOld</td>
+                    </tr>
                 </table>
             </td>
         </tr>
