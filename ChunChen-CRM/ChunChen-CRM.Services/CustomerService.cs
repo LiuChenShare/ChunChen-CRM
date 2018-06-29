@@ -254,5 +254,54 @@ namespace ChunChen_CRM.Services
             _customerInfoRepository.Update(customerInfo);
             return true;
         }
+
+        /// <summary>
+        /// 添加客户
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool AddCustomer(CustomerDetailModel model)
+        {
+            var _session = HttpContext.Current.Session;
+            var employeeId = Guid.Parse(_session["EmployeeId"]?.ToString());
+            var employeeInfo = _employeeInfoRepository.GetById(employeeId);
+            if (employeeInfo == null)
+            {
+                throw new Exception("登录信息有误，请重新登录！");
+            }
+            Assert.IsNotNullOrEmpty(model.Name,"客户姓名不可为空");
+            Assert.IsTrue((model.Gender == 1 || model.Gender == 0), "用户性别设置错误！");
+            Assert.IsNotNullOrEmpty(model.Mobile, "客户联系电话不可为空！");
+            Assert.IsTrue(_customerInfoRepository.CheckMobile(model.Mobile, Guid.Empty), "客户联系电话重复！");
+            var info = new CustomerInfo
+            {
+                Id = Guid.NewGuid(),
+                Name = model.Name,
+                Gender = model.Gender,
+                Mobile = model.Mobile,
+                Address = model.Address,
+                Birthday = model.Birthday,
+                //info.WaiterId
+                //info.WaiterName
+                Spend = 0
+            };
+            if (model.WaiterId.HasValue)
+            {
+                var waiterInfo = _employeeInfoRepository.GetById(model.WaiterId.Value);
+                Assert.IsNotNull(waiterInfo, "服务人员设置错误！");
+                info.WaiterId = waiterInfo.Id;
+                info.WaiterName = waiterInfo.Name;
+            }
+            _customerInfoRepository.Insert(info);
+            var recordInfo = new RecordInfo
+            {
+                CustomerId = info.Id,
+                EmployeeId = employeeInfo.Id,
+                EmployeeName = employeeInfo.Name,
+                Message = "添加新客户"
+            };
+            _recordInfoRepository.Insert(recordInfo);
+            return true;
+        }
     }
 }

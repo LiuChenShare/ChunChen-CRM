@@ -1,4 +1,5 @@
 ﻿using ChunChen_CRM.Model;
+using System.Collections.Generic;
 
 namespace ChunChen_CRM.IServices
 {
@@ -18,5 +19,11 @@ namespace ChunChen_CRM.IServices
         /// <param name="model"></param>
         /// <returns></returns>
         bool UpdateEmployeeDetail(EmployeeDetailModel model);
+
+        /// <summary>
+        /// 获取员工单选框列表
+        /// </summary>
+        /// <returns></returns>
+        List<EmployeeSelectItem> GetSelectlist();
     }
 }

@@ -71,6 +71,7 @@
     <Compile Include="CustomerService.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="AccountService.cs" />
+    <Compile Include="Extensions\Assert.cs" />
     <Compile Include="Extensions\CustomerExtensions.cs" />
     <Compile Include="Extensions\EmployeeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

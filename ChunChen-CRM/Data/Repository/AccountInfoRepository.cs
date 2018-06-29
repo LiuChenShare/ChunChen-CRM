@@ -41,6 +41,7 @@ namespace Data.Repository
         /// <param name="info"></param>
         public void Insert(AccountInfo info)
         {
+            info.Deleted = false;
             storeDB.AccountInfo.Add(info);
             storeDB.SaveChanges();
         }

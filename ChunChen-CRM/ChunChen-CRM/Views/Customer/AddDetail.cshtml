@@ -1,0 +1,107 @@
+﻿@using ChunChen_CRM.Model
+@model List<EmployeeSelectItem>
+@{
+    ViewBag.Title = "添加新客户";
+    Layout = "~/Views/Shared/_NoLayout.cshtml";
+}
+
+<div class="jumbotron" style="margin-bottom: 0px;">
+    <table style="width: 100%">
+        <tr>
+            <td style="font-weight: bold; color: #000000; text-align: center;" class="auto-style1">添加新客户</td>
+        </tr>
+        <tr>
+            <td style="width: 100%">
+                <table style="width: 940px; height: 138px;">
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">编 号：</td>
+                        <td style="width: 300px; height: 26px;">----</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">姓 名：</td>
+                        <td style="width: 300px; height: 26px;">
+                            <input type="text" name="name" id="mobile" value="" style="height: 35px;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">电 话：</td>
+                        <td style="width: 300px; height: 26px;">
+                            <input type="text" name="mobile" id="mobile" value="" placeholder="手机号" style="height: 35px;" />
+                        </td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">性 别：</td>
+                        <td style="width: 300px; height: 26px;">
+                            <select id="gender" style="height: 35px;">
+                                <option value="1">男</option>
+                                <option value="0">女</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">联系地址:</td>
+                        <td style="width: 300px; height: 26px;" colspan="3">
+                            <input type="text" name="address" id="mobile" value="" placeholder="地址信息" style="height: 35px;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">服务人员:</td>
+                        <td style="width: 300px; height: 26px;">
+                            <select id="waiter" style="height: 35px;">
+                                <option value="">--</option>
+                                @foreach (var item in Model)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div style="text-align:center">
+        <input type="button" id="save" onclick="save()" value="保存" style="width:300px;" />
+    </div>
+</div>
+
+<script>
+    function save() {
+        var name = $("#name").val();
+        var mobile = $("#mobile").val();
+        var gender = $("#gender").val();
+        var address = $("#address").val();
+        var waiter = $("#waiter").val();
+        if (name == "" || name == null) {
+            alert("请输入姓名");
+            return false;
+        }
+        if (mobile == "" || mobile == null) {
+            alert("请输入手机号");
+            return false;
+        }
+        $.ajax({
+            url: "/Customer/AddCustomer",//需要提交到的地址
+            type: "POST", //提交的类型 POST/GET
+            data: { Name: id, Mobile: mobile, Address: address, Gender: gender, WaiterId: waiter },  //提交的参数
+            success: function (data) {
+                //提交成功之后的回调参数
+                if (data.Success) {
+                    alert(data.Messages);
+                    main.window.location.reload()
+                }
+                else {
+                    alert(data.Messages);
+                    main.window.location.reload()
+                }
+            }
+        })
+    }
+</script>
+

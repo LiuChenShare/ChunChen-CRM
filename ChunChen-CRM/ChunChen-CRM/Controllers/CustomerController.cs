@@ -11,9 +11,12 @@ namespace ChunChen_CRM.Controllers
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
-        public CustomerController(ICustomerService customerService)
+        private readonly IEmployeeService _employeeService;
+        public CustomerController(ICustomerService customerService
+            ,IEmployeeService employeeService)
         {
             _customerService = customerService;
+            _employeeService = employeeService;
         }
 
 
@@ -55,12 +58,12 @@ namespace ChunChen_CRM.Controllers
         /// 客户详情页面
         /// </summary>
         /// <returns></returns>
-        public ActionResult Detail(Guid? id)
+        public ActionResult Detail(Guid id)
         {
-            CustomerDetailModel model = new CustomerDetailModel();
-            if (id != null && id != Guid.Empty)
+            CustomerDetailModel model = null;
+            if (id != Guid.Empty)
             {
-                model = _customerService.GetCustomerById(id.Value);
+                model = _customerService.GetCustomerById(id);
             }
             return View(model);
         }
@@ -111,6 +114,34 @@ namespace ChunChen_CRM.Controllers
             try
             {
                 return Json(new { Success = _customerService.SaveRecord(customerId, message), });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Success = false, Messages = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// 添加客户页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddDetail()
+        {
+            var Selectlist = _employeeService.GetSelectlist();
+            return View(Selectlist);
+        }
+
+        /// <summary>
+        /// 添加客户信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult AddCustomer(CustomerDetailModel model)
+        {
+            try
+            {
+                return Json(new { Success = _customerService.AddCustomer(model), });
             }
             catch (Exception ex)
             {

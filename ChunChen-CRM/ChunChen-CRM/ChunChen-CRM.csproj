@@ -216,6 +216,8 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\_SingersSearch.cshtml" />
     <Content Include="Views\Customer\Index - 复制.cshtml" />
+    <Content Include="Views\Customer\Detail.cshtml" />
+    <Content Include="Views\Customer\AddDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

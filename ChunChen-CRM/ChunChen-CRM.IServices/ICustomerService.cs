@@ -58,5 +58,12 @@ namespace ChunChen_CRM.IServices
         /// <param name="message"></param>
         /// <returns></returns>
         bool SaveRecord(Guid customerId, string message);
+
+        /// <summary>
+        /// 添加客户
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        bool AddCustomer(CustomerDetailModel model);
     }
 }
