@@ -9,6 +9,9 @@ using System.Web;
 
 namespace ChunChen_CRM.Services
 {
+    /// <summary>
+    /// 账户相关业务服务
+    /// </summary>
     public class AccountService : IAccountService
     {
         #region 依赖注入

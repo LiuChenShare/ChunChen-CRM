@@ -77,5 +77,10 @@ namespace ChunChen_CRM.Model
         /// 消费报表信息
         /// </summary>
         public SpendReportModel SpendReport { get; set; }
+
+        /// <summary>
+        /// 记录信息
+        /// </summary>
+        public List<RecordDetailModel> Records { get; set; }
     }
 }

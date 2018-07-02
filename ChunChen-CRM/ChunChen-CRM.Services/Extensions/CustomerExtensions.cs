@@ -39,6 +39,19 @@ namespace ChunChen_CRM.Services.Extensions
             return model;
         }
 
+        public static RecordDetailModel ToModel(this RecordInfo info)
+        {
+            if (info == null) { return null; }
+            var model = new RecordDetailModel
+            {
+                EmployeeName = info.EmployeeName,
+                Message = info.Message,
+                CreateDate = info.CreateDate,
+            };
+
+            return model;
+        }
+
         //public static MonthKaoqinInfo SetEntity(this MonthKaoqinInfo info, MonthKaoqinModel model)
         //{
         //    if (info == null) { info = new MonthKaoqinInfo(); }

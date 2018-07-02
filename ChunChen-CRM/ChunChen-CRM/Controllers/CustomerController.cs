@@ -64,6 +64,11 @@ namespace ChunChen_CRM.Controllers
             if (id != Guid.Empty)
             {
                 model = _customerService.GetCustomerById(id);
+                if (model != null)
+                {
+                    var selectlist = _employeeService.GetSelectlist();
+                    ViewBag.Selectlist = selectlist.Where(x => x.Id != model.WaiterId);
+                }
             }
             return View(model);
         }

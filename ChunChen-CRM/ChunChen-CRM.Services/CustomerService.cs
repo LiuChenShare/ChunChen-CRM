@@ -13,6 +13,9 @@ using System.Web.SessionState;
 
 namespace ChunChen_CRM.Services
 {
+    /// <summary>
+    /// 客户相关业务服务
+    /// </summary>
     public class CustomerService : ICustomerService
     {
         #region 依赖注入
@@ -85,9 +88,13 @@ namespace ChunChen_CRM.Services
             var _session = HttpContext.Current.Session;
             var customerInfo = _customerInfoRepository.GetById(id);
             var model = customerInfo.ToModel();
-            if (int.Parse(_session["Authority"].ToString()) == 0 || Guid.Parse(_session["EmployeeId"]?.ToString()) == model.WaiterId)
+            if (customerInfo!=null)
             {
-                model.SpendReport = _orderInfoRepository.GetSpendReportByCustomerId(id);
+                if (int.Parse(_session["Authority"].ToString()) == 0 || Guid.Parse(_session["EmployeeId"]?.ToString()) == model.WaiterId)
+                {
+                    model.SpendReport = _orderInfoRepository.GetSpendReportByCustomerId(id)??new SpendReportModel();
+                }
+                model.Records= (_recordInfoRepository.GetTop20ByCustomerId(model.Id)??new List<RecordInfo>()).Select(x => x.ToModel()).ToList();
             }
             return model;
         }

@@ -11,6 +11,9 @@ using System.Web;
 
 namespace ChunChen_CRM.Services
 {
+    /// <summary>
+    /// 员工相关业务服务
+    /// </summary>
     public class EmployeeService : IEmployeeService
     {
         #region 依赖注入

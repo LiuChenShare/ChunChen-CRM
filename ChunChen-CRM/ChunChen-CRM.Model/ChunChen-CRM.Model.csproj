@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Model\EmployeeSelectItem.cs" />
     <Compile Include="Model\SpendReportModel.cs" />
+    <Compile Include="Model\RecordDetailModel.cs" />
     <Compile Include="Search\BaseSearch.cs" />
     <Compile Include="IPagedList.cs" />
     <Compile Include="Model\CustomerDetailModel.cs" />
