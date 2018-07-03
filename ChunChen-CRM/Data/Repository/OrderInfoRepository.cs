@@ -38,11 +38,11 @@ namespace Data.Repository
             var query = storeDB.OrderInfo.Where(x => x.CustomerId == customerId && !x.Deleted);
             var model = new SpendReportModel
             {
-                Spend = Math.Round(query.Where(x => x.Status == 1).Sum(x => x.Price), 2),
-                MonthSpend = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < monthEnd && x.DealDate.Value >= monthStart).Sum(x => x.Price), 2),
-                MonthSpendOld = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < monthStart && x.DealDate.Value >= monthOld).Sum(x => x.Price), 2),
-                YearSpend = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < yearEnd && x.DealDate.Value >= yearStart).Sum(x => x.Price), 2),
-                YearSpendOld = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < yearStart && x.DealDate.Value >= yearOld).Sum(x => x.Price), 2),
+                Spend = Math.Round(query.Where(x => x.Status == 1).ToList()?.Sum(x => x.Price) ?? 0, 2),
+                MonthSpend = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < monthEnd && x.DealDate.Value >= monthStart).ToList()?.Sum(x => x.Price) ?? 0, 2),
+                MonthSpendOld = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < monthStart && x.DealDate.Value >= monthOld).ToList()?.Sum(x => x.Price) ?? 0, 2),
+                YearSpend = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < yearEnd && x.DealDate.Value >= yearStart).ToList()?.Sum(x => x.Price) ?? 0, 2),
+                YearSpendOld = Math.Round(query.Where(x => x.Status == 1 && x.DealDate.Value < yearStart && x.DealDate.Value >= yearOld).ToList()?.Sum(x => x.Price) ?? 0, 2),
                 TotalOrder = query.Where(x => x.Status == 1).Count(),
                 RegretOrder = query.Where(x => x.Status == 2).Count()
             };

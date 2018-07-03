@@ -178,6 +178,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\ajax-loader2.gif" />
     <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Images\refresh.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

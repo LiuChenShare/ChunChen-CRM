@@ -14,18 +14,18 @@ body{
 	position: relative;
 }
 
-.time-axis:before{
-	content: '';
-	position: absolute;
-	left: 93px;
-	top: 15px;
-	width: 1px;
-	height: 100%;
-	background-color: #E4E4E4;
-}
+    .time-axis:before {
+        content: '';
+        position: absolute;
+        left: 167px;
+        top: 15px;
+        width: 1px;
+        height: 100%;
+        background-color: #E4E4E4;
+    }
 .time-axis-item{
 	list-style: none;
-	padding-left: 150px;
+	padding-left: 220px;
 	position: relative;
 	line-height: 45px;
 	font-size: 14px;

@@ -28,7 +28,7 @@ namespace Data.Repository
         /// <returns></returns>
         public List<RecordInfo> GetTop20ByCustomerId(Guid customerId)
         {
-            return storeDB.RecordInfo.Where(x => x.CustomerId == customerId).OrderBy(x => x.CreateDate).Take(20).ToList();
+            return storeDB.RecordInfo.Where(x => x.CustomerId == customerId).OrderByDescending(x => x.CreateDate).Take(20).ToList();
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Data.Repository
         /// <returns></returns>
         public List<RecordInfo> GetAllByCustomerId(Guid customerId)
         {
-            return storeDB.RecordInfo.Where(x => x.CustomerId == customerId).OrderByDescending(x => x.CreateDate).ToList();
+            return storeDB.RecordInfo.Where(x => x.CustomerId == customerId).OrderBy(x => x.CreateDate).ToList();
         }
 
         /// <summary>
