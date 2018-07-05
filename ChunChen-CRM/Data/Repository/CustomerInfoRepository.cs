@@ -57,7 +57,7 @@ namespace Data.Repository
             {
                 query = query.Where(x => x.WaiterName.Contains(search.EmployeeName));
             }
-            query = query.OrderBy(x => x.LastUpdatedOn);
+            query = query.OrderByDescending(x => x.LastUpdatedOn);
             var pageResult = new PagedList<CustomerInfo>(query, search.PageIndex, search.PageSize);
             var pageList = pageResult.Data.Select(x => x.InfoToModel());
             return new PagedList<CustomerDetailModel>(pageList, pageResult.PageIndex, pageResult.PageSize, pageResult.TotalCount);

@@ -1,8 +1,268 @@
-﻿
+﻿@using ChunChen_CRM.Model
+@model CustomerDetailModel
 @{
     ViewBag.Title = "客户信息";
     Layout = "~/Views/Shared/_NoLayout.cshtml";
 }
 
-<h2>Detail</h2>
+@Styles.Render("~/Css/_SingersSearch.css")
+@Styles.Render("~/Css/CustomerDetail.css")
 
+<div class="jumbotron" style="margin-bottom: 0px;">
+    <div style="float:right">
+        @*<button onclick="refresh" style="height: 30px;width: 30px;font-size: 12px;"></button>*@
+        @*<img src="~/Images/refresh.jpg" style="height:30px;width:30px;" onclick="refresh()"/>*@
+        <input type="image" src="~/Images/refresh.jpg" style="height: 30px;width: 30px;" onclick="refresh()" />
+    </div>
+    <table style="width: 100%">
+        <tr>
+            <td style="font-weight: bold; color: #000000; text-align: center;" class="auto-style1">客户信息</td>
+        </tr>
+        <tr>
+            <td style="width: 100%">
+                <table style="width: 940px; height: 138px;">
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">编 号：</td>
+                        <td style="width: 300px; height: 26px;">@Model.CustomerNo</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">姓 名：</td>
+                        <td style="width: 300px; height: 26px;">@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">性 别：</td>
+                        <td style="width: 300px; height: 26px;">@Model.GenderString</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">录入时间：</td>
+                        <td style="width: 300px; height: 26px;">@Model.CreateDate.ToString("D")</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">电 话：</td>
+                        <td style="width: 300px; height: 26px;" colspan="2">
+                            <input type="text" name="mobile" id="mobile" value="@Model.Mobile" placeholder="手机号" style="height: 35px;" />
+                        </td>
+
+                        <td style="width: 200px; height: 26px;">
+                            <input type="button" value="保 存" class="green-int" onclick="updateMobile()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">联系地址:</td>
+                        <td style="width: 500px; height: 26px;" colspan="2">
+                            <input type="text" name="address" id="address" value="" placeholder="地址信息" style="height: 35px; width:400px; max-width: 500px;" />
+                        </td>
+
+                        <td style="width: 200px; height: 26px;">
+                            <input type="button" value="保 存" class="green-int" onclick="updateAddress()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">服务人员:</td>
+                        <td style="width: 300px; height: 26px;" colspan="2">
+                            <select id="waiter" style="height: 35px;">
+                                @if (@Model.WaiterId.HasValue)
+                                {
+                                    <option value="@Model.WaiterId">@Model.WaiterName</option>
+                                    foreach (var item in ViewBag.Selectlist)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                    <option value="">--</option>
+                                }
+                                else
+                                {
+                                    <option value="">--</option>
+                                    foreach (var item in ViewBag.Selectlist)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+
+                        <td style="width: 200px; height: 26px;">
+                            <input type="button" value="保 存" class="green-int" onclick="updateWaiter()" />
+                        </td>
+                    </tr>
+                    <!--报表信息-->
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">成交总金额：</td>
+                        <td style="width: 300px; height: 26px; color:red">@Model.SpendReport.Spend</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">成交单数：</td>
+                        <td style="width: 300px; height: 26px; color:red">@Model.SpendReport.TotalOrder</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">毁单单数：</td>
+                        <td style="width: 300px; height: 26px; color:blue">@Model.SpendReport.RegretOrder</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">本年成交额：</td>
+                        <td style="width: 300px; height: 26px; color:red">@Model.SpendReport.YearSpend</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">上年成交额：</td>
+                        <td style="width: 300px; height: 26px;">@Model.SpendReport.YearSpendOld</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px; text-align: center;">本月成交额：</td>
+                        <td style="width: 300px; height: 26px; color:red">@Model.SpendReport.MonthSpend</td>
+
+                        <td style="width: 200px; height: 26px; text-align: center;">上月成交额：</td>
+                        <td style="width: 300px; height: 26px;">@Model.SpendReport.MonthSpendOld</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; color: #000000; text-align: center;" class="auto-style1">客户记录</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px;" colspan="3">
+                            <textarea id="message" rows="3" cols="80" style="resize:none;max-width: 800px;font-size:14px;"></textarea>
+                        </td>
+                        <td style="width: 200px; height: 26px;">
+                            <input type="button" value="添加记录" class="green-int" onclick="saveRecord()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px; height: 26px;" colspan="4">
+                            <ul class="time-axis">
+                                @foreach (var record in Model.Records)
+                                {
+                                    <li class="time-axis-item">
+                                        <div class="time-axis-date" style="width:124.64px">@record.CreateDate.ToString("G")<span></span></div>
+                                        <div class="time-axis-title">@record.EmployeeName : @record.Message</div>
+                                        <p class="time-axis-achievement"></p>
+                                    </li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    @*<div>
+            <ul class="time-axis">
+                @foreach (var record in Model.Records)
+                {
+                    <li class="time-axis-item">
+                        <div class="time-axis-date">@record.CreateDate.ToString("D")<span></span></div>
+                        <div class="time-axis-title">@record.EmployeeName : @record.Message</div>
+                        <p class="time-axis-achievement"></p>
+                    </li>
+                }
+            </ul>
+        </div>*@
+</div>
+
+@*刷新当前页面*@
+<script>
+    function refresh() {
+        //main.window.location.reload()
+        location.reload();
+    }
+</script>
+@*更新客户手机号*@
+<script>
+    function updateMobile() {
+        var mobile = $("#mobile").val();
+        var customerId = "@Model.Id";
+        if (mobile == "" || mobile == null) {
+            alert("请输入手机号");
+            return false;
+        }
+        $.ajax({
+            url: "/Customer/UpdateMobile",//需要提交到的地址
+            type: "POST", //提交的类型 POST/GET
+            data: { customerId: customerId, Mobile: mobile },  //提交的参数
+            success: function (data) {
+                //提交成功之后的回调参数
+                if (data.Success) {
+                    //alert(data.Messages);
+                    alert("更新成功！");
+                    location.reload();
+                }
+                else {
+                    alert("更新失败：" + data.Messages);
+                    location.reload();
+                }
+            }
+        })
+    }
+</script>
+@*更新客户联系地址*@
+<script>
+    function updateAddress() {
+        var address = $("#address").val();
+        var customerId = "@Model.Id";
+        if (address == "" || address == null) {
+            alert("请输入地址信息");
+            return false;
+        }
+        $.ajax({
+            url: "/Customer/UpdateMobile",//需要提交到的地址
+            type: "POST", //提交的类型 POST/GET
+            data: { customerId: customerId, address: address },  //提交的参数
+            success: function (data) {
+                //提交成功之后的回调参数
+                if (data.Success) {
+                    //alert(data.Messages);
+                    alert("更新成功！");
+                    location.reload();
+                }
+                else {
+                    alert("更新失败：" + data.Messages);
+                    location.reload();
+                }
+            }
+        })
+    }
+</script>
+@*更新客户服务人员*@
+<script>
+    function updateWaiter() {
+        var waiterId = $("#waiterId").val();
+        var customerId = "@Model.Id";
+        $.ajax({
+            url: "/Customer/UpdateMobile",//需要提交到的地址
+            type: "POST", //提交的类型 POST/GET
+            data: { customerId: customerId, waiterId: waiterId },  //提交的参数
+            success: function (data) {
+                //提交成功之后的回调参数
+                if (data.Success) {
+                    //alert(data.Messages);
+                    alert("更新成功！");
+                    location.reload();
+                }
+                else {
+                    alert("更新失败：" + data.Messages);
+                    location.reload();
+                }
+            }
+        })
+    }
+</script>
+@*添加客户记录信息*@
+<script>
+    function saveRecord() {
+        var message = $("#message").val();
+        var customerId = "@Model.Id";
+        if (message == "" || message == null) {
+            alert("记录信息不可为空");
+            return false;
+        }
+        $.ajax({
+            url: "/Customer/SaveRecord",//需要提交到的地址
+            type: "POST", //提交的类型 POST/GET
+            data: { customerId: customerId, message: message },  //提交的参数
+            success: function (data) {
+                //提交成功之后的回调参数
+                if (data.Success) {
+                    //alert(data.Messages);
+                    alert("添加成功！");
+                    location.reload();
+                }
+                else {
+                    alert("添加失败：" + data.Messages);
+                }
+            }
+        })
+    }
+</script>

@@ -3,6 +3,9 @@ using System;
 
 namespace ChunChen_CRM.IServices
 {
+    /// <summary>
+    /// 客户相关业务接口
+    /// </summary>
     public interface ICustomerService
     {
         /// <summary>

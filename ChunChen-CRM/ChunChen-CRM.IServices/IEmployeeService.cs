@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace ChunChen_CRM.IServices
 {
+    /// <summary>
+    /// 员工相关业务接口
+    /// </summary>
     public interface IEmployeeService
     {
         /// <summary>

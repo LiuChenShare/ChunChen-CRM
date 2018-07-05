@@ -30,7 +30,7 @@
                 @*<a href="#" class="yellow-xt">状态</a>*@
                 @if (EmployeeId == item.WaiterId || Authority == 0)
                 {
-                    <a href="#" class="blue-xt">查看</a>
+                    <a href="/Customer/Detail?id=@item.Id" class="blue-xt">查看</a>
                 }
                 @if (Authority == 0)
                 {

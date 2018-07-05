@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChunChen_CRM.IServices
 {
+    /// <summary>
+    /// 账户相关业务接口
+    /// </summary>
     public interface IAccountService
     {
         /// <summary>
