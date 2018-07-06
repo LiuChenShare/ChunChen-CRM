@@ -112,5 +112,20 @@ namespace ChunChen_CRM.Services
         {
             return _employeeInfoRepository.GetAll().Select(x => x.ToSelectItem()).ToList();
         }
+
+        /// <summary>
+        /// 查询员工列表
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public IPagedList<EmployeeDetailModel> Query(EmployeeSearch search)
+        {
+            var _session = HttpContext.Current.Session;
+            if (int.Parse(_session["Authority"].ToString()) > 0)
+            {
+                throw new Exception("无人事管理权限！");
+            }
+            return _employeeInfoRepository.Query(search); ;
+        }
     }
 }

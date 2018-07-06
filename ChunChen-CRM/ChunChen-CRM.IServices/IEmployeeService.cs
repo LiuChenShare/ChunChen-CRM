@@ -28,5 +28,12 @@ namespace ChunChen_CRM.IServices
         /// </summary>
         /// <returns></returns>
         List<EmployeeSelectItem> GetSelectlist();
+
+        /// <summary>
+        /// 查询员工列表
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        IPagedList<EmployeeDetailModel> Query(EmployeeSearch search);
     }
 }

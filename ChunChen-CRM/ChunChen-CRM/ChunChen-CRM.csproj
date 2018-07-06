@@ -159,6 +159,7 @@
     <Compile Include="Controllers\Authentication\AuthenticationAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\HRController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -220,6 +221,8 @@
     <Content Include="Views\Customer\Index - 复制.cshtml" />
     <Content Include="Views\Customer\Detail.cshtml" />
     <Content Include="Views\Customer\AddDetail.cshtml" />
+    <Content Include="Views\HR\Index.cshtml" />
+    <Content Include="Views\HR\_SingersSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

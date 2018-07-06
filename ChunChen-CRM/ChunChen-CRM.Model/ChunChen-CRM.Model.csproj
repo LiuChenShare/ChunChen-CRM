@@ -70,6 +70,7 @@
     <Compile Include="Model\CustomerDetailModel.cs" />
     <Compile Include="Model\EmployeeDetailModel.cs" />
     <Compile Include="PagedList.cs" />
+    <Compile Include="Search\EmployeeSearch.cs" />
     <Compile Include="Search\CustomerSearch.cs" />
     <Compile Include="Model\UserLoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,5 @@
-﻿@model ChunChen_CRM.Model.EmployeeDetailModel
-@{
-    ViewBag.Title = "Home Page";
+﻿@{
+    ViewBag.Title = "员工列表";
     Layout = "~/Views/Shared/_NoLayout.cshtml";
 }
 
@@ -13,13 +12,13 @@
             <option value="1">男</option>
             <option value="0">女</option>
         </select>
-        <span>编号</span><input id="customerNo" type="text" class="int-text" />
+        <span>编号</span><input id="employeeNo" type="text" class="int-text" />
         <span>姓名</span><input id="name" type="text" class="int-text" />
         <span>手机号</span><input id="mobile" type="text" class="int-text" /><br /><br />
         <input type="button" value="搜 索" class="green-int" onclick="searchCustomer(1,1)" />
         @*<img id="ajax-loader"
-        src="@Url.Content("~/Images/ajax-loader2.gif")"
-        style="display:none;" />*@
+            src="@Url.Content("~/Images/ajax-loader2.gif")"
+            style="display:none;" />*@
 
         <div id="searchresults" style="height:673px">
             <div class="xt-table">
@@ -27,21 +26,22 @@
                     <tr>
                         <th style="text-align:center; width:80px">编号</th>
                         <th style="text-align:center; width:100px">姓名</th>
-                        <th style="text-align:center; width:80px">性别</th>
+                        <th style="text-align:center; width:60px">性别</th>
                         <th style="text-align:center; width:100px">手机号</th>
-                        <th style="text-align:center; width:100px">服务人员</th>
+                        <th style="text-align:center; width:80px">权限等级</th>
+                        <th style="text-align:center; width:80px">状态</th>
                         <th style="text-align:center; width:160px">最后更新时间</th>
                         <th style="text-align:center;">操作</th>
                     </tr>
                     @*<tr class="xt-bg">
-                        <td><a href="#">10001</a></td>
-                        <td>宇文成都</td>
-                        <td>男</td>
-                        <td>15665699774</td>
-                        <td>天蓬元帅</td>
-                        <td>2018年6月14日 18:02</td>
-                        <td><a href="#" class="yellow-xt">状态</a><a href="#" class="blue-xt">状态</a><a href="#" class="red-xt">状态</a></td>
-                    </tr>*@
+                            <td><a href="#">10001</a></td>
+                            <td>宇文成都</td>
+                            <td>男</td>
+                            <td>15665699774</td>
+                            <td>天蓬元帅</td>
+                            <td>2018年6月14日 18:02</td>
+                            <td><a href="#" class="yellow-xt">状态</a><a href="#" class="blue-xt">状态</a><a href="#" class="red-xt">状态</a></td>
+                        </tr>*@
                 </table>
             </div>
             <div class="xt-fenye">
@@ -71,7 +71,7 @@
 <script>
     function searchCustomer(pageIndex, totalPages) {
         var gender = $("#gender").val();
-        var customerNo = $("#customerNo").val();
+        var employeeNo = $("#employeeNo").val();
         var name = $("#name").val();
         var mobile = $("#mobile").val();
         if (pageIndex == null) {
@@ -83,24 +83,16 @@
         if (pageIndex < 1) {
             pageIndex = 1;
         }
-        //var password = $("#password").val();
-        //if (account == "" || account == null) {
-        //    alert("请输入账号");
-        //    return false;
-        //}
-        //if (password == null || password == "") {
-        //    alert("请输入密码");
-        //    return false;
-        //}
         $.ajax({
-            url: "/Customer/Query",//需要提交到的地址
+            url: "/HR/Query",//需要提交到的地址
             type: "POST", //提交的类型 POST/GET
             data: {
                 Gender: gender,
-                CustomerNo: customerNo,
-                CustomerName: name,
-                CustomerMobile: mobile,
+                EmployeeNo: employeeNo,
+                EmployeeName: name,
+                EmployeeMobile: mobile,
                 PageIndex: pageIndex,
+                Quit: false,
             },  //提交的参数
             success: function (data) {
                 //重置div
