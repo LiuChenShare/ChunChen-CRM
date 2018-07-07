@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "员工列表";
+    ViewBag.Title = "离职员工列表";
     Layout = "~/Views/Shared/_NoLayout.cshtml";
 }
 
@@ -83,7 +83,7 @@
                 EmployeeName: name,
                 EmployeeMobile: mobile,
                 PageIndex: pageIndex,
-                Quit: false,
+                Quit: true,
             },  //提交的参数
             success: function (data) {
                 //重置div

@@ -223,6 +223,7 @@
     <Content Include="Views\Customer\AddDetail.cshtml" />
     <Content Include="Views\HR\Index.cshtml" />
     <Content Include="Views\HR\_SingersSearch.cshtml" />
+    <Content Include="Views\HR\QuitIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
