@@ -22,7 +22,7 @@ namespace Data.Repository
         }
 
         /// <summary>
-        /// 根据EmployeeId获取账号信息
+        /// 查询客户列表
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
