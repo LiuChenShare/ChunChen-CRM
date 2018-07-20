@@ -31,7 +31,7 @@ namespace Data.Repository
         /// <param name="id">检测重复的用户</param>
         /// <returns></returns>
         public bool CheckMobile(string mobile, Guid id)
-        {
+        { 
             return storeDB.EmployeeInfo.Where(x => x.Mobile == mobile && x.Id != id && !x.Deleted).Count() == 0;
         }
 
