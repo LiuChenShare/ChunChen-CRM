@@ -104,7 +104,7 @@ namespace Data.Repository
         public void Update(EmployeeInfo info)
         {
             //storeDB.EmployeeInfo.Create(info);
-            info.LastUpdatedOn = DateTime.Now;
+            info.LastUpdatedOn = DateTime.Now; 
             storeDB.EmployeeInfo.Attach(info);
             storeDB.Entry(info).State = System.Data.Entity.EntityState.Modified;
             storeDB.SaveChanges();
