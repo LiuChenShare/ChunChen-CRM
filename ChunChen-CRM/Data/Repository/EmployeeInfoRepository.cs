@@ -41,7 +41,7 @@ namespace Data.Repository
         /// <param name="id"></param>
         /// <returns></returns>
         public List<EmployeeInfo> GetAll()
-        {
+        { 
             return storeDB.EmployeeInfo.Where(x => !x.Deleted && !x.Quit).ToList();
         }
 
