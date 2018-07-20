@@ -26,6 +26,15 @@ namespace ChunChen_CRM.Controllers
         }
 
         /// <summary>
+        /// 离职员工列表页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult QuitIndex()
+        {
+            return View();
+        }
+
+        /// <summary>
         /// 查询员工列表
         /// </summary>
         /// <param name="search"></param>
@@ -45,16 +54,16 @@ namespace ChunChen_CRM.Controllers
             }
         }
 
-        /// <summary>
-        /// 个人资料页面
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Index2()
-        {
-            var model = _employeeService.GetEmployeeBySession();
-            ViewBag.Authority = model.Authority;
-            return View(model);
-        }
+        ///// <summary>
+        ///// 个人资料页面
+        ///// </summary>
+        ///// <returns></returns>
+        //public ActionResult Index2()
+        //{
+        //    var model = _employeeService.GetEmployeeBySession();
+        //    ViewBag.Authority = model.Authority;
+        //    return View(model);
+        //}
 
         /// <summary>
         /// 更新员工信息
@@ -70,5 +79,15 @@ namespace ChunChen_CRM.Controllers
             }
             return Json(new { Success = false, Messages = "更新失败，请刷新后重新操作" });
         }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult XXX()
+        {
+            var a = Request.QueryString["xxx"];
+            return View();
+        }
+
     }
 }
