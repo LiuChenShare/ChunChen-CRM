@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-ChunChen-CRM", "WPF-ChunChen-CRM\WPF-ChunChen-CRM.csproj", "{91B24792-2911-4292-9924-35C900DEF2FE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Base", "1-Base", "{86558E99-EEEA-4569-A2EA-EC57DAF3B8C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{7E4F5F08-94F4-4BF9-825F-33044E69E17F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Services", "2-Services", "{47AEAA81-355B-4AAC-9EC1-ABDC7FD3DE5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Model", "3-Model", "{9FD2C5B4-5AB4-4DAD-B9BE-D2453DEE52AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +23,16 @@ Global
 		{91B24792-2911-4292-9924-35C900DEF2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91B24792-2911-4292-9924-35C900DEF2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91B24792-2911-4292-9924-35C900DEF2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E4F5F08-94F4-4BF9-825F-33044E69E17F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E4F5F08-94F4-4BF9-825F-33044E69E17F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E4F5F08-94F4-4BF9-825F-33044E69E17F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E4F5F08-94F4-4BF9-825F-33044E69E17F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7E4F5F08-94F4-4BF9-825F-33044E69E17F} = {86558E99-EEEA-4569-A2EA-EC57DAF3B8C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D6541AD3-FC27-4415-B3BD-852875C7FAA4}
