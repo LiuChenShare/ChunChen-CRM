@@ -61,6 +61,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Entity\AccountInfo.cs" />
     <Compile Include="Entity\CustomerInfo.cs" />
+    <Compile Include="Entity\EmployeeInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
