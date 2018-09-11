@@ -1,12 +1,16 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Spatial;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Data
+namespace Data.Entity
 {
-
+    /// <summary>
+    /// 账户信息表
+    /// </summary>
     [Table("Account")]
     public partial class AccountInfo
     {
