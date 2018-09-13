@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SQLiteBaseForEF.cs" />
     <Compile Include="SQLiteConfig.cs" />
     <Compile Include="Entity\AccountInfo.cs" />
     <Compile Include="Entity\CustomerInfo.cs" />
