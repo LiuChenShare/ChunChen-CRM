@@ -11,9 +11,9 @@ namespace Data
     /// <summary>
     /// 连接SQLite数据库
     /// </summary>
-    public partial class SQLiteConfig : DbContext
+    public partial class SQLiteConnectConfig : DbContext
     {
-        public SQLiteConfig()
+        public SQLiteConnectConfig()
             : base("SQLiteConfig")
         {
         }

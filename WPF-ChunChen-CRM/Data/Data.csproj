@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SQLiteBaseForEF.cs" />
-    <Compile Include="SQLiteConfig.cs" />
+    <Compile Include="SQLiteConnectConfig.cs" />
     <Compile Include="Entity\AccountInfo.cs" />
     <Compile Include="Entity\CustomerInfo.cs" />
     <Compile Include="Entity\EmployeeInfo.cs" />

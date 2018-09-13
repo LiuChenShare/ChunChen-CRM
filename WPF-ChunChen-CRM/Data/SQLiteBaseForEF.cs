@@ -52,7 +52,7 @@ namespace Data
         {
             try
             {
-                using (SQLiteConfig context = new SQLiteConfig())
+                using (SQLiteConnectConfig context = new SQLiteConnectConfig())
                 {
                     Directory.CreateDirectory(path);
                     //SQLiteConnection.CreateFile(path + dbName);
