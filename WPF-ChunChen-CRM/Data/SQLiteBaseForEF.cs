@@ -57,6 +57,17 @@ namespace Data
                     Directory.CreateDirectory(path);
                     //SQLiteConnection.CreateFile(path + dbName);
 
+                    //创建账户信息表
+                    context.Database.ExecuteSqlCommand(@"CREATE TABLE [Account] (
+                    [Id] BLOB  UNIQUE NOT NULL PRIMARY KEY,
+                    [Account] TEXT  NOT NULL,
+                    [Password] TEXT  NOT NULL,
+                    [EmployeeId] BLOB  NULL,
+                    [Deleted] BOOLEAN DEFAULT '0' NOT NULL
+                    )");
+
+
+
                     //创建银行账户表
                     context.Database.ExecuteSqlCommand(@"CREATE TABLE [Vault] (
                     [Id] BLOB  NOT NULL PRIMARY KEY,
