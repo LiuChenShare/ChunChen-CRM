@@ -22,11 +22,12 @@ namespace Data
         public virtual DbSet<EmployeeInfo> EmployeeInfo { get; set; }
         public virtual DbSet<OrderInfo> OrderInfo { get; set; }
         public virtual DbSet<AccountInfo> AccountInfo { get; set; }
-
         public virtual DbSet<RecordInfo> RecordInfo { get; set; }
+        public virtual DbSet<AutoincrementInfo> AutoincrementInfo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            var a = AutoincrementInfo.GetType().Name;
         }
     }
 }
