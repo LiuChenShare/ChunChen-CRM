@@ -66,6 +66,12 @@ namespace Data
                     [Deleted] BOOLEAN DEFAULT '0' NOT NULL
                     )");
 
+                    //创建自增字段记录表
+                    context.Database.ExecuteSqlCommand(@"CREATE TABLE [Autoincrement] (
+                    [Key] TEXT  NOT NULL,
+                    [Value] TEXT  NOT NULL,
+                    )");
+
 
 
                     //创建银行账户表
