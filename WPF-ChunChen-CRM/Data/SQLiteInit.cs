@@ -20,7 +20,7 @@ namespace Data
             //string connectionString = AppDomain.CurrentDomain.BaseDirectory;
             AppDomain.CurrentDomain.SetData("DataDirectory", connectionString);
 
-            SQLiteBaseForEF.ExistsDBFile(connectionString, "ChenChenBase.s3db");
+            SQLiteBaseForEF.ExistsDBFile(connectionString, "ChenChenBase.db");
 
             //初始一个admin账户
             using (SQLiteConnectConfig context = new SQLiteConnectConfig())
