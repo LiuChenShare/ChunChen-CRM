@@ -69,7 +69,24 @@ namespace Data
                     //创建自增字段记录表
                     context.Database.ExecuteSqlCommand(@"CREATE TABLE [Autoincrement] (
                     [Key] TEXT  NOT NULL,
-                    [Value] TEXT  NOT NULL,
+                    [Value] TEXT  NOT NULL
+                    )");
+
+                    //创建客户信息表
+                    context.Database.ExecuteSqlCommand(@"CREATE TABLE [Customer] (
+                    [Id] BLOB  NOT NULL,
+                    [CustomerNo] INTEGER  NOT NULL,
+                    [Name] TEXT  NOT NULL,
+                    [Gender] INTEGER  NULL,
+                    [Mobile] TEXT  NOT NULL,
+                    [Address] TEXT  NULL,
+                    [Birthday] BLOB  NULL,
+                    [WaiterId] BLOB  NULL,
+                    [WaiterName] TEXT  NULL,
+                    [Spend] FLOAT  NULL,
+                    [CreateDate] BLOB  NULL,
+                    [LastUpdatedOn] BLOB  NULL,
+                    [Deleted] BLOB  NULL
                     )");
 
 
