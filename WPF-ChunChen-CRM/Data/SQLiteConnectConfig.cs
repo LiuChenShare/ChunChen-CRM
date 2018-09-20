@@ -27,7 +27,7 @@ namespace Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            var a = AutoincrementInfo.GetType().Name;
+            //var a = AutoincrementInfo.GetType().Name;
         }
     }
 }
