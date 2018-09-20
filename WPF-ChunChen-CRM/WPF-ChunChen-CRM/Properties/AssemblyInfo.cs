@@ -7,11 +7,11 @@ using System.Windows;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("WPF-ChunChen-CRM")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("春晨客户关系管理系统")]
+[assembly: AssemblyDescription("春晨客户关系管理系统")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WPF-ChunChen-CRM")]
+[assembly: AssemblyCompany("CHY")]
+[assembly: AssemblyProduct("春晨客户关系管理系统")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
