@@ -15,8 +15,7 @@ namespace Data.Entity
     public partial class EmployeeInfo
     {
         public Guid Id { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         public int EmployeeNo { get; set; }
 
         [Required]
