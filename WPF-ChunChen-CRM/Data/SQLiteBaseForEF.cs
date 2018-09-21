@@ -89,6 +89,26 @@ namespace Data
                     [Deleted] BLOB  NULL
                     )");
 
+                    //创建员工信息表
+                    context.Database.ExecuteSqlCommand(@"CREATE TABLE [Employee] (
+                    [Id] BLOB  UNIQUE NOT NULL,
+                    [EmployeeNo] INTEGER  NOT NULL,
+                    [Name] TEXT  NOT NULL,
+                    [Mobile] TEXT  NOT NULL,
+                    [Gender] INTEGER  NOT NULL,
+                    [Birthday] BLOB  NULL,
+                    [Authority] INTEGER  NULL,
+                    [Spend] FLOAT  NULL,
+                    [JoinDate] BLOB  NOT NULL,
+                    [Quit] BLOB  NULL,
+                    [QuitDate] BLOB  NULL,
+                    [CreateDate] BLOB  NOT NULL,
+                    [LastUpdatedOn] BLOB  NOT NULL,
+                    [Deleted] BLOB  NULL
+                    )");
+
+
+
 
 
                     //创建银行账户表
