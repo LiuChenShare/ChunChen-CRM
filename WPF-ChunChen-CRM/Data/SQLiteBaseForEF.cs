@@ -107,6 +107,23 @@ namespace Data
                     [Deleted] BLOB  NULL
                     )");
 
+                    //创建订单表
+                    context.Database.ExecuteSqlCommand(@"CREATE TABLE [Order] (
+                    [Id] BLOB  UNIQUE NOT NULL PRIMARY KEY,
+                    [OrderNo] INTEGER  NOT NULL,
+                    [Title] TEXT  NOT NULL,
+                    [Details] TEXT  NULL,
+                    [Price] FLOAT  NULL,
+                    [CustomerId] BLOB  NULL,
+                    [CustomerName] TEXT  NULL,
+                    [EmployeeId] BLOB  NULL,
+                    [EmployeeName] TEXT  NULL,
+                    [Status] INTEGER  NULL,
+                    [DealDate] BLOB  NULL,
+                    [CreateDate] BLOB  NULL,
+                    [LastUpdatedOn] BLOB  NULL,
+                    [Deleted] BOOLEAN  NULL
+                    )");
 
 
 
