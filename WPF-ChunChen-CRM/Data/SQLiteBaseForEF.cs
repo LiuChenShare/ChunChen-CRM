@@ -125,25 +125,16 @@ namespace Data
                     [Deleted] BOOLEAN  NULL
                     )");
 
-
-
-
-                    //创建银行账户表
-                    context.Database.ExecuteSqlCommand(@"CREATE TABLE [Vault] (
-                    [Id] BLOB  NOT NULL PRIMARY KEY,
-                    [Account] TEXT  NOT NULL,
-                    [Password] TEXT  NOT NULL,
-                    [Name] TEXT  NOT NULL,
-                    [Balance] FLOAT DEFAULT '0' NOT NULL )");
-
-                    //创建存取款记录表
+                    //创建信息记录表
                     context.Database.ExecuteSqlCommand(@"CREATE TABLE [Record] (
-                    [Id] BLOB  PRIMARY KEY NOT NULL,
-                    [AccountId] BLOB  NOT NULL,
-                    [Amount] FLOAT  NOT NULL,
-                    [Balance] FLOAT  NOT NULL,
-                    [Remark] TEXT  NULL,
-                    [CreateTime] DATE  NOT NULL )");
+                    [Id] BLOB  NULL PRIMARY KEY,
+                    [CustomerId] BLOB  NULL,
+                    [EmployeeId] BLOB  NULL,
+                    [EmployeeName] TEXT  NULL,
+                    [Message] TEXT  NULL,
+                    [CreateDate] BLOB  NULL
+                    )");
+                    
                     return true;
                 }
             }
