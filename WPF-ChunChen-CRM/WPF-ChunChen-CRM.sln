@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-IServices", "2-IServices"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChunChen-CRM.IServices", "ChunChen-CRM.IServices\ChunChen-CRM.IServices.csproj", "{7B27C0F8-495E-445C-9573-9AAA17312245}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChunChen-CRM.Services", "ChunChen-CRM.Services\ChunChen-CRM.Services.csproj", "{1E5E713B-8C70-44E3-876E-9844A93F66FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{7B27C0F8-495E-445C-9573-9AAA17312245}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B27C0F8-495E-445C-9573-9AAA17312245}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B27C0F8-495E-445C-9573-9AAA17312245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5E713B-8C70-44E3-876E-9844A93F66FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5E713B-8C70-44E3-876E-9844A93F66FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5E713B-8C70-44E3-876E-9844A93F66FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5E713B-8C70-44E3-876E-9844A93F66FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +48,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B285120B-EE0B-439F-B3D1-E7A5CBDF91B4} = {02222547-559A-4B9A-AB63-8F1C4AF530AC}
 		{7B27C0F8-495E-445C-9573-9AAA17312245} = {567B0F6B-CC2C-4717-832C-C9C7BC8FAA8F}
+		{1E5E713B-8C70-44E3-876E-9844A93F66FF} = {77E7CD7E-40E4-4494-AF22-9D8309902C1F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D6541AD3-FC27-4415-B3BD-852875C7FAA4}
