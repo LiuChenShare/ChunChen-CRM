@@ -17,7 +17,7 @@ namespace Data
         /// <summary>
         /// 初始化ChunChenBase库，类型为SQLite数据库
         /// </summary>
-        public void InitBase()
+        public static void InitBase()
         {
             string connectionString = AppDomain.CurrentDomain.BaseDirectory + @"Data\";
             //string connectionString = AppDomain.CurrentDomain.BaseDirectory;
