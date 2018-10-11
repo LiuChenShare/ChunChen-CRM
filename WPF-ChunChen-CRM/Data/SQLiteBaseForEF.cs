@@ -13,7 +13,7 @@ namespace Data
     public static class SQLiteBaseForEF
     {
         private static string path = System.Environment.CurrentDirectory + @"\Data\";
-        private static string dbName = "ChenChenBase.db";
+        private static string dbName = "ChunChenBase.db";
 
         /// <summary>
         /// 查找并创建SQLite数据文件

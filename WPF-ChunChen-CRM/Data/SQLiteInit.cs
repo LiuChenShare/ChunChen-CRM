@@ -11,8 +11,11 @@ namespace Data
     /// </summary>
     public class SQLiteInit
     {
+        public static Guid adminAccountId = Guid.Parse("de39121f-c917-434c-a224-49e6d48cbdb7");
+        public static Guid adminEmployeeId = Guid.Parse("fe49c59a-654c-4c19-b68d-f06b7b5d3649");
+
         /// <summary>
-        /// 初始化ChenChenBase库，类型为SQLite数据库
+        /// 初始化ChunChenBase库，类型为SQLite数据库
         /// </summary>
         public void InitBase()
         {
@@ -20,26 +23,49 @@ namespace Data
             //string connectionString = AppDomain.CurrentDomain.BaseDirectory;
             AppDomain.CurrentDomain.SetData("DataDirectory", connectionString);
 
-            SQLiteBaseForEF.ExistsDBFile(connectionString, "ChenChenBase.db");
+            SQLiteBaseForEF.ExistsDBFile(connectionString, "ChunChenBase.db");
 
             //初始一个admin账户
             using (SQLiteConnectConfig context = new SQLiteConnectConfig())
             {
-                //var info = context.VaultInfo.Where(x => x.Account == "admin").FirstOrDefault();
+                var employeeInfo = context.EmployeeInfo.Where(x => x.Id == adminEmployeeId).FirstOrDefault();
+                if (employeeInfo == null)
+                {
+                    employeeInfo = new Entity.EmployeeInfo
+                    {
+                        Id = adminEmployeeId,
+                        EmployeeNo = 0,
+                        Name = "Admin",
+                        Mobile = "15665699774",
+                        Gender = 1,
+                        Birthday = new DateTime(1996, 7, 1),
+                        Authority = 0,
+                        Spend = 0,
+                        JoinDate = new DateTime(1996, 7, 1),
+                        Quit = false,
+                        QuitDate = null,
+                        CreateDate = DateTime.Now,
+                        LastUpdatedOn = DateTime.Now,
+                        Deleted = false
+                    };
+                    context.EmployeeInfo.Add(employeeInfo);
+                }
 
-                //if (info == null)
-                //{
-                //    info = new VaultInfo
-                //    {
-                //        Id = Guid.NewGuid(),
-                //        Account = "admin",
-                //        Password = "123",
-                //        Name = "管理员",
-                //        Balance = 10000
-                //    };
-                //    context.VaultInfo.Add(info);
-                //    context.SaveChanges();
-                //}
+                var accountInfo = context.AccountInfo.Where(x => x.Id == adminAccountId).FirstOrDefault();
+                if (accountInfo == null)
+                {
+                    accountInfo = new Entity.AccountInfo
+                    {
+                        Id = adminAccountId,
+                        Account = "admin",
+                        Password = "19960701",
+                        EmployeeId = adminEmployeeId,
+                        Deleted = false
+                    };
+                    context.AccountInfo.Add(accountInfo);
+                }
+
+                context.SaveChanges();
             }
         }
     }
