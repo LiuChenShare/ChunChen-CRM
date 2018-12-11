@@ -1,9 +1,7 @@
 ﻿using Data.Entity;
 using System;
-using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repository
 {
@@ -59,5 +57,25 @@ namespace Data.Repository
             storeDB.Entry(info).State = System.Data.Entity.EntityState.Modified;
             storeDB.SaveChanges();
         }
+
+
+
+        //用于监测Context中的Entity是否存在，如果存在，将其Detach，防止出现问题。
+        private bool RemoveHoldingEntityInContext(AccountInfo entity)
+        {
+            var objContext = ((IObjectContextAdapter)storeDB).ObjectContext;
+            var objSet = objContext.CreateObjectSet<AccountInfo>();
+            var entityKey = objContext.CreateEntityKey(objSet.EntitySet.Name, entity);
+            Object foundEntity;
+            var exists = objContext.TryGetObjectByKey(entityKey, out foundEntity);
+
+            if (exists)
+            {
+                objContext.Detach(foundEntity);
+            }
+
+            return (exists);
+        }
+
     }
 }
