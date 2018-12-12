@@ -14,6 +14,7 @@ namespace Data.Entity
     [Table("Customer")]
     public partial class CustomerInfo
     {
+        [Key]
         public Guid Id { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

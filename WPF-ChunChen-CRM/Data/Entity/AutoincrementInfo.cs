@@ -17,6 +17,7 @@ namespace Data.Entity
         /// <summary>
         /// 表名或字段名
         /// </summary>
+        [Key]
         public string Key { get; set; }             //.GetType().Name
         /// <summary>
         /// 当前的自增基数

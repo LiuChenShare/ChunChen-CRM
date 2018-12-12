@@ -14,6 +14,7 @@ namespace Data.Entity
     [Table("Employee")]
     public partial class EmployeeInfo
     {
+        [Key]
         public Guid Id { get; set; }
         
         public int EmployeeNo { get; set; }

@@ -14,6 +14,7 @@ namespace Data.Entity
     [Table("Account")]
     public partial class AccountInfo
     {
+        [Key]
         public Guid Id { get; set; }
 
         [Column("Account")]

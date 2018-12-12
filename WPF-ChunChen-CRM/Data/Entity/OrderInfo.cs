@@ -14,6 +14,7 @@ namespace Data.Entity
     [Table("Order")]
     public partial class OrderInfo
     {
+        [Key]
         public Guid Id { get; set; }
 
 

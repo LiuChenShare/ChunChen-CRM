@@ -14,6 +14,7 @@ namespace Data.Entity
     [Table("Record")]
     public partial class RecordInfo
     {
+        [Key]
         public Guid Id { get; set; }
 
         /// <summary>
