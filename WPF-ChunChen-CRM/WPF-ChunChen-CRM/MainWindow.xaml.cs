@@ -20,7 +20,6 @@ namespace WPF_ChunChen_CRM
     /// </summary>
     public partial class MainWindow : Window
     {
-        ConnectConfig storeDB = new ConnectConfig();
         public MainWindow()
         {
             InitializeComponent();
@@ -28,7 +27,7 @@ namespace WPF_ChunChen_CRM
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = storeDB.Employee.ToList();
+            //dataGrid.ItemsSource = storeDB.Employee.ToList();
             //listView.ItemsSource = storeDB.Employee.ToList();
         }
     }

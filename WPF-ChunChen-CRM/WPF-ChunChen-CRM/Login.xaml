@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_ChunChen_CRM"
         mc:Ignorable="d"
+        ResizeMode ="CanMinimize"
         Title="Login" Height="450" Width="800">
     <Grid>
-        
+        <TextBox Name="UserName" Height="38" Margin="268,176,268,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled" Padding="10,0,0,0" >
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic" Text="请输入用户名"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Button Content="登    录" Margin="359,318,359,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <PasswordBox Height="38" Margin="268,246,268,0"  VerticalAlignment="Top" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" Padding="10,0,0,0">
+            
+        </PasswordBox>
+
     </Grid>
 </Window>
