@@ -22,6 +22,11 @@ namespace WPF_ChunChen_CRM
         public Login()
         {
             InitializeComponent();
+            
+            ImageBrush b = new ImageBrush();
+            b.ImageSource = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory()+ @"\Image\login_back.jfif"));
+            b.Stretch = Stretch.Fill;
+            this.Background = b;
         }
     }
 }
