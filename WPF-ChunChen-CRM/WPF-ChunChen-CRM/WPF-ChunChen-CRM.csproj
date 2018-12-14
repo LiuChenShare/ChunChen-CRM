@@ -89,6 +89,7 @@
     <Compile Include="EmployeeModel.cs" />
     <Compile Include="Entity\CustomerInfo.cs" />
     <Compile Include="Entity\EmployeeInfo.cs" />
+    <Compile Include="Image\ImageBrushManager.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
