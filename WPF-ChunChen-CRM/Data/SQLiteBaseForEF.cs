@@ -87,7 +87,7 @@ namespace Data
                     [Spend] FLOAT  NULL,
                     [CreateDate] BLOB  NULL,
                     [LastUpdatedOn] BLOB  NULL,
-                    [Deleted] BLOB  NULL
+                    [Deleted] Bool  NULL
                     )");
 
                     //创建员工信息表
@@ -101,11 +101,11 @@ namespace Data
                     [Authority] INTEGER  NULL,
                     [Spend] FLOAT  NULL,
                     [JoinDate] DATETIME  NOT NULL,
-                    [Quit] BLOB  NULL,
+                    [Quit] Bool  NULL,
                     [QuitDate] DATETIME  NULL,
                     [CreateDate] DATETIME  NOT NULL,
                     [LastUpdatedOn] DATETIME  NOT NULL,
-                    [Deleted] BLOB  NULL
+                    [Deleted] Bool  NULL
                     )");
 
                     //创建订单表
