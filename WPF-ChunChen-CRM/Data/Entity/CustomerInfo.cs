@@ -32,7 +32,7 @@ namespace Data.Entity
 
         public string Address { get; set; }
 
-        [Column(TypeName = "date")]
+        //[Column(TypeName = "date")]
         public DateTime? Birthday { get; set; }
 
         /// <summary>

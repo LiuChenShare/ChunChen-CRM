@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace Data
                 {
                     dbName = dbNameString;
                 }
-                if (!Directory.Exists(path + dbName))
+                if (!System.IO.File.Exists(path + dbName))
                 {
                     return CreateDBFile();
                 }
@@ -55,7 +56,7 @@ namespace Data
                 using (SQLiteConnectConfig context = new SQLiteConnectConfig())
                 {
                     Directory.CreateDirectory(path);
-                    //SQLiteConnection.CreateFile(path + dbName);
+                    SQLiteConnection.CreateFile(path + dbName);
 
                     //创建账户信息表
                     context.Database.ExecuteSqlCommand(@"CREATE TABLE [Account] (
@@ -96,14 +97,14 @@ namespace Data
                     [Name] TEXT  NOT NULL,
                     [Mobile] TEXT  NOT NULL,
                     [Gender] INTEGER  NOT NULL,
-                    [Birthday] BLOB  NULL,
+                    [Birthday] DATETIME  NULL,
                     [Authority] INTEGER  NULL,
                     [Spend] FLOAT  NULL,
-                    [JoinDate] BLOB  NOT NULL,
+                    [JoinDate] DATETIME  NOT NULL,
                     [Quit] BLOB  NULL,
-                    [QuitDate] BLOB  NULL,
-                    [CreateDate] BLOB  NOT NULL,
-                    [LastUpdatedOn] BLOB  NOT NULL,
+                    [QuitDate] DATETIME  NULL,
+                    [CreateDate] DATETIME  NOT NULL,
+                    [LastUpdatedOn] DATETIME  NOT NULL,
                     [Deleted] BLOB  NULL
                     )");
 

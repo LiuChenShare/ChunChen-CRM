@@ -32,7 +32,7 @@ namespace Data.Entity
         /// </summary>
         public int Gender { get; set; }
 
-        [Column(TypeName = "date")]
+        //[Column(TypeName = "date")]
         public DateTime? Birthday { get; set; }
 
         /// <summary>
