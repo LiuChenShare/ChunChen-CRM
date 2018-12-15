@@ -9,9 +9,9 @@
         ResizeMode ="CanMinimize"
         Title="Login" Height="400" Width="600">
     <Grid>
-        <TextBox Name="UserName" Height="38" Margin="201,172,201,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled" Padding="10,0,0,0" FontStyle="Italic" FontFamily="Monotype Corsiva"  Width="192">
+        <TextBox Name="UserName" Height="38" Margin="201,172,201,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled" Padding="10,0,0,0" FontStyle="Italic" FontFamily="Monotype Corsiva"  Width="192" Opacity="0.5">
             <TextBox.Resources>
-                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" >
+                <VisualBrush x:Key="HintText" TileMode="None" Stretch="None" AlignmentX="Left" >
                     <VisualBrush.Visual>
                         <TextBlock FontStyle="Italic" Text="请输入用户名" FontFamily="Jokerman" FontSize="16" Width="192" TextDecorations="{x:Null}"/>
                     </VisualBrush.Visual>
@@ -31,7 +31,7 @@
             </TextBox.Style>
         </TextBox>
         <Button Content="登    录" Margin="232,315,232,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Click="Login_Click"/>
-        <PasswordBox  Name="UserPassword"  Height="38" Margin="201,246,0,0"  VerticalAlignment="Top" FontSize="8" FontWeight="Bold" VerticalContentAlignment="Center" Padding="10,0,0,0" Width="192" Opacity="0.5">
+        <PasswordBox  Name="UserPassword"  Height="38" Margin="201,246,0,0"  VerticalAlignment="Top" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" Padding="10,0,0,0" Width="192" Opacity="0.5">
             <PasswordBox.Background>
                 <ImageBrush/>
             </PasswordBox.Background>

@@ -48,7 +48,11 @@ namespace WPF_ChunChen_CRM
                 }
                 if (accountService.Login(account, password))
                 {
-                    MessageBox.Show("登录成功！");
+                    //MessageBox.Show("登录成功！");
+                    //Application.Current.MainWindow.Show();
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    this.Close();
                 }
             }
             catch(Exception ex)
