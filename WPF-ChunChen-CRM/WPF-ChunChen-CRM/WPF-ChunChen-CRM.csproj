@@ -129,6 +129,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChunChen-CRM.IServices\ChunChen-CRM.IServices.csproj">
+      <Project>{7B27C0F8-495E-445C-9573-9AAA17312245}</Project>
+      <Name>ChunChen-CRM.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChunChen-CRM.Services\ChunChen-CRM.Services.csproj">
+      <Project>{1E5E713B-8C70-44E3-876E-9844A93F66FF}</Project>
+      <Name>ChunChen-CRM.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{B285120B-EE0B-439F-B3D1-E7A5CBDF91B4}</Project>
       <Name>Data</Name>

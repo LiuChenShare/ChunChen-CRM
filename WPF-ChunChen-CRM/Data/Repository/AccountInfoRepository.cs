@@ -20,7 +20,7 @@ namespace Data.Repository
         /// <returns></returns>
         public AccountInfo GetLoginAccount(string account, string password)
         {
-            var infos = storeDB.AccountInfo.Where(x => x.Account == account || x.Account == account);
+            var infos = storeDB.AccountInfo.Where(x => x.Account == account || x.EmployeeInfo.Mobile == account);
             return infos.Where(x => x.Password == password && !x.Deleted).FirstOrDefault();
         }
 

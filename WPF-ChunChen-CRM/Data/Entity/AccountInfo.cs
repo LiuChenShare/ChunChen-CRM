@@ -27,5 +27,8 @@ namespace Data.Entity
         public Guid EmployeeId { get; set; }
 
         public bool Deleted { get; set; }
+
+        [ForeignKey("EmployeeId")]
+        public virtual EmployeeInfo EmployeeInfo { get; set; }
     }
 }

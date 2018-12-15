@@ -30,8 +30,8 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <Button Content="登    录" Margin="232,315,232,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <PasswordBox Height="38" Margin="201,246,0,0"  VerticalAlignment="Top" FontSize="8" FontWeight="Bold" VerticalContentAlignment="Center" Padding="10,0,0,0" Width="192" Opacity="0.5">
+        <Button Content="登    录" Margin="232,315,232,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Click="Login_Click"/>
+        <PasswordBox  Name="UserPassword"  Height="38" Margin="201,246,0,0"  VerticalAlignment="Top" FontSize="8" FontWeight="Bold" VerticalContentAlignment="Center" Padding="10,0,0,0" Width="192" Opacity="0.5">
             <PasswordBox.Background>
                 <ImageBrush/>
             </PasswordBox.Background>
