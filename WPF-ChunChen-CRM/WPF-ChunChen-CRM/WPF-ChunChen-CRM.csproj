@@ -86,6 +86,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Code\PasswordBoxMonitor.cs" />
     <Compile Include="EmployeeModel.cs" />
     <Compile Include="Entity\CustomerInfo.cs" />
     <Compile Include="Entity\EmployeeInfo.cs" />

@@ -23,6 +23,7 @@ namespace WPF_ChunChen_CRM
         {
             InitializeComponent();
             
+            //设置背景图片
             this.Background = Image.ImageBrushManager.Get_login_back(Stretch.UniformToFill);
         }
     }
