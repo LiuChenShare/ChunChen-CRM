@@ -5,19 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_ChunChen_CRM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="春晨健康服务中心" Height="450" Width="800">
     <Grid>
-        <Button Content="查询" HorizontalAlignment="Left" Margin="331,55,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <DataGrid Name="dataGrid" HorizontalAlignment="Left" Height="214" Margin="151,124,0,0" VerticalAlignment="Top" Width="500" >
-            <!--<DataGrid.Columns>
-                <DataGridTextColumn Header = "唯一标示符" Width = "100" Binding="{Binding Id}" />
-                <DataGridTextColumn Header = "员工编号" Width = "100" Binding="{Binding EmployeeNo}" />
-                <DataGridTextColumn Header = "姓名" Width = "100" Binding="{Binding Name}" />
-                <DataGridTextColumn Header = "性别" Width = "100" Binding="{Binding Gender}" />
-                <DataGridTextColumn Header = "生日" Width = "100" Binding="{Binding Birthday}" />
-            </DataGrid.Columns>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid  Grid.Row="0">
+                <Image HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50"/>
+                <Label Content="欢迎admin" HorizontalAlignment="Left" Margin="50,0,0,0" Height="25" Width="100" VerticalAlignment="Center"/>
+                <!--头部信息-->
+            </Grid>
+            <Grid  Grid.Row="1">
 
-        </DataGrid>
+                <!--菜单信息-->
+            </Grid>
+        </Grid>
+        <Grid  Grid.Row="1">
+
+
+            <!--右侧页面-->
+        </Grid>
 
     </Grid>
 </Window>
+
+
+
+<!--<TabControl HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"  TabStripPlacement="Left">
+    <TabItem Header="TabItem" Width="100" Height="30">
+        <Grid Background="#FFE5E5E5" Width="300"/>
+    </TabItem>
+    <TabItem Header="TabItem">
+        <Grid Background="#FFE5E5E5"/>
+    </TabItem>
+</TabControl>-->
