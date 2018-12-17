@@ -22,15 +22,19 @@
                 <!--头部信息-->
             </Grid>
             <Grid  Grid.Row="1">
-
                 <!--菜单信息-->
+                <Button Content="Button" VerticalAlignment="Top" Width="150" Height="42"/>
+                <Button Content="Button" VerticalAlignment="Top" Width="150" Height="42" Margin="0,42,0,0"/>
+                <Button Content="Button" VerticalAlignment="Top" Width="150" Height="42" Margin="0,84,0,0"/>
             </Grid>
         </Grid>
         <Grid  Grid.Row="1">
+            
 
 
             <!--右侧页面-->
         </Grid>
+        <Frame Content="正在加载..." Grid.Column="1"/>
 
     </Grid>
 </Window>
