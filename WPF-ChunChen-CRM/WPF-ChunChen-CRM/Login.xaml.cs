@@ -54,10 +54,14 @@ namespace WPF_ChunChen_CRM
                     mainWindow.Show();
                     this.Close();
                 }
+                else
+                {
+                    throw new Exception("账号或密码错误");
+                }
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
         #endregion
