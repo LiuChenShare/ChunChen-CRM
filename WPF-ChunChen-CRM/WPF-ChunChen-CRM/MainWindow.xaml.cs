@@ -23,6 +23,7 @@ namespace WPF_ChunChen_CRM
         public MainWindow()
         {
             InitializeComponent();
+            Avatar.Fill = Image.ImageBrushManager.Get_login_back(Stretch.UniformToFill);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
