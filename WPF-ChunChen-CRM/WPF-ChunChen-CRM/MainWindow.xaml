@@ -23,9 +23,10 @@
             </Grid>
             <Grid  Grid.Row="1">
                 <!--菜单信息-->
-                <Button Content="Button" VerticalAlignment="Top" Width="150" Height="42"/>
-                <Button Content="Button" VerticalAlignment="Top" Width="150" Height="42" Margin="0,42,0,0"/>
-                <Button Content="Button" VerticalAlignment="Top" Width="150" Height="42" Margin="0,84,0,0"/>
+                <Button Content="个人信息" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0"/>
+                <Button Content="客户管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0" Margin="0,42,0,0"/>
+                <Button Content="订单管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0" Margin="0,84,0,0"/>
+                <Button Content="员工管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0" Margin="0,126,0,0"/>
             </Grid>
         </Grid>
         <Grid  Grid.Row="1">
