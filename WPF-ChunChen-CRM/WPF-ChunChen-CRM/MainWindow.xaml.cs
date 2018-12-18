@@ -24,12 +24,21 @@ namespace WPF_ChunChen_CRM
         {
             InitializeComponent();
             Avatar.Fill = Image.ImageBrushManager.Get_login_back(Stretch.UniformToFill);
+            DefaultFarme.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            DefaultFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //dataGrid.ItemsSource = storeDB.Employee.ToList();
             //listView.ItemsSource = storeDB.Employee.ToList();
+        }
+
+        //点击个人信息
+        private void PersonalMenu_Click(object sender, RoutedEventArgs e)
+        {
+            //DefaultFarme.Source = "page1.xaml";
+            DefaultFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
         }
     }
 }
