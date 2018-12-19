@@ -34,11 +34,23 @@ namespace WPF_ChunChen_CRM
             //listView.ItemsSource = storeDB.Employee.ToList();
         }
 
+        bool a = true;
+
         //点击个人信息
         private void PersonalMenu_Click(object sender, RoutedEventArgs e)
         {
             //DefaultFarme.Source = "page1.xaml";
-            DefaultFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
+            //DefaultFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
+            if (a)
+            {
+                DefaultFarme.Visibility = Visibility.Collapsed;
+                a = false;
+            }
+            else
+            {
+                DefaultFarme.Visibility = Visibility.Visible;
+                a = true;
+            }
         }
     }
 }
