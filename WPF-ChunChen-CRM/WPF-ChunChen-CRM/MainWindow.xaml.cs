@@ -26,6 +26,7 @@ namespace WPF_ChunChen_CRM
             Avatar.Fill = Image.ImageBrushManager.Get_login_back(Stretch.UniformToFill);
             DefaultFarme.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             DefaultFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
+            var a = DefaultFarme.Source.OriginalString;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
