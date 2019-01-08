@@ -27,15 +27,15 @@
             <Grid  Grid.Row="1">
                 <StackPanel Orientation="Vertical">
                     <Button Name="PersonalMenu" Content="个人信息" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0" Click="PersonalMenu_Click"/>
-                    <Button Name="CustomerMenu" Content="客户管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0"/>
-                    <Button Name="EmployeeMenu" Content="订单管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0"/>
-                    <Button Name="OrderMenu" Content="员工管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0"/>
+                    <Button Name="CustomerMenu" Content="客户管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0" Click="CustomerMenu_Click"/>
+                    <Button Name="EmployeeMenu" Content="员工管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0" Click="EmployeeMenu_Click"/>
+                    <Button Name="OrderMenu" Content="订单管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0" Click="OrderMenu_Click"/>
                 </StackPanel>
             </Grid>
         </Grid>
         <!--右侧页面-->
         <Grid Grid.Column="1">
-            <Frame Name="DefaultFarme" Content="正在加载..." />
+            <Frame Name="PersonalFarme" Visibility="Collapsed"/>
             <Frame Name="CustomerFarme" Visibility="Collapsed"/>
             <Frame Name="EmployeeFarme" Visibility="Collapsed"/>
             <Frame Name="OrderFarme" Visibility="Collapsed"/>

@@ -24,9 +24,9 @@ namespace WPF_ChunChen_CRM
         {
             InitializeComponent();
             Avatar.Fill = Image.ImageBrushManager.Get_login_back(Stretch.UniformToFill);
-            DefaultFarme.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            DefaultFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
-            var a = DefaultFarme.Source.OriginalString;
+            PersonalFarme.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            PersonalFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
+            PersonalFarme.Visibility = Visibility.Visible;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,24 +34,43 @@ namespace WPF_ChunChen_CRM
             //dataGrid.ItemsSource = storeDB.Employee.ToList();
             //listView.ItemsSource = storeDB.Employee.ToList();
         }
-
-        bool a = true;
-
+        
         //点击个人信息
         private void PersonalMenu_Click(object sender, RoutedEventArgs e)
         {
-            //DefaultFarme.Source = "page1.xaml";
-            //DefaultFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
-            if (a)
-            {
-                DefaultFarme.Visibility = Visibility.Collapsed;
-                a = false;
-            }
-            else
-            {
-                DefaultFarme.Visibility = Visibility.Visible;
-                a = true;
-            }
+            CloseFarme();
+            PersonalFarme.Visibility = Visibility.Visible;
         }
+
+        //点击客户管理
+        private void CustomerMenu_Click(object sender, RoutedEventArgs e)
+        {
+            CloseFarme();
+            CustomerFarme.Visibility = Visibility.Visible;
+        }
+
+        //点击员工管理
+        private void EmployeeMenu_Click(object sender, RoutedEventArgs e)
+        {
+            CloseFarme();
+            EmployeeFarme.Visibility = Visibility.Visible;
+        }
+
+        //点击订单管理
+        private void OrderMenu_Click(object sender, RoutedEventArgs e)
+        {
+            CloseFarme();
+            OrderFarme.Visibility = Visibility.Visible;
+        }
+
+        #region Farme页方法
+        private void CloseFarme()
+        {
+            PersonalFarme.Visibility = Visibility.Collapsed;
+            CustomerFarme.Visibility = Visibility.Collapsed;
+            EmployeeFarme.Visibility = Visibility.Collapsed;
+            OrderFarme.Visibility = Visibility.Collapsed;
+        }
+        #endregion
     }
 }
