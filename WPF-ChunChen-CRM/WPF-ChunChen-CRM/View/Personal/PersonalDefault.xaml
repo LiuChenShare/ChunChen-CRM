@@ -14,16 +14,28 @@
             <Label Content="个人信息" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" FontWeight="Bold" FontFamily="Blackadder ITC" FontSize="18"/>
         </Grid>
         <Grid  Margin="0,30,0,0">
-            <StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <WrapPanel Orientation="Horizontal" Width="400" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid HorizontalAlignment="Center" Height="49" Width="200">
-                    <Label Content="姓名：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
+                    <Label Content="编号：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
                     <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Center" Height="49" Width="200">
                     <Label Content="姓名：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
                     <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                 </Grid>
-            </StackPanel>
+                <Grid HorizontalAlignment="Center" Height="49" Width="200">
+                    <Label Content="手机：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
+                    <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                </Grid>
+                <Grid HorizontalAlignment="Center" Height="49" Width="200">
+                    <Label Content="性别：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
+                    <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                </Grid>
+                <Grid HorizontalAlignment="Center" Height="49" Width="200">
+                    <Label Content="生日：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
+                    <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                </Grid>
+            </WrapPanel>
             <Grid HorizontalAlignment="Center" Height="49" VerticalAlignment="Top" Width="200"/>
 
         </Grid>
