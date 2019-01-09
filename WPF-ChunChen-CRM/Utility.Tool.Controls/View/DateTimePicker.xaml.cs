@@ -95,5 +95,13 @@ namespace Utility.Tool.Controls.View
         public DateTime DateTime { get; set; }
 
         #endregion
+
+        #region 对外暴露方法
+        public void SetDateTime(DateTime dateTime)
+        {
+            textBlock1.Text = dateTime.ToString("yyyy/MM/dd HH:mm:ss");//"yyyyMMddHHmmss"
+            DateTime = dateTime;
+        }
+        #endregion
     }
 }

@@ -28,7 +28,7 @@ namespace WPF_ChunChen_CRM.View.Personal
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            JoinDateValue.DateTime = new DateTime(1996, 7, 1);
+            JoinDateValue.SetDateTime(new DateTime(1996, 7, 1));
         }
     }
 }
