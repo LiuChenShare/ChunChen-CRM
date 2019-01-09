@@ -33,6 +33,9 @@ namespace Data.Entity
         public int Gender { get; set; }
 
         //[Column(TypeName = "date")]
+        /// <summary>
+        /// 生日
+        /// </summary>
         public DateTime? Birthday { get; set; }
 
         /// <summary>
@@ -59,13 +62,21 @@ namespace Data.Entity
         /// <summary>
         /// 离职日期
         /// </summary>
-
         public DateTime? QuitDate { get; set; }
 
+        /// <summary>
+        /// 创建日期
+        /// </summary>
         public DateTime CreateDate { get; set; }
-
+        
+        /// <summary>
+        /// 上一次修改日期
+        /// </summary>
         public DateTime LastUpdatedOn { get; set; }
 
+        /// <summary>
+        /// 删除状态
+        /// </summary>
         public bool Deleted { get; set; }
     }
 }
