@@ -148,6 +148,10 @@
       <Project>{B285120B-EE0B-439F-B3D1-E7A5CBDF91B4}</Project>
       <Name>Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility.Tool.Controls\Utility.Tool.Controls.csproj">
+      <Project>{fe90c74a-fa6a-48e2-998f-f5b187009ee2}</Project>
+      <Name>Utility.Tool.Controls</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
