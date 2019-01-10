@@ -10,7 +10,11 @@
 
     <Grid Background="White">
         <Grid VerticalAlignment="Top" Height="30" Margin="0,0,0,0" Background="#FFDDDDDD">
-            <Button Content="＜＜返回" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75" Height="30" BorderThickness="0"/>
+            <Button Name="withdrawButton" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Height="30" BorderThickness="0" Click="WithdrawButton_Click">
+                <Button.Content>
+                    <Image Source="/WPF-ChunChen-CRM;component/Image/撤回色块.png" Stretch="Uniform"/>
+                </Button.Content>
+            </Button>
             <Label Content="个人信息" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" FontWeight="Bold" FontFamily="Blackadder ITC" FontSize="18"/>
         </Grid>
         <ScrollViewer Margin="0,30,0,0" VerticalScrollBarVisibility ="Auto">
@@ -48,10 +52,13 @@
                         </Label>
                         <DateTimePicker:Chy_DatePicker Name="JoinDateValue" HorizontalAlignment="Left" Margin="50,0,0,0" Width="150" Height="30"/>
                     </Grid>
-                    <Grid HorizontalAlignment="Center" Height="49" Width="200">
-                        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-                    </Grid>
                 </WrapPanel>
+                <!--<DateTimePicker:IconButton HorizontalAlignment="Right" VerticalAlignment="Top" Width="25" Height="25" Icon="/WPF-ChunChen-CRM;component/Image/编辑.png"/>-->
+                <Button Name="editButton" HorizontalAlignment="Right" VerticalAlignment="Top" Width="25" Height="25" BorderThickness="0" Click="EditButton_Click">
+                    <Button.Content>
+                        <Image Source="/WPF-ChunChen-CRM;component/Image/编辑.png" Stretch="Uniform"/>
+                    </Button.Content>
+                </Button>
             </Grid>
         </ScrollViewer>
     </Grid>

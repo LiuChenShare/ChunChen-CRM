@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace WPF_ChunChen_CRM.View.Personal
@@ -14,9 +15,21 @@ namespace WPF_ChunChen_CRM.View.Personal
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            //JoinDateValue.SetDateTime(new DateTime(1996, 7, 1));
+            NavigationService.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
+            MessageBox.Show("点击了");
+
+        }
+
+        /// <summary>
+        /// 返回
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WithdrawButton_Click(object sender, RoutedEventArgs e)
+        {
+            //this.ma.PersonalFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
         }
     }
 }
