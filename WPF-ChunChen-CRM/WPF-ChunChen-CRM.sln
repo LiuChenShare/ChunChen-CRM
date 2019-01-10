@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28407.52
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-ChunChen-CRM", "WPF-ChunChen-CRM\WPF-ChunChen-CRM.csproj", "{91B24792-2911-4292-9924-35C900DEF2FE}"
 EndProject
@@ -24,8 +24,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage", "Storage\Storage.csproj", "{23AED7F3-C259-4125-88C2-A00926A784EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Tool", "5-Tool", "{E27768C8-DD58-4C4E-84D3-6470CA0E2488}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility.Tool.Controls", "Utility.Tool.Controls\Utility.Tool.Controls.csproj", "{FE90C74A-FA6A-48E2-998F-F5B187009EE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,10 +55,6 @@ Global
 		{23AED7F3-C259-4125-88C2-A00926A784EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23AED7F3-C259-4125-88C2-A00926A784EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23AED7F3-C259-4125-88C2-A00926A784EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE90C74A-FA6A-48E2-998F-F5B187009EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE90C74A-FA6A-48E2-998F-F5B187009EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE90C74A-FA6A-48E2-998F-F5B187009EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE90C74A-FA6A-48E2-998F-F5B187009EE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,7 +65,6 @@ Global
 		{1E5E713B-8C70-44E3-876E-9844A93F66FF} = {77E7CD7E-40E4-4494-AF22-9D8309902C1F}
 		{CEB37496-E55B-4852-9C85-6F8E14A70E07} = {B109F5CA-1147-4AB1-BA56-771AD7080AA9}
 		{23AED7F3-C259-4125-88C2-A00926A784EF} = {02222547-559A-4B9A-AB63-8F1C4AF530AC}
-		{FE90C74A-FA6A-48E2-998F-F5B187009EE2} = {E27768C8-DD58-4C4E-84D3-6470CA0E2488}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D6541AD3-FC27-4415-B3BD-852875C7FAA4}
