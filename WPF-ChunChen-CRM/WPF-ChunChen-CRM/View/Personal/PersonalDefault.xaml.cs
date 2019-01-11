@@ -17,9 +17,7 @@ namespace WPF_ChunChen_CRM.View.Personal
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
-            MessageBox.Show("点击了");
-
+            NavigationService.Navigate(new Uri("View/Personal/PersonalEdit.xaml", UriKind.Relative));
         }
 
         /// <summary>
