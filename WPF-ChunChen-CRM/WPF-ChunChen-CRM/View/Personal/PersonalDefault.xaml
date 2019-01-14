@@ -18,29 +18,29 @@
                 <WrapPanel Orientation="Horizontal" Width="400" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label Content="编号：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
-                        <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                        <Label Name="EmployeeNoValue" Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label Content="姓名：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
-                        <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                        <Label Name="NameValue" Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label Content="手机：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
-                        <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                        <Label Name="MobileValue" Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label Content="性别：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
-                        <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                        <Label Name="GenderStringValue" Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label Content="生日：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
-                        <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                        <Label Name="BirthdayValue" Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label HorizontalAlignment="Left" VerticalAlignment="Center" Width="60">
-                            <TextBlock TextWrapping="Wrap" Text="入职/离职日期："/>
+                            <TextBlock Name="JoinDateName" TextWrapping="Wrap" Text="入职/离职日期："/>
                         </Label>
-                        <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                        <Label Name="JoinDateValue" Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
                 </WrapPanel>
                 <!--<DateTimePicker:IconButton HorizontalAlignment="Right" VerticalAlignment="Top" Width="25" Height="25" Icon="/WPF-ChunChen-CRM;component/Image/编辑.png"/>-->
