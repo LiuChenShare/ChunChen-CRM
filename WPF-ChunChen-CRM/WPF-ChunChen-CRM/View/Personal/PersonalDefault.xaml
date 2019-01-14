@@ -42,12 +42,6 @@
                         </Label>
                         <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
-                    <Grid HorizontalAlignment="Center" Height="49" Width="200">
-                        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Width="50">
-                            <TextBlock TextWrapping="Wrap" Width="50" Text="入职/离职日期："/>
-                        </Label>
-                        <DateTimePicker:Chy_DatePicker Name="JoinDateValue" HorizontalAlignment="Left" Margin="50,0,0,0" Width="150" Height="30"/>
-                    </Grid>
                 </WrapPanel>
                 <!--<DateTimePicker:IconButton HorizontalAlignment="Right" VerticalAlignment="Top" Width="25" Height="25" Icon="/WPF-ChunChen-CRM;component/Image/编辑.png"/>-->
                 <Button Name="editButton" HorizontalAlignment="Right" VerticalAlignment="Top" Width="25" Height="25" BorderThickness="0" Background="Transparent" Click="EditButton_Click">
