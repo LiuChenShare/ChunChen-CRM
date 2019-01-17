@@ -13,9 +13,16 @@ namespace ChunChen_CRM.IServices
     public interface IEmployeeService
     {
         /// <summary>
-        /// 
+        /// 获取当前用户信息
         /// </summary>
         /// <returns></returns>
         UserViewModel GetPersonalData();
+
+        /// <summary>
+        /// 修改当前用户信息
+        /// </summary>
+        /// <param name="userViewModel"></param>
+        /// <returns></returns>
+        bool SavePersonalData(UserViewModel userViewModel);
     }
 }
