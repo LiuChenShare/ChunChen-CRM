@@ -42,6 +42,12 @@
             日期时间
             </summary>
         </member>
+        <member name="M:Chy.Utility.Tool.Controls.View.DateTimePicker.Chy_DatePicker.SetDateTime(System.DateTime)">
+            <summary>
+            设置控件的时间
+            </summary>
+            <param name="dateTime"></param>
+        </member>
         <member name="M:Chy.Utility.Tool.Controls.View.DateTimePicker.Chy_DatePicker.InitializeComponent">
             <summary>
             InitializeComponent
@@ -84,6 +90,12 @@
             <summary>
             日期时间
             </summary>
+        </member>
+        <member name="M:Chy.Utility.Tool.Controls.View.DateTimePicker.Chy_DateTimePicker.SetDateTime(System.DateTime)">
+            <summary>
+            设置控件的时间
+            </summary>
+            <param name="dateTime"></param>
         </member>
         <member name="M:Chy.Utility.Tool.Controls.View.DateTimePicker.Chy_DateTimePicker.InitializeComponent">
             <summary>

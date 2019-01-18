@@ -23,25 +23,21 @@
                 <WrapPanel Orientation="Horizontal" Width="400" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label Content="编号：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
-                        <Label Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                        <Label Name="EmployeeNoValue" Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label Content="姓名：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0" Width="120"/>
+                        <Label Name="NameValue" Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label Content="手机：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0" Width="120"/>
+                        <TextBox Name="MobileValue" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0" Width="120"/>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label Content="性别：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
-                        <ComboBox HorizontalAlignment="Left" Margin="60,0,0,0" Height="25" Width="60">
-                            <ItemsControl>
-                                哈哈哈
-                            </ItemsControl>
-                            <ItemsControl>
-                                嘿嘿嘿
-                            </ItemsControl>
+                        <ComboBox Name="GenderStringValue" HorizontalAlignment="Left" Margin="60,0,0,0" Height="25" Width="60">
+                            <ComboBoxItem Name="GenderStringValue_Man">男</ComboBoxItem>
+                            <ComboBoxItem Name="GenderStringValue_Woman" IsSelected="True">女</ComboBoxItem>
                         </ComboBox>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
@@ -50,9 +46,9 @@
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="200">
                         <Label HorizontalAlignment="Left" VerticalAlignment="Center" Width="60">
-                            <TextBlock TextWrapping="Wrap" Text="入职日期："/>
+                            <TextBlock Name="JoinDateName" TextWrapping="Wrap" Text="入职/离职日期："/>
                         </Label>
-                        <DateTimePicker:Chy_DatePicker Name="JoinDateValue" HorizontalAlignment="Left" Margin="50,0,0,0" Width="150" Height="30"/>
+                        <Label Name="JoinDateValue" Content="尼古拉斯" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Center" Height="49" Width="400">
                     </Grid>

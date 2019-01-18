@@ -33,16 +33,6 @@ namespace WPF_ChunChen_CRM.View.Personal
         {
             NavigationService.Navigate(new Uri("View/Personal/PersonalEdit.xaml", UriKind.Relative));
         }
-
-        /// <summary>
-        /// 返回
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void WithdrawButton_Click(object sender, RoutedEventArgs e)
-        {
-            //this.ma.PersonalFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
-        }
         #endregion
 
         #region 方法
@@ -55,7 +45,7 @@ namespace WPF_ChunChen_CRM.View.Personal
             EmployeeNoValue.Content = userViewModel.EmployeeNo;
             NameValue.Content = userViewModel.Name;
             MobileValue.Content = userViewModel.Mobile;
-            GenderStringValue.Content = userViewModel.Mobile;
+            GenderStringValue.Content = userViewModel.GenderString;
             BirthdayValue.Content = userViewModel.Birthday?.ToString("yyyy-MM-dd");
             if (userViewModel.Quit)
             {
