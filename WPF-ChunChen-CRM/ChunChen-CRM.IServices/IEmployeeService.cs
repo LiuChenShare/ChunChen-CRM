@@ -1,4 +1,5 @@
 ﻿using ChunChen_CRM.Model;
+using ChunChen_CRM.Model.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,12 @@ namespace ChunChen_CRM.IServices
         /// <param name="userViewModel"></param>
         /// <returns></returns>
         bool SavePersonalData(UserViewModel userViewModel);
+
+        /// <summary>
+        /// 查询员工列表
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        List<UserViewModel> SearchEmployeeList(EmployeeSearch search);
     }
 }
