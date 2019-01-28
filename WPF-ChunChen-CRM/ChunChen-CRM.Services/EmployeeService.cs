@@ -7,6 +7,8 @@ using Data.Entity;
 using Data.Repository;
 using Storage;
 using System.Linq;
+using System;
+using System.Windows;
 
 namespace ChunChen_CRM.Services
 {
@@ -64,15 +66,17 @@ namespace ChunChen_CRM.Services
                 if (UserStorage.Instance.Authority > 1)
                 {
                     var employees = _employeeInfoRepository.SearchEmployeeList(search);
-                    if (employees == null)
+                    if (employees != null)
                     {
-                        return userViews;
+                        return employees.Select(x => x.ToUserViewModel()).ToList();
                     }
-                    return employees.Select(x => x.ToUserViewModel()).ToList();
                 }
-                
+                return userViews;
             }
-            throw new System.NotImplementedException();
+            catch(Exception ex)
+            {
+                return new List<UserViewModel>();
+            }
         }
     }
 }
