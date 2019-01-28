@@ -37,14 +37,9 @@ namespace ChunChen_CRM.Model.Search
         public int? Gender { get; set; }
 
         /// <summary>
-        /// 生日
+        /// 生日(只查询同一天生日的)
         /// </summary>
         public DateTime? Birthday { get; set; }
-
-        /// <summary>
-        /// 权限等级
-        /// </summary>
-        public int? Authority { get; set; }
 
         /// <summary>
         /// 最低销售总金额
@@ -57,13 +52,8 @@ namespace ChunChen_CRM.Model.Search
         public double? MaxSpend { get; set; }
 
         /// <summary>
-        /// 入职日期
-        /// </summary>
-        public DateTime JoinDate { get; set; }
-
-        /// <summary>
         /// 是否离职
         /// </summary>
-        public bool Quit { get; set; }
+        public bool? Quit { get; set; }
     }
 }
