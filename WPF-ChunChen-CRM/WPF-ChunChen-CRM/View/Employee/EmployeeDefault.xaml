@@ -1,0 +1,30 @@
+﻿<Page x:Class="WPF_ChunChen_CRM.View.Employee.EmployeeDefault"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_ChunChen_CRM.View.Employee"
+      mc:Ignorable="d" 
+      d:DesignHeight="419" d:DesignWidth="642"
+      Title="EmployeeDefault">
+
+    <Grid Background="White">
+        <Grid VerticalAlignment="Top" Height="30" Margin="0,0,0,0" Background="#FFDDDDDD">
+            <Label Content="员工管理" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" FontWeight="Bold" FontFamily="Blackadder ITC" FontSize="18"/>
+        </Grid>
+        <ScrollViewer Margin="0,30,0,0" VerticalScrollBarVisibility ="Auto">
+            <ListView>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="序号" Width="50"/>
+                        <GridViewColumn Header="工号" Width="100"/>
+                        <GridViewColumn Header="姓名" Width="100"/>
+                        <GridViewColumn Header="手机号" Width="100"/>
+                        <GridViewColumn Header="性别" Width="50"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </ScrollViewer>
+    </Grid>
+</Page>

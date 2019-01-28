@@ -27,9 +27,14 @@ namespace WPF_ChunChen_CRM
         {
             InitializeComponent();
             Avatar.Fill = Image.ImageBrushManager.Get_login_back(Stretch.UniformToFill);
+            //个人信息
             PersonalFarme.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             PersonalFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
             PersonalFarme.Visibility = Visibility.Visible;
+            //员工管理
+            EmployeeFarme.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            EmployeeFarme.Navigate(new Uri("View/Employee/EmployeeDefault.xaml", UriKind.Relative));
+            EmployeeFarme.Visibility = Visibility.Visible;
             UpdateUserPersonalData();
         }
 
@@ -42,7 +47,8 @@ namespace WPF_ChunChen_CRM
             //dataGrid.ItemsSource = storeDB.Employee.ToList();
             //listView.ItemsSource = storeDB.Employee.ToList();
         }
-        
+
+        #region 左侧菜单栏
         //点击个人信息
         private void PersonalMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -71,6 +77,8 @@ namespace WPF_ChunChen_CRM
             OrderFarme.Visibility = Visibility.Visible;
         }
 
+        #endregion
+
         #region Farme页方法
         private void CloseFarme()
         {
@@ -84,10 +92,11 @@ namespace WPF_ChunChen_CRM
         /// <summary>
         /// 加载用户个人信息
         /// </summary>
-        private void UpdateUserPersonalData()
+        private UserViewModel UpdateUserPersonalData()
         {
             UserViewModel userViewModel = employeeService.GetPersonalData();
             Welcome.Content = "欢迎" + userViewModel.Name;
+            return userViewModel;
         }
     }
 }
