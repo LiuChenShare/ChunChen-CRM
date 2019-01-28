@@ -12,6 +12,11 @@ namespace ChunChen_CRM.Model
     public class UserViewModel
     {
         /// <summary>
+        /// 序号，列表展示时使用
+        /// </summary>
+        public int Index { get; set; }
+
+        /// <summary>
         /// EmployeeId
         /// </summary>
         public Guid Id { get; set; }
