@@ -34,7 +34,7 @@ namespace ChunChen_CRM.Model.Search
         /// <summary>
         /// 性别 0女 1男
         /// </summary>
-        public int Gender { get; set; }
+        public int? Gender { get; set; }
 
         /// <summary>
         /// 生日
