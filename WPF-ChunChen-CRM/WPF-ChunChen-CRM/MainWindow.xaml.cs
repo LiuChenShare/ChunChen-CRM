@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ChunChen_CRM.IServices;
+using ChunChen_CRM.Model;
+using ChunChen_CRM.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +30,12 @@ namespace WPF_ChunChen_CRM
             PersonalFarme.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             PersonalFarme.Navigate(new Uri("View/Personal/PersonalDefault.xaml", UriKind.Relative));
             PersonalFarme.Visibility = Visibility.Visible;
+            UpdateUserPersonalData();
         }
+
+        #region 服务
+        private IEmployeeService employeeService = new EmployeeService();
+        #endregion
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -72,5 +80,14 @@ namespace WPF_ChunChen_CRM
             OrderFarme.Visibility = Visibility.Collapsed;
         }
         #endregion
+
+        /// <summary>
+        /// 加载用户个人信息
+        /// </summary>
+        private void UpdateUserPersonalData()
+        {
+            UserViewModel userViewModel = employeeService.GetPersonalData();
+            Welcome.Content = "欢迎" + userViewModel.Name;
+        }
     }
 }
