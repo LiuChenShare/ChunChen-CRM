@@ -1,9 +1,12 @@
-﻿using ChunChen_CRM.IServices;
+﻿using System.Collections.Generic;
+using ChunChen_CRM.IServices;
 using ChunChen_CRM.Model;
+using ChunChen_CRM.Model.Search;
 using ChunChen_CRM.Services.Extensions;
 using Data.Entity;
 using Data.Repository;
 using Storage;
+using System.Linq;
 
 namespace ChunChen_CRM.Services
 {
@@ -46,6 +49,30 @@ namespace ChunChen_CRM.Services
             employeeInfo.Birthday = userViewModel.Birthday;
             _employeeInfoRepository.Update(employeeInfo);
             return true;
+        }
+
+        /// <summary>
+        /// 查询员工列表
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public List<UserViewModel> SearchEmployeeList(EmployeeSearch search)
+        {
+            try
+            {
+                List<UserViewModel> userViews = new List<UserViewModel>();
+                if (UserStorage.Instance.Authority > 1)
+                {
+                    var employees = _employeeInfoRepository.SearchEmployeeList(search);
+                    if (employees == null)
+                    {
+                        return userViews;
+                    }
+                    return employees.Select(x => x.ToUserViewModel()).ToList();
+                }
+                
+            }
+            throw new System.NotImplementedException();
         }
     }
 }
