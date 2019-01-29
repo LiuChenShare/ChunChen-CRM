@@ -31,6 +31,6 @@ namespace ChunChen_CRM.IServices
         /// </summary>
         /// <param name="search"></param>
         /// <returns></returns>
-        List<UserViewModel> SearchEmployeeList(EmployeeSearch search);
+        IPageList<UserViewModel> SearchEmployeeList(EmployeeSearch search);
     }
 }
