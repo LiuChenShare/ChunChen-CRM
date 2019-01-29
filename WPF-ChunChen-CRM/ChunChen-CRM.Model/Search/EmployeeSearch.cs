@@ -9,7 +9,7 @@ namespace ChunChen_CRM.Model.Search
     /// <summary>
     /// 员工查询条件
     /// </summary>
-    public class EmployeeSearch
+    public class EmployeeSearch : BaseSearch
     {
         /// <summary>
         /// EmployeeId

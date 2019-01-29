@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Search\BaseSearch.cs" />
     <Compile Include="Search\EmployeeSearch.cs" />
     <Compile Include="UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
