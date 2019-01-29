@@ -8,23 +8,33 @@
       d:DesignHeight="419" d:DesignWidth="642"
       Title="EmployeeDefault">
 
-    <Grid Background="White">
+    <Grid x:Name="nac" Background="White">
         <Grid VerticalAlignment="Top" Height="30" Margin="0,0,0,0" Background="#FFDDDDDD">
             <Label Content="员工管理" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" FontWeight="Bold" FontFamily="Blackadder ITC" FontSize="18"/>
         </Grid>
         <ScrollViewer Margin="0,30,0,0" VerticalScrollBarVisibility ="Auto">
-            <ListView>
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="序号" Width="50"/>
-                        <GridViewColumn Header="工号" Width="100"/>
-                        <GridViewColumn Header="姓名" Width="100"/>
-                        <GridViewColumn Header="手机号" Width="100"/>
-                        <GridViewColumn Header="性别" Width="50"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-
+            <Grid>
+                <WrapPanel Orientation="Vertical" Height="auto">
+                    <ListView Name="EmployeeList" MinHeight="200" Height="auto" SelectionChanged="EmployeeList_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="序号" Width="50" DisplayMemberBinding="{Binding Index}" />
+                                <GridViewColumn Header="工号" Width="100" DisplayMemberBinding="{Binding EmployeeNo}"/>
+                                <GridViewColumn Header="姓名" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="手机号" Width="100" DisplayMemberBinding="{Binding Mobile}"/>
+                                <GridViewColumn Header="性别" Width="100" DisplayMemberBinding="{Binding GenderString}"/>
+                                <GridViewColumn Header="操作" Width="100" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Width="30" Content="删除" Click="Button_Click2" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </WrapPanel>
+            </Grid>
         </ScrollViewer>
     </Grid>
 </Page>

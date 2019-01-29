@@ -63,7 +63,7 @@ namespace ChunChen_CRM.Services
             try
             {
                 List<UserViewModel> userViews = new List<UserViewModel>();
-                if (UserStorage.Instance.Authority > 1)
+                if (UserStorage.Instance.Authority <= 1)
                 {
                     var employees = _employeeInfoRepository.SearchEmployeeList(search);
                     if (employees != null)
