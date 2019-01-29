@@ -58,24 +58,34 @@ namespace ChunChen_CRM.Services
         /// </summary>
         /// <param name="search"></param>
         /// <returns></returns>
-        public List<UserViewModel> SearchEmployeeList(EmployeeSearch search)
+        public IPageList<UserViewModel> SearchEmployeeList(EmployeeSearch search)
         {
+            IPageList<UserViewModel> userViews = new PageList<UserViewModel>();
+            userViews.Data = new List<UserViewModel>();
             try
             {
-                List<UserViewModel> userViews = new List<UserViewModel>();
                 if (UserStorage.Instance.Authority <= 1)
                 {
                     var employees = _employeeInfoRepository.SearchEmployeeList(search);
-                    if (employees != null)
+                    if (employees?.Data != null)
                     {
-                        return employees.Select(x => x.ToUserViewModel()).ToList();
+                        userViews.Data = employees.Data.Select(x => x.ToUserViewModel()).ToList();
+                        userViews.PageIndex = employees.PageIndex;
+                        userViews.PageSize = employees.PageSize;
+                        userViews.TotalCount = employees.TotalCount;
+                        userViews.TotalPage = employees.TotalPage;
+                        if (employees.TotalPage == 0)
+                        {
+                            userViews.TotalPage = 1;
+                        }
+                        return userViews;
                     }
                 }
                 return userViews;
             }
             catch(Exception ex)
             {
-                return new List<UserViewModel>();
+                return userViews;
             }
         }
     }

@@ -31,8 +31,9 @@ namespace Data.Repository
         /// </summary>
         /// <param name="search"></param>
         /// <returns></returns>
-        public List<EmployeeInfo> SearchEmployeeList(EmployeeSearch search)
+        public IPageList<EmployeeInfo> SearchEmployeeList(EmployeeSearch search)
         {
+            IPageList<EmployeeInfo> pageList= new PageList<EmployeeInfo>();
             var infos = storeDB.EmployeeInfo.Where(x => x.Deleted == false);
             if (search.Id.HasValue)
             {
@@ -72,10 +73,14 @@ namespace Data.Repository
                 infos.Where(x => x.Quit == search.Quit.Value);
             }
             infos.OrderBy(x => x.JoinDate);
-            return infos.ToList();
+            pageList.TotalCount = infos.Count();
+            infos.Skip(search.Index * search.PageSize).Take(search.PageSize);
+            pageList.Data = infos.ToList();
+            pageList.PageIndex = search.Index;
+            pageList.PageSize = search.PageSize;
+            pageList.TotalPage = (int)Math.Ceiling((double)pageList.TotalCount / (double)pageList.PageSize);
+            return pageList;
         }
-
-
 
 
 

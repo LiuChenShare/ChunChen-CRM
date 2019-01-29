@@ -15,6 +15,9 @@
         <ScrollViewer Margin="0,30,0,0" VerticalScrollBarVisibility ="Auto" Width="auto">
             <Grid>
                 <WrapPanel Orientation="Vertical" Height="auto" Width="auto">
+                    <Grid>
+                        
+                    </Grid>
                     <ListView Name="EmployeeList" MinHeight="200" Height="auto" Width="auto" SelectionChanged="EmployeeList_SelectionChanged">
                         <ListView.View>
                             <GridView>
@@ -33,6 +36,15 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <Grid Height="30" Width="auto" MinWidth="640">
+                        <WrapPanel Orientation="Horizontal" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button Name="PreviousPageButton" Content="上一页" Width="50"/>
+                            <Label Content="当前第 " />
+                            <Label Name="Index" Content="1 / 1" />
+                            <Label Content=" 页" />
+                            <Button Name="NextPageButton" Content="下一页" Width="50" Click="NextPageButton_Click"/>
+                        </WrapPanel>
+                    </Grid>
                 </WrapPanel>
             </Grid>
         </ScrollViewer>

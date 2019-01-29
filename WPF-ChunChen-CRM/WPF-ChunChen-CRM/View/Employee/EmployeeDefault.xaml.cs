@@ -29,7 +29,7 @@ namespace WPF_ChunChen_CRM.View.Employee
             InitializeComponent();
             //NavigationService.LoadCompleted += NavigationService_LoadCompleted;
             ListUpdate();
-            this.SizeChanged += new System.Windows.SizeChangedEventHandler(Page_Resize);
+            SizeChanged += new System.Windows.SizeChangedEventHandler(Page_Resize);
         }
 
 
@@ -38,21 +38,30 @@ namespace WPF_ChunChen_CRM.View.Employee
         private IEmployeeService employeeService = new EmployeeService();
         #endregion
 
-        public List<UserViewModel> userViews = new List<UserViewModel>();
+        public IPageList<UserViewModel> userViews = new PageList<UserViewModel>();
+        public EmployeeSearch search = new EmployeeSearch();
 
 
         public void ListUpdate()
         {
-            EmployeeSearch search = new EmployeeSearch();
             userViews = employeeService.SearchEmployeeList(search);
             EmployeeList.Items.Clear();  //只移除所有的项。
-            for (int i = 0; i < userViews.Count(); i++)
+            for (int i = 0; i < userViews.Data.Count(); i++)
             {
-                userViews[i].Index = i + 1;
-                this.EmployeeList.Items.Add(userViews[i]);
+                userViews.Data[i].Index = i + 1;
+                EmployeeList.Items.Add(userViews.Data[i]);
             }
-
+            Index.Content = string.Format("{0} / {1}", userViews.PageIndex + 1, userViews.TotalPage);
+            if (userViews.PageIndex == 0)
+            {
+                PreviousPageButton.IsEnabled = false;
+            }
+            //if (userViews.PageIndex >= userViews.TotalPage - 1)
+            //{
+            //    NextPageButton.IsEnabled = false;
+            //}
         }
+        #region 界面按钮
 
         /// <summary>
         /// 点击删除按钮
@@ -69,6 +78,23 @@ namespace WPF_ChunChen_CRM.View.Employee
         {
             //this.NavigationService.Navigate(new ContentPage(), DateTime.Now);
         }
+        
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NextPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (search.Index < userViews.TotalPage - 1)
+            {
+                search.Index++;
+                ListUpdate();
+            }
+        }
+        #endregion
+
+        #region 事件
 
         void NavigationService_LoadCompleted(object sender, NavigationEventArgs e)
         {
@@ -85,10 +111,9 @@ namespace WPF_ChunChen_CRM.View.Employee
         private void Page_Resize(object sender, SizeChangedEventArgs e)
         {
             //调整列宽
-            GridView gv = EmployeeList.View as GridView;
-            if (gv != null)
+            if (EmployeeList.View is GridView gv)
             {
-                for(int i = 0; i < gv.Columns.Count; i++)
+                for (int i = 0; i < gv.Columns.Count; i++)
                 {
                     var gvc = gv.Columns[i];
                     double width = 0;
@@ -114,5 +139,8 @@ namespace WPF_ChunChen_CRM.View.Employee
             }
 
         }
+
+        #endregion
+
     }
 }
