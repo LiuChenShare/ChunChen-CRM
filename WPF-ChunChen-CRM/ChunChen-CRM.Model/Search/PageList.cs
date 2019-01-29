@@ -32,6 +32,6 @@ namespace ChunChen_CRM.Model.Search
         /// <summary>
         /// 数据
         /// </summary>
-        public IList<T> Data;
+        public IList<T> Data { get; set; }
     }
 }

@@ -8,5 +8,29 @@ namespace ChunChen_CRM.Model.Search
 {
     public interface IPageList<T>
     {
+        /// <summary>
+        /// 页码
+        /// </summary>
+        int PageIndex { get; set; }
+
+        /// <summary>
+        /// 每页数量
+        /// </summary>
+        int PageSize { get; set; }
+
+        /// <summary>
+        /// 总页码
+        /// </summary>
+        int TotalPage { get; set; }
+
+        /// <summary>
+        /// 总数量
+        /// </summary>
+        int TotalCount { get; set; }
+
+        /// <summary>
+        /// 数据
+        /// </summary>
+        IList<T> Data { get; set; }
     }
 }
