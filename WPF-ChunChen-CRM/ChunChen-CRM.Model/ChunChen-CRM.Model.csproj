@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Search\BaseSearch.cs" />
     <Compile Include="Search\EmployeeSearch.cs" />
+    <Compile Include="Search\IPageList.cs" />
+    <Compile Include="Search\PageList.cs" />
     <Compile Include="UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
