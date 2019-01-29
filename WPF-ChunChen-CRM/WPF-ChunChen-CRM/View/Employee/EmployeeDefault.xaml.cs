@@ -29,26 +29,29 @@ namespace WPF_ChunChen_CRM.View.Employee
             InitializeComponent();
             //NavigationService.LoadCompleted += NavigationService_LoadCompleted;
             ListUpdate();
+            this.SizeChanged += new System.Windows.SizeChangedEventHandler(Page_Resize);
         }
+
+
 
         #region 服务
         private IEmployeeService employeeService = new EmployeeService();
         #endregion
 
         public List<UserViewModel> userViews = new List<UserViewModel>();
-        
+
 
         public void ListUpdate()
         {
             EmployeeSearch search = new EmployeeSearch();
             userViews = employeeService.SearchEmployeeList(search);
             EmployeeList.Items.Clear();  //只移除所有的项。
-            for(int i = 0; i < userViews.Count(); i++)
+            for (int i = 0; i < userViews.Count(); i++)
             {
                 userViews[i].Index = i + 1;
                 this.EmployeeList.Items.Add(userViews[i]);
             }
-            
+
         }
 
         /// <summary>
@@ -72,6 +75,44 @@ namespace WPF_ChunChen_CRM.View.Employee
             DateTime requestDateTime = (DateTime)e.ExtraData;
             string msg = string.Format("Request started {0}\nRequest completed {1}", requestDateTime, DateTime.Now);
             MessageBox.Show(msg);
+        }
+
+        /// <summary>
+        /// 窗体大小改变
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Page_Resize(object sender, SizeChangedEventArgs e)
+        {
+            //调整列宽
+            GridView gv = EmployeeList.View as GridView;
+            if (gv != null)
+            {
+                for(int i = 0; i < gv.Columns.Count; i++)
+                {
+                    var gvc = gv.Columns[i];
+                    double width = 0;
+                    if (i == 0)
+                    {
+                        width = (e.NewSize.Width - 100) * 0.08;
+                    }
+                    else if (i == gv.Columns.Count - 1)
+                    {
+                        width = 90;
+                    }
+                    else
+                    {
+                        width = (e.NewSize.Width - 100) * 0.23;
+                    }
+                    gvc.Width = width;
+                }
+                //foreach (GridViewColumn gvc in gv.Columns)
+                //{
+                //    gvc.Width = gvc.ActualWidth;
+                //    gvc.Width = Double.NaN;
+                //}
+            }
+
         }
     }
 }

@@ -12,18 +12,18 @@
         <Grid VerticalAlignment="Top" Height="30" Margin="0,0,0,0" Background="#FFDDDDDD">
             <Label Content="员工管理" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" FontWeight="Bold" FontFamily="Blackadder ITC" FontSize="18"/>
         </Grid>
-        <ScrollViewer Margin="0,30,0,0" VerticalScrollBarVisibility ="Auto">
+        <ScrollViewer Margin="0,30,0,0" VerticalScrollBarVisibility ="Auto" Width="auto">
             <Grid>
-                <WrapPanel Orientation="Vertical" Height="auto">
-                    <ListView Name="EmployeeList" MinHeight="200" Height="auto" SelectionChanged="EmployeeList_SelectionChanged">
+                <WrapPanel Orientation="Vertical" Height="auto" Width="auto">
+                    <ListView Name="EmployeeList" MinHeight="200" Height="auto" Width="auto" SelectionChanged="EmployeeList_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="序号" Width="50" DisplayMemberBinding="{Binding Index}" />
-                                <GridViewColumn Header="工号" Width="100" DisplayMemberBinding="{Binding EmployeeNo}"/>
-                                <GridViewColumn Header="姓名" Width="100" DisplayMemberBinding="{Binding Name}"/>
-                                <GridViewColumn Header="手机号" Width="100" DisplayMemberBinding="{Binding Mobile}"/>
-                                <GridViewColumn Header="性别" Width="100" DisplayMemberBinding="{Binding GenderString}"/>
-                                <GridViewColumn Header="操作" Width="100" >
+                                <GridViewColumn Header="序号" DisplayMemberBinding="{Binding Index}" />
+                                <GridViewColumn Header="工号" DisplayMemberBinding="{Binding EmployeeNo}"/>
+                                <GridViewColumn Header="姓名" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="手机号" DisplayMemberBinding="{Binding Mobile}"/>
+                                <GridViewColumn Header="性别" DisplayMemberBinding="{Binding GenderString}"/>
+                                <GridViewColumn Header="操作" >
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Button Width="30" Content="删除" Click="Button_Click2" />
