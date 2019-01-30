@@ -2,6 +2,7 @@
 using Data.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 
@@ -23,7 +24,7 @@ namespace Data.Repository
         public EmployeeInfo GetEmployeeInfo(Guid employeeId, bool deleted = false)
         {
             var infos = storeDB.EmployeeInfo.Where(x => x.Id == employeeId && x.Deleted == deleted);
-            return infos.FirstOrDefault();
+            return infos.AsNoTracking().FirstOrDefault();
         }
         
         /// <summary>
@@ -37,45 +38,44 @@ namespace Data.Repository
             var infos = storeDB.EmployeeInfo.Where(x => x.Deleted == false);
             if (search.Id.HasValue)
             {
-                infos.Where(x => x.Id == search.Id.Value);
+                infos = infos.Where(x => x.Id == search.Id.Value);
             }
             if (search.EmployeeNo.HasValue)
             {
-                infos.Where(x => x.EmployeeNo.ToString().Contains(search.EmployeeNo.Value.ToString()));
+                infos = infos.Where(x => x.EmployeeNo.ToString().Contains(search.EmployeeNo.Value.ToString()));
             }
             if (!string.IsNullOrWhiteSpace(search.Name))
             {
-                infos.Where(x => x.Name.Contains(search.Name));
+                infos = infos.Where(x => x.Name.Contains(search.Name));
             }
             if (!string.IsNullOrWhiteSpace(search.Mobile))
             {
-                infos.Where(x => x.Mobile.Contains(search.Mobile));
+                infos = infos.Where(x => x.Mobile.Contains(search.Mobile));
             }
             if (search.Gender.HasValue)
             {
-                infos.Where(x => x.Gender == search.Gender.Value);
+                infos = infos.Where(x => x.Gender == search.Gender.Value);
             }
             if (search.Birthday.HasValue)
             {
-                infos.Where(x => x.Birthday.HasValue);
-                infos.Where(x => x.Birthday.Value.Month == search.Birthday.Value.Month && x.Birthday.Value.Day == search.Birthday.Value.Day);
+                infos = infos.Where(x => x.Birthday.HasValue && x.Birthday.Value.Month == search.Birthday.Value.Month && x.Birthday.Value.Day == search.Birthday.Value.Day);
             }
             if (search.MinSpend.HasValue)
             {
-                infos.Where(x => x.Spend >= search.MinSpend.Value);
+                infos = infos.Where(x => x.Spend >= search.MinSpend.Value);
             }
             if (search.MaxSpend.HasValue)
             {
-                infos.Where(x => x.Spend <= search.MaxSpend.Value);
+                infos = infos.Where(x => x.Spend <= search.MaxSpend.Value);
             }
             if (search.Quit.HasValue)
             {
-                infos.Where(x => x.Quit == search.Quit.Value);
+                infos = infos.Where(x => x.Quit == search.Quit.Value);
             }
-            infos.OrderBy(x => x.JoinDate);
+            infos = infos.OrderBy(x => x.JoinDate);
             pageList.TotalCount = infos.Count();
-            infos.Skip(search.Index * search.PageSize).Take(search.PageSize);
-            pageList.Data = infos.ToList();
+            infos = infos.Skip(search.Index * search.PageSize).Take(search.PageSize);
+            pageList.Data = infos.AsNoTracking().ToList();
             pageList.PageIndex = search.Index;
             pageList.PageSize = search.PageSize;
             pageList.TotalPage = (int)Math.Ceiling((double)pageList.TotalCount / (double)pageList.PageSize);

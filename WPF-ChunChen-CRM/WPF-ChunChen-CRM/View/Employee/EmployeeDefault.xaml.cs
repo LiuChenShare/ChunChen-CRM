@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_ChunChen_CRM.Code;
 
 namespace WPF_ChunChen_CRM.View.Employee
 {
@@ -56,34 +58,26 @@ namespace WPF_ChunChen_CRM.View.Employee
             {
                 PreviousPageButton.IsEnabled = false;
             }
-            //if (userViews.PageIndex >= userViews.TotalPage - 1)
-            //{
-            //    NextPageButton.IsEnabled = false;
-            //}
+            if (userViews.PageIndex >= userViews.TotalPage - 1)
+            {
+                NextPageButton.IsEnabled = false;
+            }
         }
         #region 界面按钮
 
-        /// <summary>
-        /// 点击删除按钮
-        /// </summary>
+        //删除按钮
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("暂无删除功能！");
         }
 
-        /// <summary>
-        /// 点击列表某行
-        /// </summary>
+        //点击列表某行
         private void EmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //this.NavigationService.Navigate(new ContentPage(), DateTime.Now);
         }
         
-        /// <summary>
-        /// 下一页
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        //下一页按钮
         private void NextPageButton_Click(object sender, RoutedEventArgs e)
         {
             if (search.Index < userViews.TotalPage - 1)
@@ -91,6 +85,29 @@ namespace WPF_ChunChen_CRM.View.Employee
                 search.Index++;
                 ListUpdate();
             }
+        }
+        
+        //查询按钮
+        private void QueryButton_Click(object sender, RoutedEventArgs e)
+        {
+            search = new EmployeeSearch();
+            if (!string.IsNullOrWhiteSpace(NameValue.Text))
+            {
+                search.Name = NameValue.Text;
+            }
+            if (!string.IsNullOrWhiteSpace(MobileValue.Text))
+            {
+                search.Name = MobileValue.Text;
+            }
+            if (GenderStringValue.Text == "男")
+            {
+                search.Gender = 1;
+            }
+            if (GenderStringValue.Text == "女")
+            {
+                search.Gender = 0;
+            }
+            ListUpdate();
         }
         #endregion
 
@@ -139,6 +156,14 @@ namespace WPF_ChunChen_CRM.View.Employee
             }
 
         }
+
+        //输入文本事件
+        private void tb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            PreviewTextInputMonitor previewTextInputMonitor = new PreviewTextInputMonitor();
+            previewTextInputMonitor.tb_PreviewTextInput(sender, e);
+        }
+
 
         #endregion
 

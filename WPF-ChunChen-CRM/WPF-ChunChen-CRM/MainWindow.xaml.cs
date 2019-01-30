@@ -35,6 +35,7 @@ namespace WPF_ChunChen_CRM
             EmployeeFarme.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             EmployeeFarme.Navigate(new Uri("View/Employee/EmployeeDefault.xaml", UriKind.Relative));
             EmployeeFarme.Visibility = Visibility.Visible;
+            PersonalMenu_Click(new object(), new RoutedEventArgs());
             UpdateUserPersonalData();
         }
 

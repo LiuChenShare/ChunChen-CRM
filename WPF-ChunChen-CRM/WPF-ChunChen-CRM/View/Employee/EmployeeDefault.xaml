@@ -15,8 +15,34 @@
         <ScrollViewer Margin="0,30,0,0" VerticalScrollBarVisibility ="Auto" Width="auto">
             <Grid>
                 <WrapPanel Orientation="Vertical" Height="auto" Width="auto">
-                    <Grid>
-                        
+                    <Grid Height="auto">
+                        <WrapPanel Orientation="Horizontal" Width="400" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid HorizontalAlignment="Center" Height="49" Width="200">
+                                <Label Content="姓名：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
+                                <TextBox Name="NameValue" VerticalContentAlignment="Center"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0" Width="120" Height="30" FontSize="14"/>
+                            </Grid>
+                            <Grid HorizontalAlignment="Center" Height="49" Width="200">
+                                <Label Content="手机：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
+                                <TextBox Name="MobileValue" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0" Width="120" Height="30" PreviewTextInput="tb_PreviewTextInput" InputMethod.IsInputMethodEnabled="False" FontSize="14"/>
+                            </Grid>
+                            <Grid HorizontalAlignment="Center" Height="49" Width="200">
+                                <Label Content="性别：" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60"/>
+                                <ComboBox Name="GenderStringValue" HorizontalAlignment="Left" Margin="60,0,0,0" Height="25" Width="60">
+                                    <ComboBoxItem Name="GenderStringValue_Man">男</ComboBoxItem>
+                                    <ComboBoxItem Name="GenderStringValue_Woman">女</ComboBoxItem>
+                                    <ComboBoxItem Name="GenderStringValue_Unlimited" IsSelected="True">不限</ComboBoxItem>
+                                </ComboBox>
+                            </Grid>
+                            <Grid HorizontalAlignment="Center" Height="30" Width="200">
+                                <Button Name="queryButton" HorizontalAlignment="Center" BorderThickness="0" VerticalAlignment="Center" Width="75" Background="Transparent" Click="QueryButton_Click">
+                                    <Button.Content>
+                                        <Border CornerRadius="10" Width="75" Background="#FF00AEFF" >
+                                            <Label Content="搜索" HorizontalAlignment="Center" Foreground="White" />
+                                        </Border>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </WrapPanel>
                     </Grid>
                     <ListView Name="EmployeeList" MinHeight="200" Height="auto" Width="auto" SelectionChanged="EmployeeList_SelectionChanged">
                         <ListView.View>
