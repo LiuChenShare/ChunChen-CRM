@@ -24,7 +24,17 @@ namespace ChunChen_CRM.Model
         /// <summary>
         /// 账号id
         /// </summary>
-        public Guid Account { get; set; }
+        public Guid AccountId { get; set; }
+
+        /// <summary>
+        /// 账号
+        /// </summary>
+        public string Account { get; set; }
+
+        /// <summary>
+        /// 密码
+        /// </summary>
+        public string Password { get; set; }
 
         /// <summary>
         /// 员工编号

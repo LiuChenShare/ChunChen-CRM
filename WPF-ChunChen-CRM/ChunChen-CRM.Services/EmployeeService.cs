@@ -19,6 +19,7 @@ namespace ChunChen_CRM.Services
     {
         private AccountInfoRepository _accountInfoRepository = new AccountInfoRepository();
         private EmployeeInfoRepository _employeeInfoRepository = new EmployeeInfoRepository();
+        private AutoincrementInfoRepository _autoincrementInfoRepository = new AutoincrementInfoRepository();
 
         /// <summary>
         /// 获取当前用户信息
@@ -31,7 +32,7 @@ namespace ChunChen_CRM.Services
             userViewModel = employeeInfo.ToUserViewModel();
             if (userViewModel != null)
             {
-                userViewModel.Account = UserStorage.Instance.AccountId;
+                userViewModel.AccountId = UserStorage.Instance.AccountId;
                 return userViewModel;
             }
             return null;
@@ -86,6 +87,85 @@ namespace ChunChen_CRM.Services
             catch(Exception ex)
             {
                 return userViews;
+            }
+        }
+
+        /// <summary>
+        /// 获取员工信息
+        /// </summary>
+        /// <param name="employeeId">员工id</param>
+        /// <returns></returns>
+        public UserViewModel GetEmployeeData(Guid employeeId)
+        {
+            UserViewModel userViewModel = new UserViewModel();
+            EmployeeInfo employeeInfo = _employeeInfoRepository.GetEmployeeInfo(employeeId);
+            userViewModel = employeeInfo.ToUserViewModel();
+            return null;
+        }
+
+        /// <summary>
+        /// 添加员工信息
+        /// </summary>
+        /// <param name="userViewModel"></param>
+        /// <returns></returns>
+        public bool SaveEmployeeData(UserViewModel userViewModel)
+        {
+            try
+            {
+                if (_accountInfoRepository.CheckAccount(userViewModel.Account))
+                {
+                    throw new Exception("账号重复");
+                }
+                if (_employeeInfoRepository.CheckMobile(userViewModel.Mobile))
+                {
+                    throw new Exception("手机号重复");
+                }
+                //创建账号
+                AccountInfo accountInfo = new AccountInfo();
+                accountInfo.Id = Guid.NewGuid();
+                accountInfo.Account = userViewModel.Account;
+                accountInfo.Password = userViewModel.Password;
+                accountInfo.EmployeeId = Guid.NewGuid();
+                _accountInfoRepository.Insert(accountInfo);
+                //创建员工信息
+                EmployeeInfo employeeInfo = new EmployeeInfo();
+                employeeInfo.Id = accountInfo.EmployeeId;
+                employeeInfo.CreateDate = DateTime.Now;
+                employeeInfo.EmployeeNo = _autoincrementInfoRepository.UpdateAutoincrement("EmployeeNo").Value;
+                employeeInfo = employeeInfo.SetEntity(userViewModel);
+                _employeeInfoRepository.Insert(employeeInfo);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 更新员工信息
+        /// </summary>
+        /// <param name="userViewModel"></param>
+        /// <returns></returns>
+        public bool UpdateEmployeeData(UserViewModel userViewModel)
+        {
+            try
+            {
+                EmployeeInfo employeeInfo = _employeeInfoRepository.GetEmployeeInfo(userViewModel.Id);
+                if (employeeInfo == null) { return false; }
+                employeeInfo.Name = userViewModel.Name;
+                employeeInfo.Mobile = userViewModel.Mobile;
+                employeeInfo.Gender = userViewModel.Gender;
+                employeeInfo.Birthday = userViewModel.Birthday;
+                employeeInfo.JoinDate = userViewModel.JoinDate;
+                employeeInfo.Quit = userViewModel.Quit;
+                employeeInfo.QuitDate = userViewModel.QuitDate;
+                _employeeInfoRepository.Update(employeeInfo);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
             }
         }
     }

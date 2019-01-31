@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\AutoincrementInfo.cs" />
+    <Compile Include="Repository\AutoincrementInfoRepository.cs" />
     <Compile Include="Repository\EmployeeInfoRepository.cs" />
     <Compile Include="Repository\AccountInfoRepository.cs" />
     <Compile Include="SQLiteBaseForEF.cs" />

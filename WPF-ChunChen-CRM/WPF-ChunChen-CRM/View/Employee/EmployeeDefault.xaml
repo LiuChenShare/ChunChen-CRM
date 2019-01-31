@@ -72,6 +72,11 @@
                         </WrapPanel>
                     </Grid>
                 </WrapPanel>
+                <Button Name="addButton" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" BorderThickness="0" Background="Transparent" ToolTip="新建员工" Click="AddButton_Click">
+                    <Button.Content>
+                        <Image Source="/WPF-ChunChen-CRM;component/Image/添加-707070.png" Stretch="Uniform"/>
+                    </Button.Content>
+                </Button>
             </Grid>
         </ScrollViewer>
     </Grid>

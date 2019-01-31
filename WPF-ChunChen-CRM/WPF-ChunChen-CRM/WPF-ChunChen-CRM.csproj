@@ -80,8 +80,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Code\PreviewTextInputMonitor.cs" />
+    <Compile Include="View\Employee\EmployeeAdd.xaml.cs">
+      <DependentUpon>EmployeeAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Employee\EmployeeDefault.xaml.cs">
       <DependentUpon>EmployeeDefault.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\EmployeeEdit.xaml.cs">
+      <DependentUpon>EmployeeEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Personal\PersonalEdit.xaml.cs">
       <DependentUpon>PersonalEdit.xaml</DependentUpon>
@@ -111,7 +117,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Employee\EmployeeAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Employee\EmployeeDefault.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Employee\EmployeeEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,6 +189,9 @@
     <Content Include="Image\login_back.jfif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Image\退出登录-707070.png" />
+    <Resource Include="Image\修改密码-707070.png" />
+    <Resource Include="Image\添加-707070.png" />
     <Resource Include="Image\删除-d81e06.png" />
     <Resource Include="Image\勾-1afa29.png" />
     <Resource Include="Image\撤回色块.png" />

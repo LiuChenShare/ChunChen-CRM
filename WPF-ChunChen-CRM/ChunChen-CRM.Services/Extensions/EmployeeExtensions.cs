@@ -30,19 +30,31 @@ namespace ChunChen_CRM.Services.Extensions
                 LastUpdatedOn = info.LastUpdatedOn
             };
             model.GenderString = info.Gender == 0 ? "女" : "男";
-
-            if (info.Gender == 0)
-            {
-                model.GenderString = "女";
-            }
-            else
-            {
-                model.GenderString = "男";
-            }
-
             return model;
         }
 
+
+        public static EmployeeInfo SetEntity(this EmployeeInfo info, UserViewModel model)
+        {
+            if (info == null)
+            {
+                info = new EmployeeInfo();
+                info.CreateDate = DateTime.Now;
+                info.Id = Guid.NewGuid();
+            }
+            //info.EmployeeNo = model.EmployeeNo;
+            info.Name = model.Name;
+            info.Mobile = model.Mobile;
+            info.Gender = model.Gender;
+            info.Birthday = model.Birthday;
+            info.Authority = model.Authority;
+            info.Spend = model.Spend;
+            info.JoinDate = model.JoinDate;
+            info.Quit = model.Quit;
+            info.QuitDate = model.QuitDate;
+            info.LastUpdatedOn = DateTime.Now;
+            return info;
+        }
         //public static EmployeeSelectItem ToSelectItem(this EmployeeInfo info)
         //{
         //    if (info == null) { return null; }

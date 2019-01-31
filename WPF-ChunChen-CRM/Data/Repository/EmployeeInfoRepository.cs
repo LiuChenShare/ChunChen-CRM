@@ -82,7 +82,21 @@ namespace Data.Repository
             return pageList;
         }
 
-
+        /// <summary>
+        /// 检验手机号是否重复
+        /// </summary>
+        /// <param name="mobile">待检验手机号</param>
+        /// <param name="employeeId">忽略掉的员工id</param>
+        /// <returns></returns>
+        public bool CheckMobile(string mobile, Guid? employeeId = null)
+        {
+            var infos = storeDB.EmployeeInfo.Where(x => x.Mobile == mobile && !x.Deleted);
+            if (employeeId.HasValue)
+            {
+                infos = infos.Where(x => x.Id != employeeId);
+            }
+            return infos.Count() > 0;
+        }
 
 
 

@@ -35,6 +35,22 @@ namespace Data.Repository
         }
 
         /// <summary>
+        /// 检验账号是否重复
+        /// </summary>
+        /// <param name="account">待检验账号</param>
+        /// <param name="accountId">忽略掉的账号id</param>
+        /// <returns></returns>
+        public bool CheckAccount(string account, Guid? accountId = null)
+        {
+            var infos = storeDB.AccountInfo.Where(x => x.Account == account && !x.Deleted);
+            if (accountId.HasValue)
+            {
+                infos = infos.Where(x => x.Id != accountId);
+            }
+            return infos.Count() > 0;
+        }
+
+        /// <summary>
         /// 插入
         /// </summary>
         /// <param name="info"></param>

@@ -26,6 +26,9 @@ namespace WPF_ChunChen_CRM.View.Employee
     /// </summary>
     public partial class EmployeeDefault : Page
     {
+        /// <summary>
+        /// 员工管理界面
+        /// </summary>
         public EmployeeDefault()
         {
             InitializeComponent();
@@ -97,7 +100,7 @@ namespace WPF_ChunChen_CRM.View.Employee
             }
             if (!string.IsNullOrWhiteSpace(MobileValue.Text))
             {
-                search.Name = MobileValue.Text;
+                search.Mobile = MobileValue.Text;
             }
             if (GenderStringValue.Text == "男")
             {
@@ -108,6 +111,12 @@ namespace WPF_ChunChen_CRM.View.Employee
                 search.Gender = 0;
             }
             ListUpdate();
+        }
+
+        //新建员工
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeeAdd(), Guid.NewGuid());
         }
         #endregion
 

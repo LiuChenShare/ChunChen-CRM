@@ -17,6 +17,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
             </Grid.RowDefinitions>
             <!--头部信息-->
             <Grid  Grid.Row="0">
@@ -31,6 +32,22 @@
                     <Button Name="EmployeeMenu" Content="员工管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0" Click="EmployeeMenu_Click"/>
                     <Button Name="OrderMenu" Content="订单管理" VerticalAlignment="Top" Width="150" Height="42" BorderThickness="0" Click="OrderMenu_Click"/>
                 </StackPanel>
+            </Grid>
+            <!--底部信息-->
+            <Grid  Grid.Row="2">
+                <Grid VerticalAlignment="Top" Background="Black" Height="2"/>
+                <Grid Margin="0,2,0,0">
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Height="30" BorderThickness="0" Background="Transparent" ToolTip="退出登录">
+                        <Button.Content>
+                            <Image Source="/WPF-ChunChen-CRM;component/Image/退出登录-707070.png" Stretch="Uniform"/>
+                        </Button.Content>
+                    </Button>
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Center" Width="75" Height="25" BorderThickness="0" Background="Transparent" ToolTip="修改密码">
+                        <Button.Content>
+                            <Image Source="/WPF-ChunChen-CRM;component/Image/修改密码-707070.png" Stretch="Uniform"/>
+                        </Button.Content>
+                    </Button>
+                </Grid>
             </Grid>
         </Grid>
         <!--右侧页面-->
