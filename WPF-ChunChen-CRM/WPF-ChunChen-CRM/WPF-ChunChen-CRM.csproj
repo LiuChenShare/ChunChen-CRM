@@ -89,6 +89,9 @@
     <Compile Include="View\Employee\EmployeeEdit.xaml.cs">
       <DependentUpon>EmployeeEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Employee\EmployeeShow.xaml.cs">
+      <DependentUpon>EmployeeShow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Personal\PersonalEdit.xaml.cs">
       <DependentUpon>PersonalEdit.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Employee\EmployeeEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Employee\EmployeeShow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -26,7 +26,13 @@ namespace WPF_ChunChen_CRM.View.Employee
         public EmployeeShow()
         {
             InitializeComponent();
-            NavigationService.LoadCompleted += NavigationService_LoadCompleted;
+            //NavigationService.LoadCompleted += NavigationService_LoadCompleted;
+        }
+
+        public EmployeeShow(Guid employeeId)
+        {
+            InitializeComponent();
+            UpdateEmployeeData(employeeId);
         }
 
         #region 服务

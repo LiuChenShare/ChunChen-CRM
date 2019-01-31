@@ -100,7 +100,7 @@ namespace ChunChen_CRM.Services
             UserViewModel userViewModel = new UserViewModel();
             EmployeeInfo employeeInfo = _employeeInfoRepository.GetEmployeeInfo(employeeId);
             userViewModel = employeeInfo.ToUserViewModel();
-            return null;
+            return userViewModel;
         }
 
         /// <summary>

@@ -72,7 +72,7 @@ namespace WPF_ChunChen_CRM.View.Employee
                 if (employeeService.SaveEmployeeData(userViewModel))
                 {
                     MessageBox.Show(Window.GetWindow(this), "添加成功");
-                    NavigationService.Navigate(new EmployeeShow(), userViewModel.Id);
+                    NavigationService.Navigate(new EmployeeShow(userViewModel.Id));
                 }
                 else
                 {

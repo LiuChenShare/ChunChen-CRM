@@ -78,6 +78,8 @@ namespace WPF_ChunChen_CRM.View.Employee
         private void EmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //this.NavigationService.Navigate(new ContentPage(), DateTime.Now);
+            var employeeView = e.AddedItems[0] as UserViewModel;
+            NavigationService.Navigate(new EmployeeShow(employeeView.Id));
         }
         
         //下一页按钮
