@@ -88,13 +88,13 @@ namespace WPF_ChunChen_CRM.View.Employee
         //取消
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EmployeeDefault(), Guid.NewGuid());
+            NavigationService.Navigate(new EmployeeDefault());
         }
 
         //返回
         private void WithdrawButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EmployeeDefault(), Guid.NewGuid());
+            NavigationService.Navigate(new EmployeeDefault());
         }
         #endregion
 

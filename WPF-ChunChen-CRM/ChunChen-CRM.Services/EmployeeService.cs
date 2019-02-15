@@ -165,7 +165,7 @@ namespace ChunChen_CRM.Services
             }
             catch(Exception ex)
             {
-                return false;
+                throw new Exception(ex.Message);
             }
         }
     }

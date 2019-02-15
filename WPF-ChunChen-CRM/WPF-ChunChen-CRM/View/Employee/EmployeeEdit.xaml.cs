@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 namespace WPF_ChunChen_CRM.View.Employee
 {
     /// <summary>
-    /// EmployeeEdit.xaml 的交互逻辑
+    /// 员工信息编辑页面
     /// </summary>
     public partial class EmployeeEdit : Page
     {
@@ -28,23 +28,79 @@ namespace WPF_ChunChen_CRM.View.Employee
             InitializeComponent();
         }
 
+        public EmployeeEdit(Guid employeeId)
+        {
+            InitializeComponent();
+            UpdateEmployeeData(employeeId);
+        }
+
         #region 服务
         private IEmployeeService employeeService = new EmployeeService();
         #endregion
 
+        #region 参数
+        UserViewModel userViewModel = new UserViewModel();
+        #endregion
+
+        #region 按钮
         //返回上一页
         private void WithdrawButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new EmployeeDefault());
         }
 
+        //确认
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(NameValue.Text))
+                {
+                    throw new Exception("请输入姓名");
+                }
+                if (string.IsNullOrWhiteSpace(MobileValue.Text))
+                {
+                    throw new Exception("请输入手机号");
+                }
+                
+                userViewModel.Name = NameValue.Text;
+                userViewModel.Mobile = MobileValue.Text.ToString();
+                userViewModel.Gender = 0;
+                if (GenderStringValue.Text == "男")
+                {
+                    userViewModel.Gender = 1;
+                }
+                userViewModel.Birthday = BirthdayValue.DateTime;
+                if (employeeService.UpdateEmployeeData(userViewModel))
+                {
+                    MessageBox.Show(Window.GetWindow(this), "修改成功");
+                    NavigationService.Navigate(new EmployeeShow(userViewModel.Id));
+                }
+                else
+                {
+                    MessageBox.Show(Window.GetWindow(this), "更新失败");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Window.GetWindow(this), "更新失败：" + ex.Message);
+            }
+        }
+
+        //取消
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeeShow(userViewModel.Id));
+        }
+        #endregion
+
         #region 方法
         /// <summary>
         /// 加载用户个人信息
         /// </summary>
-        private void UpdateUserPersonalData()
+        private void UpdateEmployeeData(Guid employeeId)
         {
-            UserViewModel userViewModel = employeeService.GetPersonalData();
+            userViewModel = employeeService.GetEmployeeData(employeeId);
             EmployeeNoValue.Content = userViewModel.EmployeeNo;
             NameValue.Text = userViewModel.Name;
             MobileValue.Text = userViewModel.Mobile;
@@ -70,16 +126,6 @@ namespace WPF_ChunChen_CRM.View.Employee
         }
         #endregion
 
-        //确认
-        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        //取消
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

@@ -40,11 +40,18 @@ namespace WPF_ChunChen_CRM.View.Employee
         #endregion
 
         #region 参数
-
+        UserViewModel userViewModel = new UserViewModel();
         #endregion
 
         #region 按钮
+        //编辑
         private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeeEdit(userViewModel.Id));
+        }
+
+        //返回
+        private void WithdrawButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new EmployeeDefault());
         }
@@ -56,7 +63,7 @@ namespace WPF_ChunChen_CRM.View.Employee
         /// </summary>
         private void UpdateEmployeeData(Guid employeeId)
         {
-            UserViewModel userViewModel = employeeService.GetEmployeeData(employeeId);
+            userViewModel = employeeService.GetEmployeeData(employeeId);
             EmployeeNoValue.Content = userViewModel.EmployeeNo;
             NameValue.Content = userViewModel.Name;
             MobileValue.Content = userViewModel.Mobile;
@@ -88,5 +95,6 @@ namespace WPF_ChunChen_CRM.View.Employee
             UpdateEmployeeData(employeeId);
         }
         #endregion
+
     }
 }

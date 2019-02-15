@@ -11,6 +11,11 @@
     <Grid Background="White">
         <Grid VerticalAlignment="Top" Height="30" Margin="0,0,0,0" Background="#FFDDDDDD">
             <Label Content="个人信息" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" FontWeight="Bold" FontFamily="Blackadder ITC" FontSize="18"/>
+            <Button Name="withdrawButton" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Height="30" BorderThickness="0" Click="WithdrawButton_Click">
+                <Button.Content>
+                    <Image Source="/WPF-ChunChen-CRM;component/Image/撤回色块.png" Stretch="Uniform"/>
+                </Button.Content>
+            </Button>
         </Grid>
         <ScrollViewer Margin="0,30,0,0" VerticalScrollBarVisibility ="Auto">
             <Grid>
